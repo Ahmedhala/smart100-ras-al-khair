@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>الأداء والتحليل | SMART100 × رأس الخير</title>
+<meta name="description" content="نتائج الأداء الاقتصادي والتشغيلي لمنظومة SMART100 × رأس الخير — LCOW حسب السيناريو، محاكاة سنة كاملة، ومقارنة الانبعاثات.">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg%20xmlns=%22http://www.w3.org/2000/svg%22%20viewBox=%220%200%2064%2064%22%3E%3Ccircle%20cx=%2232%22%20cy=%2232%22%20r=%226%22%20fill=%22%233f8fd6%22/%3E%3Cg%20fill=%22none%22%20stroke=%22%233f8fd6%22%20stroke-width=%224%22%3E%3Cellipse%20cx=%2232%22%20cy=%2232%22%20rx=%2228%22%20ry=%2212%22/%3E%3Cellipse%20cx=%2232%22%20cy=%2232%22%20rx=%2228%22%20ry=%2212%22%20transform=%22rotate(60%2032%2032)%22/%3E%3Cellipse%20cx=%2232%22%20cy=%2232%22%20rx=%2228%22%20ry=%2212%22%20transform=%22rotate(120%2032%2032)%22/%3E%3C/g%3E%3C/svg%3E">
+<meta property="og:type" content="website">
+<meta property="og:title" content="الأداء والتحليل | SMART100 × رأس الخير">
+<meta property="og:description" content="نتائج الأداء الاقتصادي والتشغيلي لمنظومة SMART100 × رأس الخير — LCOW حسب السيناريو، محاكاة سنة كاملة، ومقارنة الانبعاثات.">
+<meta property="og:locale" content="ar_SA">
+<meta name="twitter:card" content="summary">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="css/design-system.css">
+<link rel="stylesheet" href="css/process.css">
+</head>
+<body>
+
+<nav class="site-nav">
+  <div class="nav-row">
+    <a href="index.html" class="nav-brand">
+      <span class="nav-brand-mark">⚙</span>
+      <span>SMART100 <small>Ras Al-Khair Integration</small></span>
+    </a>
+    <div class="nav-groups">
+      <div class="nav-group"><a href="index.html">الرئيسية</a></div>
+      <div class="nav-group">
+        <button type="button" aria-haspopup="true" aria-expanded="false">المحطة والتحلية <span class="nav-caret" aria-hidden="true">▾</span></button>
+        <div class="nav-dropdown">
+          <a href="plant.html">محطة رأس الخير</a>
+          <a href="desalination.html">تقنيات التحلية</a>
+          <a href="msf.html">MSF</a>
+          <a href="ro.html">RO</a>
+          <a href="tech-comparison.html">مقارنة التقنيات</a>
+        </div>
+      </div>
+      <div class="nav-group">
+        <button type="button" aria-haspopup="true" aria-expanded="false">مفاعل SMART100 <span class="nav-caret" aria-hidden="true">▾</span></button>
+        <div class="nav-dropdown">
+          <a href="reactor.html">مفاعل SMART100</a>
+          <a href="how-it-works.html">كيف يعمل؟</a>
+        </div>
+      </div>
+      <div class="nav-group">
+        <button type="button" aria-haspopup="true" aria-expanded="false">التكامل والمنظومة <span class="nav-caret" aria-hidden="true">▾</span></button>
+        <div class="nav-dropdown">
+          <a href="integration.html">التكامل مع رأس الخير</a>
+          <a href="energy-flow.html">تدفق الطاقة</a>
+          <a href="system-architecture.html">هندسة المنظومة</a>
+        </div>
+      </div>
+      <div class="nav-group">
+        <button type="button" aria-haspopup="true" aria-expanded="false">التحليل <span class="nav-caret" aria-hidden="true">▾</span></button>
+        <div class="nav-dropdown">
+          <a href="performance.html">الأداء</a>
+          <a href="scenarios.html">السيناريوهات</a>
+          <a href="safety.html">الأمان</a>
+          <a href="simulation.html">المحاكاة</a>
+        </div>
+      </div>
+      <div class="nav-group">
+        <button type="button" aria-haspopup="true" aria-expanded="false">مصادر <span class="nav-caret" aria-hidden="true">▾</span></button>
+        <div class="nav-dropdown">
+          <a href="glossary.html">المسرد</a>
+          <a href="references.html">المراجع</a>
+        </div>
+      </div>
+    </div>
+    <div class="nav-cta"><a href="integration.html" class="btn btn-primary">استكشف التكامل</a></div>
+    <button class="nav-toggle" id="navToggle" aria-label="القائمة" aria-expanded="false" aria-controls="navMobile"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+<div class="nav-mobile" id="navMobile">
+  <a href="index.html" style="display:block;padding:16px 4px;color:var(--ink);font-size:0.98rem;font-weight:700;border-bottom:1px solid var(--border);">الرئيسية</a>
+  <div class="nav-mobile-group">
+    <button type="button" aria-haspopup="true" aria-expanded="false">المحطة والتحلية <span class="nav-caret" aria-hidden="true">▾</span></button>
+    <div class="nav-mobile-sub">
+      <a href="plant.html"><span>🏭</span> محطة رأس الخير</a>
+      <a href="desalination.html"><span>💧</span> تقنيات التحلية</a>
+      <a href="msf.html"><span>🌡️</span> MSF</a>
+      <a href="ro.html"><span>🧪</span> RO</a>
+      <a href="tech-comparison.html"><span>⚖️</span> مقارنة التقنيات</a>
+    </div>
+  </div>
+  <div class="nav-mobile-group">
+    <button type="button" aria-haspopup="true" aria-expanded="false">مفاعل SMART100 <span class="nav-caret" aria-hidden="true">▾</span></button>
+    <div class="nav-mobile-sub">
+      <a href="reactor.html"><span>⚛️</span> مفاعل SMART100</a>
+      <a href="how-it-works.html"><span>⚙️</span> كيف يعمل؟</a>
+    </div>
+  </div>
+  <div class="nav-mobile-group">
+    <button type="button" aria-haspopup="true" aria-expanded="false">التكامل والمنظومة <span class="nav-caret" aria-hidden="true">▾</span></button>
+    <div class="nav-mobile-sub">
+      <a href="integration.html"><span>🔗</span> التكامل مع رأس الخير</a>
+      <a href="energy-flow.html"><span>⚡</span> تدفق الطاقة</a>
+      <a href="system-architecture.html"><span>🧩</span> هندسة المنظومة</a>
+    </div>
+  </div>
+  <div class="nav-mobile-group">
+    <button type="button" aria-haspopup="true" aria-expanded="false">التحليل <span class="nav-caret" aria-hidden="true">▾</span></button>
+    <div class="nav-mobile-sub">
+      <a href="performance.html"><span>📈</span> الأداء</a>
+      <a href="scenarios.html"><span>🔀</span> السيناريوهات</a>
+      <a href="safety.html"><span>🛡️</span> الأمان</a>
+      <a href="simulation.html"><span>🧮</span> المحاكاة</a>
+    </div>
+  </div>
+  <div class="nav-mobile-group">
+    <button type="button" aria-haspopup="true" aria-expanded="false">مصادر <span class="nav-caret" aria-hidden="true">▾</span></button>
+    <div class="nav-mobile-sub">
+      <a href="glossary.html"><span>📖</span> المسرد</a>
+      <a href="references.html"><span>📚</span> المراجع</a>
+    </div>
+  </div>
+</div>
+
+<!-- ===== Hero ===== -->
+<header class="proc-hero">
+  <div class="proc-hero-inner">
+    <span class="eyebrow">📈 نتائج النموذج</span>
+    <h1>الأداء والتحليل</h1>
+    <span class="en-name">Performance & Analysis</span>
+    <p>
+      ملخص النتائج الاقتصادية والتشغيلية والبيئية لمنظومة 10 وحدات SMART100 المغذّية لمحطة رأس الخير،
+      مستخرجة مباشرة من محاكاة النموذج (model.py / simulation.py / comparison.py).
+    </p>
+  </div>
+</header>
+
+<main>
+
+<!-- ===== Scenario LCOW ===== -->
+<section class="section" id="scenario-lcow">
+  <div class="section-inner">
+    <span class="section-tag">Design Scenarios</span>
+    <h2 class="section-title">LCOW حسب السيناريو التصميمي</h2>
+    <p class="section-lead">أربعة سيناريوهات ثابتة يختبرها النموذج مباشرة — من التشغيل العادي إلى ذروة الطلب المزدوجة على الماء والكهرباء.</p>
+
+    <div class="card reveal" style="padding:30px;">
+      <div class="lcow-bars">
+        <div class="lcow-bar-item">
+          <span class="lcow-bar-name">عادي <span style="color:var(--ink-muted); font-size:0.78rem;">(1.00× ماء، 1.00× كهرباء)</span></span>
+          <div class="lcow-bar-track"><div class="lcow-bar-fill" data-val="5.67" style="width:0"></div></div>
+          <span class="lcow-bar-val">$5.67</span>
+        </div>
+        <div class="lcow-bar-item">
+          <span class="lcow-bar-name">طلب مرتفع (مياه) <span style="color:var(--ink-muted); font-size:0.78rem;">(1.20× ماء، 1.05× كهرباء)</span></span>
+          <div class="lcow-bar-track"><div class="lcow-bar-fill" data-val="5.40" style="width:0"></div></div>
+          <span class="lcow-bar-val">$5.40</span>
+        </div>
+        <div class="lcow-bar-item">
+          <span class="lcow-bar-name">طلب مرتفع (كهرباء) <span style="color:var(--ink-muted); font-size:0.78rem;">(1.00× ماء، 1.20× كهرباء)</span></span>
+          <div class="lcow-bar-track"><div class="lcow-bar-fill" data-val="5.82" style="width:0"></div></div>
+          <span class="lcow-bar-val">$5.82</span>
+        </div>
+        <div class="lcow-bar-item">
+          <span class="lcow-bar-name">ذروة الطلب <span style="color:var(--ink-muted); font-size:0.78rem;">(1.30× ماء، 1.30× كهرباء)</span></span>
+          <div class="lcow-bar-track"><div class="lcow-bar-fill" data-val="5.46" style="width:0"></div></div>
+          <span class="lcow-bar-val">$5.46</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="why-callout card reveal" style="margin-top:22px; border-inline-start: 3px solid var(--nuclear);">
+      <span class="why-callout-icon">💡</span>
+      <p>
+        <strong>لماذا لا يوجد ترتيب بسيط للتكلفة؟</strong> LCOW لا يعتمد على حجم الإنتاج وحده، بل على
+        التوازن بين توزيع التكلفة الرأسمالية الثابتة (712.3 مليون $/سنة لعشر وحدات) على إنتاج أكبر، وزيادة
+        التكلفة التشغيلية الكهربائية المصاحبة. سيناريو "طلب مرتفع (مياه)" يحقق أفضل توازن — إنتاج أعلى بـ20%
+        مقابل كهرباء أعلى بـ5% فقط — فينخفض LCOW إلى $5.40، الأدنى بين السيناريوهات الأربعة. أما "طلب
+        مرتفع (كهرباء)" فيرفع التكلفة التشغيلية 20% دون أي زيادة مقابلة في الإنتاج تُوزَّع عليها التكلفة،
+        فيقفز LCOW إلى $5.82 — الأعلى في الجدول.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- ===== Full-year simulation ===== -->
+<section class="section section-alt" id="year-sim">
+  <div class="section-inner">
+    <span class="section-tag">365-Day Simulation</span>
+    <h2 class="section-title">نتائج محاكاة السنة الكاملة</h2>
+    <p class="section-lead">محاكاة يومية واقعية لـ365 يومًا بنمط طلب موسمي (ذروة صيفية، انخفاض شتوي) — السيناريو الهجين المعتمد للنموذج.</p>
+
+    <div class="metric-grid">
+      <div class="metric-card card reveal">
+        <div class="metric-icon">📊</div>
+        <div class="metric-value">80.5%</div>
+        <div class="metric-label">متوسط الاستغلال السنوي</div>
+      </div>
+      <div class="metric-card card reveal">
+        <div class="metric-icon">📉</div>
+        <div class="metric-value">63.1%</div>
+        <div class="metric-label">أقل استغلال يومي (الشتاء)</div>
+      </div>
+      <div class="metric-card card reveal">
+        <div class="metric-icon">📈</div>
+        <div class="metric-value">98.4%</div>
+        <div class="metric-label">أعلى استغلال يومي (الصيف)</div>
+      </div>
+      <div class="metric-card card reveal">
+        <div class="metric-icon">✅</div>
+        <div class="metric-value" style="color:var(--good);">0 / 365</div>
+        <div class="metric-label">أيام تجاوز السعة المركّبة</div>
+      </div>
+    </div>
+
+    <div class="metric-grid" style="margin-top:16px;">
+      <div class="metric-card card reveal">
+        <div class="metric-icon">💧</div>
+        <div class="metric-value">$5.588</div>
+        <div class="metric-label">متوسط LCOW السنوي</div>
+      </div>
+      <div class="metric-card card reveal">
+        <div class="metric-icon">⬇️</div>
+        <div class="metric-value">$5.443</div>
+        <div class="metric-label">أدنى LCOW يومي (أعلى طلب)</div>
+      </div>
+      <div class="metric-card card reveal">
+        <div class="metric-icon">⬆️</div>
+        <div class="metric-value">$5.792</div>
+        <div class="metric-label">أعلى LCOW يومي (أدنى طلب)</div>
+      </div>
+      <div class="metric-card card reveal">
+        <div class="metric-icon">📅</div>
+        <div class="metric-value">100%</div>
+        <div class="metric-label">تغطية كامل أيام السنة</div>
+      </div>
+    </div>
+
+    <p style="margin-top:18px; font-size:0.85rem; color:var(--ink-muted);">
+      ملاحظة: نطاق LCOW اليومي عبر المحاكاة السنوية ($5.443–$5.792) يختلف عن نطاق السيناريوهات
+      التصميمية الأربعة الثابتة ($5.40–$5.82) أعلاه، لأن الأول يعكس تذبذبًا موسميًا يوميًا مستمرًا
+      (حيث يتحرك عاملا الماء والكهرباء معًا بارتباط وثيق)، بينما الثاني يمثّل نقاط تشغيل قصوى منفصلة
+      تُفرَّق فيها عاملات الماء والكهرباء عمدًا لاختبار الحالات الحدّية.
+    </p>
+  </div>
+</section>
+
+<!-- ===== Emissions ===== -->
+<section class="section" id="emissions">
+  <div class="section-inner">
+    <span class="section-tag">Environmental Impact</span>
+    <h2 class="section-title">مقارنة الانبعاثات مقابل الغاز الطبيعي</h2>
+    <p class="section-lead">لو استمرت محطة رأس الخير على الغاز الطبيعي بدل SMART100 لتغطية نفس الحمل الحراري المكافئ عبر السنة الكاملة.</p>
+
+    <div class="metric-grid">
+      <div class="metric-card card reveal">
+        <div class="metric-icon">🔥</div>
+        <div class="metric-value" style="color:var(--critical);">8.54M</div>
+        <div class="metric-label">طن CO₂/سنة — الغاز الطبيعي</div>
+      </div>
+      <div class="metric-card card reveal">
+        <div class="metric-icon">⚛️</div>
+        <div class="metric-value" style="color:var(--good);">279,236</div>
+        <div class="metric-label">طن CO₂/سنة — SMART100</div>
+      </div>
+      <div class="metric-card card reveal">
+        <div class="metric-icon">🌍</div>
+        <div class="metric-value" style="color:var(--nuclear-glow);">8.27M</div>
+        <div class="metric-label">طن CO₂ توفير سنوي</div>
+      </div>
+      <div class="metric-card card reveal">
+        <div class="metric-icon">✅</div>
+        <div class="metric-value" style="color:var(--good);">96.7%</div>
+        <div class="metric-label">نسبة التخفيض</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== CTA ===== -->
+<section class="section section-alt">
+  <div class="section-inner">
+    <div class="home-cta-band reveal">
+      <h2>استكشف البيانات تفاعليًا</h2>
+      <p>لوحة تحكم كاملة بمنحنيات يومية، خريطة حرارية لـ169 توليفة تصميمية، وslider لاستكشاف أي يوم من السنة.</p>
+      <div class="home-cta-links">
+        <a href="integration.html" class="btn btn-primary">لوحة المحاكاة التفاعلية ↗</a>
+        <a href="reactor.html" class="btn btn-ghost">مفاعل SMART100</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="footer-inner">
+    <div>
+      <div class="footer-brand">SMART100 × رأس الخير</div>
+      <p class="footer-desc">منصة هندسية تفاعلية تدرس دمج مفاعل SMART100 النووي الصغير مع منظومة تحلية المياه في محطة رأس الخير — مشروع بحثي/هندسي.</p>
+    </div>
+    <div class="footer-cols">
+      <div class="footer-col">
+        <h5>المنصة</h5>
+        <a href="index.html">الرئيسية</a>
+        <a href="reactor.html">مفاعل SMART100</a>
+        <a href="integration.html">التكامل</a>
+      </div>
+      <div class="footer-col">
+        <h5>المصادر</h5>
+        <a href="glossary.html">المسرد</a>
+        <a href="references.html">المراجع</a>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom">مشروع بحثي · مبني على نموذج محاكاة Python (model.py / simulation.py / comparison.py)</div>
+</footer>
+
+<script src="js/nav.js"></script>
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  initReveal('.reveal');
+  const bars = document.querySelectorAll('.lcow-bar-fill');
+  const maxVal = Math.max(...[...bars].map(b => parseFloat(b.dataset.val)));
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting){
+        bars.forEach(b => { b.style.width = (parseFloat(b.dataset.val) / maxVal * 100) + '%'; });
+        io.disconnect();
+      }
+    });
+  }, { threshold: 0.3 });
+  if (bars.length) io.observe(bars[0].closest('.card'));
+});
+</script>
+</body>
+</html>

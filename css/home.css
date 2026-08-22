@@ -1,0 +1,105 @@
+/* ==========================================================================
+   Home page — hero visualization + overview grid
+   ========================================================================== */
+
+.home-hero{
+  padding: 64px 24px 40px;
+  min-height: calc(100vh - var(--nav-h));
+  display:flex; flex-direction:column; justify-content:center;
+}
+.home-hero-inner{
+  max-width: 1180px; margin: 0 auto; width:100%;
+  display:grid; grid-template-columns: 1.05fr 1fr; gap: 56px; align-items:center;
+}
+.hero-title-en{
+  font-family:'IBM Plex Mono',monospace; font-weight: 700;
+  font-size: clamp(1.5rem, 3.2vw, 2.35rem); line-height: 1.28;
+  color: var(--ink); margin-bottom: 18px; direction: ltr; text-align: right;
+  letter-spacing: -0.5px;
+}
+.hero-title-en .hl{ color: var(--nuclear-glow); }
+.hero-sub{ font-size: 1.05rem; max-width: 560px; margin-bottom: 32px; }
+.hero-ctas{ display:flex; gap: 14px; flex-wrap: wrap; margin-bottom: 40px; }
+
+.hero-quickfacts{ display:flex; gap: 28px; flex-wrap: wrap; }
+.hero-qf{ display:flex; flex-direction:column; gap:2px; }
+.hero-qf-value{ font-family:'IBM Plex Mono',monospace; font-weight:700; font-size: 1.3rem; color: var(--nuclear-glow); }
+.hero-qf-label{ font-size: 0.76rem; color: var(--ink-muted); }
+
+/* ---- Hero flow visualization ---- */
+.hero-viz{
+  position: relative;
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-2);
+  padding: 20px;
+  aspect-ratio: 4 / 5;
+  overflow: hidden;
+}
+.hero-viz svg{ width:100%; height:100%; }
+.hero-viz-caption{
+  position:absolute; bottom: 14px; inset-inline: 20px;
+  font-size: 0.72rem; color: var(--ink-muted); text-align:center;
+  font-family:'IBM Plex Mono',monospace;
+}
+
+/* ---- Quick facts strip ---- */
+.facts-strip{
+  display:grid; grid-template-columns: repeat(4,1fr); gap: 16px;
+}
+.fact-card{
+  padding: 26px 18px; text-align:center;
+}
+.fact-icon{ font-size: 1.5rem; margin-bottom: 10px; }
+.fact-value{ font-family:'IBM Plex Mono',monospace; font-size: 1.9rem; font-weight:700; color: var(--nuclear-glow); }
+.fact-label{ font-size: 0.82rem; color: var(--ink-secondary); margin-top: 4px; }
+
+/* ---- Overview cards ---- */
+.overview-grid{ display:grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+.overview-card{
+  padding: 28px; display:flex; flex-direction:column; gap: 14px;
+  transition: transform .2s, border-color .2s;
+}
+.overview-card:hover{ transform: translateY(-3px); border-color: var(--border-strong); }
+.overview-card-icon{
+  width: 48px; height:48px; border-radius: 12px; display:flex; align-items:center; justify-content:center;
+  font-size: 1.3rem;
+}
+.oc-blue .overview-card-icon{ background: var(--nuclear-tint); }
+.oc-orange .overview-card-icon{ background: var(--thermal-tint); }
+.oc-amber .overview-card-icon{ background: var(--electric-tint); }
+.oc-teal .overview-card-icon{ background: var(--water-tint); }
+.overview-card h3{ font-size: 1.05rem; }
+.overview-card p{ font-size: 0.9rem; }
+.overview-card .oc-en{ font-family:'IBM Plex Mono',monospace; font-size: 0.7rem; color: var(--ink-muted); }
+
+/* ---- Why cards (icon strip variant) ---- */
+.why-grid{ display:grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+.why-card{ padding: 30px 26px; }
+.why-card .badge{ margin-bottom: 16px; }
+.why-card h3{ font-size: 1.08rem; margin-bottom: 12px; }
+.why-card p{ font-size: 0.9rem; }
+
+/* ---- Final CTA band ---- */
+.home-cta-band{
+  background: linear-gradient(135deg, rgba(63,143,214,0.14), rgba(45,217,195,0.08));
+  border: 1px solid var(--border-strong);
+  border-radius: var(--radius-lg);
+  padding: 52px 40px; text-align:center;
+}
+.home-cta-band h2{ font-size: 1.5rem; margin-bottom: 12px; }
+.home-cta-band p{ max-width: 620px; margin: 0 auto 28px; }
+.home-cta-links{ display:flex; gap: 14px; justify-content:center; flex-wrap: wrap; }
+
+@media (max-width: 980px){
+  .home-hero-inner{ grid-template-columns: 1fr; }
+  .hero-viz{ aspect-ratio: 16/10; order: -1; }
+  .overview-grid, .why-grid{ grid-template-columns: 1fr 1fr; }
+}
+@media (max-width: 640px){
+  .facts-strip{ grid-template-columns: 1fr 1fr; }
+  .overview-grid, .why-grid{ grid-template-columns: 1fr; }
+  .hero-quickfacts{ gap: 18px; }
+  .home-cta-band{ padding: 34px 22px; }
+}

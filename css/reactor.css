@@ -1,0 +1,145 @@
+/* ==========================================================================
+   Reactor page — hero specs + 3D viewer + component grid
+   ========================================================================== */
+
+.reactor-hero{ padding: 56px 24px 20px; }
+.reactor-hero-inner{ max-width: 1120px; margin: 0 auto; }
+.reactor-hero h1{
+  font-size: clamp(1.8rem, 4vw, 2.6rem); margin-bottom: 8px;
+}
+.reactor-hero .en-name{
+  font-family:'IBM Plex Mono',monospace; color: var(--nuclear-glow); font-size: 0.95rem; margin-bottom: 20px; display:block;
+}
+.reactor-hero p{ max-width: 680px; font-size: 1.02rem; margin-bottom: 28px; }
+.reactor-badges{ display:flex; gap: 10px; flex-wrap: wrap; margin-bottom: 34px; }
+
+.spec-strip{ display:grid; grid-template-columns: repeat(5,1fr); gap: 14px; }
+.spec-item{ padding: 18px 14px; text-align:center; }
+.spec-value{ font-family:'IBM Plex Mono',monospace; font-weight:700; font-size: 1.3rem; color: var(--ink); }
+.spec-unit{ font-size: 0.7rem; color: var(--nuclear-glow); font-weight: 700; margin: 2px 0 6px; display:block; }
+.spec-label{ font-size: 0.74rem; color: var(--ink-muted); }
+
+/* ---- concept comparison (What is an SMR) ---- */
+.smr-compare{ display:grid; grid-template-columns: 1fr 1fr; gap: 22px; margin-bottom: 10px; }
+.smr-compare-card{ padding: 26px; }
+.smr-compare-card h3{ font-size: 1.02rem; margin-bottom: 14px; }
+.smr-compare-card.is-accent{ border-color: var(--nuclear); background: linear-gradient(180deg, var(--nuclear-tint), var(--panel) 60%); }
+.smr-compare-list li{
+  display:flex; gap: 10px; align-items:flex-start; padding: 9px 0; font-size: 0.9rem; color: var(--ink-secondary);
+  border-top: 1px solid var(--border);
+}
+.smr-compare-list li:first-child{ border-top:none; }
+
+.integral-note{
+  display:flex; gap: 16px; align-items:flex-start; padding: 22px 26px; margin-top: 26px;
+}
+.integral-note-icon{ font-size: 1.4rem; flex-shrink:0; }
+.integral-note p{ font-size: 0.92rem; }
+.integral-note strong{ color: var(--nuclear-glow); }
+
+/* ---- 3D viewer ---- */
+.viewer-section{ padding-top: 40px; }
+.viewer-layout{ display:grid; grid-template-columns: 1fr 340px; gap: 22px; align-items:start; }
+.viewer-stage{
+  position: relative;
+  aspect-ratio: 4/3.1;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  background: radial-gradient(circle at 50% 40%, #0e1a26, #060a10 75%);
+  box-shadow: var(--shadow-2);
+}
+.viewer-stage canvas{ display:block; width:100%; height:100%; }
+.viewer-hint{
+  position:absolute; top: 14px; right: 14px; left: 14px;
+  display:flex; justify-content:space-between; align-items:flex-start; gap: 10px; pointer-events:none;
+}
+.viewer-hint-badge{
+  background: rgba(7,11,17,0.72); backdrop-filter: blur(6px);
+  border: 1px solid var(--border-strong); border-radius: 999px;
+  padding: 7px 14px; font-size: 0.74rem; color: var(--ink-secondary); pointer-events:none;
+}
+.viewer-controls{
+  position:absolute; bottom: 14px; right: 14px; left:14px;
+  display:flex; justify-content:space-between; gap: 10px; flex-wrap: wrap;
+}
+.viewer-btn{
+  pointer-events:all; background: rgba(7,11,17,0.72); backdrop-filter: blur(6px);
+  border: 1px solid var(--border-strong); color: var(--ink); font-size: 0.78rem; font-weight:700;
+  padding: 8px 16px; border-radius: 999px; cursor:pointer; transition: background .15s, border-color .15s;
+  display:flex; align-items:center; gap:6px;
+}
+.viewer-btn:hover{ background: rgba(63,143,214,0.2); border-color: var(--nuclear); }
+.viewer-btn.is-active{ background: var(--nuclear); border-color: var(--nuclear); color:#fff; }
+.viewer-loading{
+  position:absolute; inset:0; display:flex; align-items:center; justify-content:center; flex-direction:column; gap: 14px;
+  background: var(--bg-2); color: var(--ink-muted); font-size: 0.85rem; transition: opacity .4s;
+}
+.viewer-spinner{
+  width: 34px; height:34px; border-radius:50%; border: 3px solid var(--border-strong); border-top-color: var(--nuclear);
+  animation: spin 0.9s linear infinite;
+}
+@keyframes spin{ to{ transform: rotate(360deg); } }
+
+/* ---- info panel ---- */
+.viewer-panel{ padding: 24px; min-height: 340px; display:flex; flex-direction:column; }
+.viewer-panel-empty{ color: var(--ink-muted); font-size: 0.9rem; text-align:center; margin: auto 0; }
+.viewer-panel-title{ font-size: 1.1rem; margin-bottom: 2px; }
+.viewer-panel-en{ font-family:'IBM Plex Mono',monospace; font-size: 0.76rem; color: var(--nuclear-glow); display:block; margin-bottom: 16px; }
+.viewer-panel-desc{ font-size: 0.9rem; margin-bottom: 20px; }
+.viewer-panel-list{ margin-top: auto; padding-top: 16px; border-top: 1px solid var(--border); }
+.viewer-panel-list-label{ font-size: 0.72rem; color: var(--ink-muted); margin-bottom: 10px; display:block; }
+.component-btn{
+  display:flex; align-items:center; gap: 10px; width:100%;
+  background: none; border: 1px solid transparent; border-radius: 8px;
+  padding: 8px 10px; margin-bottom: 2px; cursor:pointer; text-align: right;
+  color: var(--ink-secondary); font-size: 0.84rem; font-family: inherit;
+  transition: background .12s, color .12s, border-color .12s;
+}
+.component-btn:hover{ background: rgba(255,255,255,0.05); color: var(--ink); }
+.component-btn.is-selected{ background: var(--nuclear-tint); border-color: rgba(63,143,214,0.35); color: var(--ink); }
+.component-dot{ width: 9px; height:9px; border-radius:50%; flex-shrink:0; }
+
+/* ---- component grid (full reference) ---- */
+.component-grid{ display:grid; grid-template-columns: repeat(2, 1fr); gap: 16px; }
+.component-card{ padding: 22px; display:flex; gap: 14px; cursor: pointer; transition: border-color .15s, transform .15s; }
+.component-card:hover{ transform: translateY(-2px); border-color: var(--border-strong); }
+.component-card-num{
+  font-family:'IBM Plex Mono',monospace; font-size: 0.72rem; color: var(--ink-muted); flex-shrink:0; width: 26px;
+}
+.component-card h4{ font-size: 0.95rem; margin-bottom: 2px; }
+.component-card .cc-en{ font-family:'IBM Plex Mono',monospace; font-size: 0.68rem; color: var(--ink-muted); display:block; margin-bottom: 8px; }
+.component-card p{ font-size: 0.84rem; }
+
+@media (max-width: 980px){
+  .smr-compare{ grid-template-columns: 1fr; }
+  .viewer-layout{ grid-template-columns: 1fr; }
+  .spec-strip{ grid-template-columns: repeat(2,1fr); }
+}
+@media (max-width: 640px){
+  .component-grid{ grid-template-columns: 1fr; }
+  .viewer-stage{ aspect-ratio: 4/5.2; padding: 14px; }
+  .reactor-badges{ gap:8px; }
+  .viewer-hint-badge{ font-size: 0.68rem; padding: 5px 10px; }
+  .viewer-controls{ flex-direction: column; bottom: 10px; right: 10px; left: 10px; }
+  .viewer-btn{ width: 100%; justify-content: center; font-size: 0.74rem; padding: 9px 12px; }
+  .viewer-panel{ padding: 18px; min-height: auto; }
+}
+
+/* ---- SMART100 vs ACP100 comparison ---- */
+.rc2-grid{ display:grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+.rc2-card{ padding: 26px; }
+.rc2-card.is-selected{ border-color: var(--nuclear); background: linear-gradient(180deg, var(--nuclear-tint), var(--panel) 55%); }
+.rc2-head{ display:flex; align-items:center; gap: 10px; margin-bottom: 18px; flex-wrap: wrap; }
+.rc2-flag{ font-size: 1.3rem; }
+.rc2-head h4{ font-size: 1.05rem; flex: 1; }
+.rc2-tag{ font-size: 0.7rem; font-weight: 700; color: var(--ink-muted); background: var(--panel-2); padding: 4px 10px; border-radius: 999px; white-space: nowrap; }
+.rc2-tag.is-selected{ background: var(--nuclear); color:#fff; }
+.rc2-facts{ margin:0; padding:0; display:flex; flex-direction:column; gap: 12px; }
+.rc2-fact{ border-top: 1px solid var(--border); padding-top: 10px; }
+.rc2-fact:first-child{ border-top: none; padding-top: 0; }
+.rc2-fact dt{ font-size: 0.76rem; font-weight: 700; color: var(--nuclear-glow); margin-bottom: 3px; }
+.rc2-fact dd{ margin: 0; font-size: 0.86rem; color: var(--ink-secondary); line-height: 1.55; }
+
+@media (max-width: 900px){
+  .rc2-grid{ grid-template-columns: 1fr; }
+}

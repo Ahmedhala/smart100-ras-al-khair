@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>التكامل مع رأس الخير | SMART100 × رأس الخير</title>
+<meta name="description" content="كيف تتوزع حرارة وكهرباء 10 وحدات SMART100 على منظومة MSF/RO في محطة رأس الخير — ثلاثة سيناريوهات ولوحة محاكاة تفاعلية.">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg%20xmlns=%22http://www.w3.org/2000/svg%22%20viewBox=%220%200%2064%2064%22%3E%3Ccircle%20cx=%2232%22%20cy=%2232%22%20r=%226%22%20fill=%22%233f8fd6%22/%3E%3Cg%20fill=%22none%22%20stroke=%22%233f8fd6%22%20stroke-width=%224%22%3E%3Cellipse%20cx=%2232%22%20cy=%2232%22%20rx=%2228%22%20ry=%2212%22/%3E%3Cellipse%20cx=%2232%22%20cy=%2232%22%20rx=%2228%22%20ry=%2212%22%20transform=%22rotate(60%2032%2032)%22/%3E%3Cellipse%20cx=%2232%22%20cy=%2232%22%20rx=%2228%22%20ry=%2212%22%20transform=%22rotate(120%2032%2032)%22/%3E%3C/g%3E%3C/svg%3E">
+<meta property="og:type" content="website">
+<meta property="og:title" content="التكامل مع رأس الخير | SMART100 × رأس الخير">
+<meta property="og:description" content="كيف تتوزع حرارة وكهرباء 10 وحدات SMART100 على منظومة MSF/RO في محطة رأس الخير — ثلاثة سيناريوهات ولوحة محاكاة تفاعلية.">
+<meta property="og:locale" content="ar_SA">
+<meta name="twitter:card" content="summary">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="css/design-system.css">
+<link rel="stylesheet" href="css/integration.css">
+</head>
+<body>
+
+<nav class="site-nav">
+  <div class="nav-row">
+    <a href="index.html" class="nav-brand">
+      <span class="nav-brand-mark">⚙</span>
+      <span>SMART100 <small>Ras Al-Khair Integration</small></span>
+    </a>
+    <div class="nav-groups">
+      <div class="nav-group"><a href="index.html">الرئيسية</a></div>
+      <div class="nav-group">
+        <button type="button" aria-haspopup="true" aria-expanded="false">المحطة والتحلية <span class="nav-caret" aria-hidden="true">▾</span></button>
+        <div class="nav-dropdown">
+          <a href="plant.html">محطة رأس الخير</a>
+          <a href="desalination.html">تقنيات التحلية</a>
+          <a href="msf.html">MSF</a>
+          <a href="ro.html">RO</a>
+          <a href="tech-comparison.html">مقارنة التقنيات</a>
+        </div>
+      </div>
+      <div class="nav-group">
+        <button type="button" aria-haspopup="true" aria-expanded="false">مفاعل SMART100 <span class="nav-caret" aria-hidden="true">▾</span></button>
+        <div class="nav-dropdown">
+          <a href="reactor.html">مفاعل SMART100</a>
+          <a href="how-it-works.html">كيف يعمل؟</a>
+        </div>
+      </div>
+      <div class="nav-group">
+        <button type="button" aria-haspopup="true" aria-expanded="false">التكامل والمنظومة <span class="nav-caret" aria-hidden="true">▾</span></button>
+        <div class="nav-dropdown">
+          <a href="integration.html">التكامل مع رأس الخير</a>
+          <a href="energy-flow.html">تدفق الطاقة</a>
+          <a href="system-architecture.html">هندسة المنظومة</a>
+        </div>
+      </div>
+      <div class="nav-group">
+        <button type="button" aria-haspopup="true" aria-expanded="false">التحليل <span class="nav-caret" aria-hidden="true">▾</span></button>
+        <div class="nav-dropdown">
+          <a href="performance.html">الأداء</a>
+          <a href="scenarios.html">السيناريوهات</a>
+          <a href="safety.html">الأمان</a>
+          <a href="simulation.html">المحاكاة</a>
+        </div>
+      </div>
+      <div class="nav-group">
+        <button type="button" aria-haspopup="true" aria-expanded="false">مصادر <span class="nav-caret" aria-hidden="true">▾</span></button>
+        <div class="nav-dropdown">
+          <a href="glossary.html">المسرد</a>
+          <a href="references.html">المراجع</a>
+        </div>
+      </div>
+    </div>
+    <div class="nav-cta"><a href="integration.html" class="btn btn-primary">استكشف التكامل</a></div>
+    <button class="nav-toggle" id="navToggle" aria-label="القائمة" aria-expanded="false" aria-controls="navMobile"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+<div class="nav-mobile" id="navMobile">
+  <a href="index.html" style="display:block;padding:16px 4px;color:var(--ink);font-size:0.98rem;font-weight:700;border-bottom:1px solid var(--border);">الرئيسية</a>
+  <div class="nav-mobile-group">
+    <button type="button" aria-haspopup="true" aria-expanded="false">المحطة والتحلية <span class="nav-caret" aria-hidden="true">▾</span></button>
+    <div class="nav-mobile-sub">
+      <a href="plant.html"><span>🏭</span> محطة رأس الخير</a>
+      <a href="desalination.html"><span>💧</span> تقنيات التحلية</a>
+      <a href="msf.html"><span>🌡️</span> MSF</a>
+      <a href="ro.html"><span>🧪</span> RO</a>
+      <a href="tech-comparison.html"><span>⚖️</span> مقارنة التقنيات</a>
+    </div>
+  </div>
+  <div class="nav-mobile-group">
+    <button type="button" aria-haspopup="true" aria-expanded="false">مفاعل SMART100 <span class="nav-caret" aria-hidden="true">▾</span></button>
+    <div class="nav-mobile-sub">
+      <a href="reactor.html"><span>⚛️</span> مفاعل SMART100</a>
+      <a href="how-it-works.html"><span>⚙️</span> كيف يعمل؟</a>
+    </div>
+  </div>
+  <div class="nav-mobile-group">
+    <button type="button" aria-haspopup="true" aria-expanded="false">التكامل والمنظومة <span class="nav-caret" aria-hidden="true">▾</span></button>
+    <div class="nav-mobile-sub">
+      <a href="integration.html"><span>🔗</span> التكامل مع رأس الخير</a>
+      <a href="energy-flow.html"><span>⚡</span> تدفق الطاقة</a>
+      <a href="system-architecture.html"><span>🧩</span> هندسة المنظومة</a>
+    </div>
+  </div>
+  <div class="nav-mobile-group">
+    <button type="button" aria-haspopup="true" aria-expanded="false">التحليل <span class="nav-caret" aria-hidden="true">▾</span></button>
+    <div class="nav-mobile-sub">
+      <a href="performance.html"><span>📈</span> الأداء</a>
+      <a href="scenarios.html"><span>🔀</span> السيناريوهات</a>
+      <a href="safety.html"><span>🛡️</span> الأمان</a>
+      <a href="simulation.html"><span>🧮</span> المحاكاة</a>
+    </div>
+  </div>
+  <div class="nav-mobile-group">
+    <button type="button" aria-haspopup="true" aria-expanded="false">مصادر <span class="nav-caret" aria-hidden="true">▾</span></button>
+    <div class="nav-mobile-sub">
+      <a href="glossary.html"><span>📖</span> المسرد</a>
+      <a href="references.html"><span>📚</span> المراجع</a>
+    </div>
+  </div>
+</div>
+
+<!-- ===== Hero ===== -->
+<header class="integ-hero">
+  <div class="integ-hero-inner">
+    <span class="eyebrow">🔗 أهم صفحة في المشروع</span>
+    <h1>SMART100 × محطة رأس الخير — كيف يتكامل النظامان؟</h1>
+    <p>
+      عشر وحدات SMART100 توفّر البخار اللازم لوحدات MSF الحرارية والكهرباء اللازمة لمضخات RO عالية
+      الضغط في محطة رأس الخير — بدلًا من الغاز الطبيعي، ودون أي تغيير في وحدات التحلية القائمة نفسها.
+    </p>
+    <div class="integ-stat-strip">
+      <div class="integ-stat card reveal">
+        <div class="integ-stat-value" data-count="10">0</div>
+        <div class="integ-stat-label">وحدات SMART100</div>
+      </div>
+      <div class="integ-stat card reveal">
+        <div class="integ-stat-value">$5.40–5.82</div>
+        <div class="integ-stat-label">LCOW حسب السيناريو ($/م³)</div>
+      </div>
+      <div class="integ-stat card reveal">
+        <div class="integ-stat-value" data-count="8.27" data-decimals="2">0</div>
+        <div class="integ-stat-label">مليون طن CO₂ توفير سنوي</div>
+      </div>
+      <div class="integ-stat card reveal">
+        <div class="integ-stat-value" data-count="96.7" data-decimals="1">0</div>
+        <div class="integ-stat-label">% تخفيض انبعاثات مقابل الغاز</div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<main>
+
+<!-- ===== System-level diagram ===== -->
+<section class="section" id="system-diagram">
+  <div class="section-inner">
+    <span class="section-tag">System-Level Diagram</span>
+    <h2 class="section-title">من المفاعل إلى صنبور المياه — المسار الكامل</h2>
+    <p class="section-lead">
+      يغذّي SMART100 مسارين متوازيين في آن واحد: مسار حراري (بخار) يغذّي وحدات MSF، ومسار كهربائي
+      (عبر التوربين والمولّد) يغذّي مضخات RO وبقية أحمال المحطة.
+    </p>
+    <div class="system-diagram-card card reveal">
+      <div class="system-diagram-wrap">
+        <svg viewBox="0 0 1000 340" id="systemDiagramSvg" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="مخطط تدفق الطاقة من مفاعلات SMART100 إلى وحدات MSF عبر البخار وإلى وحدات RO عبر الكهرباء"></svg>
+      </div>
+      <div class="diagram-legend">
+        <span class="dl-item"><span class="dl-swatch" style="background:var(--thermal)"></span> مسار حراري (بخار → MSF)</span>
+        <span class="dl-item"><span class="dl-swatch" style="background:var(--electric)"></span> مسار كهربائي (توربين → RO)</span>
+        <span class="dl-item"><span class="dl-swatch" style="background:var(--water)"></span> مياه محلاة</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== Scenarios ===== -->
+<section class="section section-alt" id="scenarios">
+  <div class="section-inner">
+    <span class="section-tag">Three Integration Scenarios</span>
+    <h2 class="section-title">ثلاثة سيناريوهات للتكامل</h2>
+    <p class="section-lead">يمكن توجيه طاقة SMART100 بثلاث طرق مختلفة حسب أولوية الإنتاج — لكل سيناريو أثره الخاص على LCOW ونوع التحلية المستفيدة.</p>
+
+    <div class="scenario-tabs" id="scenarioTabs">
+      <button class="scenario-tab is-active" data-scenario="A"><span class="tab-letter">A</span> التحلية الحرارية</button>
+      <button class="scenario-tab" data-scenario="B"><span class="tab-letter">B</span> التحلية الكهربائية</button>
+      <button class="scenario-tab" data-scenario="C"><span class="tab-letter">C</span> السيناريو الهجين</button>
+    </div>
+
+    <div class="scenario-panel is-active" data-panel="A">
+      <div class="scenario-info">
+        <h3>Scenario A — Thermal Desalination</h3>
+        <p>SMART100 → طاقة حرارية (بخار) → وحدات MSF → مياه عذبة. يُوجَّه كامل البخار الناتج عن المفاعل لتشغيل وحدات التقطير الومضي الحرارية، وهي الأنسب عندما تكون الأولوية لإنتاج أكبر حجم ممكن من المياه بأقل تعقيد كهربائي.</p>
+        <div class="scenario-meta">
+          <div class="scenario-meta-row"><span>الوحدة المستفيدة</span><span>MSF (8 وحدات)</span></div>
+          <div class="scenario-meta-row"><span>نوع الطاقة المرسلة</span><span>بخار حراري مباشر</span></div>
+          <div class="scenario-meta-row"><span>حصة إنتاج المياه المرتبطة</span><span>70.2%</span></div>
+        </div>
+      </div>
+      <div class="scenario-diagram card"><svg viewBox="0 0 460 260" class="scn-svg" data-scenario-svg="A" role="img" aria-label="مخطط السيناريو أ: SMART100 يزود وحدات MSF بالحرارة مباشرة لإنتاج مياه عذبة"></svg></div>
+    </div>
+
+    <div class="scenario-panel" data-panel="B">
+      <div class="scenario-info">
+        <h3>Scenario B — Electrical Desalination</h3>
+        <p>SMART100 → توربين بخاري → كهرباء → مضخات RO عالية الضغط → مياه عذبة. تُحوَّل طاقة المفاعل بالكامل إلى كهرباء عبر التوربين والمولّد، لتشغيل مضخات التناضح العكسي عالية الضغط ووحدات RO — الأنسب عند الحاجة لمرونة تشغيلية أعلى ومعالجة مياه بجودة أعلى.</p>
+        <div class="scenario-meta">
+          <div class="scenario-meta-row"><span>الوحدة المستفيدة</span><span>RO (17 وحدة)</span></div>
+          <div class="scenario-meta-row"><span>نوع الطاقة المرسلة</span><span>كهرباء (≈4 kWh/م³)</span></div>
+          <div class="scenario-meta-row"><span>حصة إنتاج المياه المرتبطة</span><span>29.8%</span></div>
+        </div>
+      </div>
+      <div class="scenario-diagram card"><svg viewBox="0 0 460 260" class="scn-svg" data-scenario-svg="B" role="img" aria-label="مخطط السيناريو ب: SMART100 يولّد كهرباء عبر التوربين لتشغيل مضخات RO"></svg></div>
+    </div>
+
+    <div class="scenario-panel" data-panel="C">
+      <div class="scenario-info">
+        <h3>Scenario C — Hybrid</h3>
+        <p>SMART100 → كهرباء → RO، وفي الوقت نفسه SMART100 → طاقة حرارية → MSF. هذا هو السيناريو الفعلي المعتمد في هذا النموذج: تغذية المسارين الحراري والكهربائي معًا وبشكل متزامن، بما يطابق واقع محطة رأس الخير الهجينة (MSF + RO) — وهو ما تعكسه كل الأرقام والمحاكاة في هذه الصفحة.</p>
+        <div class="scenario-meta">
+          <div class="scenario-meta-row"><span>الوحدات المستفيدة</span><span>MSF + RO معًا</span></div>
+          <div class="scenario-meta-row"><span>نوع الطاقة المرسلة</span><span>بخار + كهرباء متزامنين</span></div>
+          <div class="scenario-meta-row"><span>متوسط LCOW السنوي</span><span>$5.588/م³</span></div>
+        </div>
+      </div>
+      <div class="scenario-diagram card"><svg viewBox="0 0 460 260" class="scn-svg" data-scenario-svg="C" role="img" aria-label="مخطط السيناريو ج: SMART100 يغذّي المسارين الحراري والكهربائي معًا نحو MSF وRO"></svg></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== Simulation dashboard ===== -->
+<section class="section" id="dashboard">
+  <div class="section-inner">
+    <span class="section-tag">Full-Year Simulation</span>
+    <h2 class="section-title">لوحة المحاكاة السنوية الكاملة</h2>
+    <p class="section-lead">محاكاة تشغيل كاملة لـ365 يومًا (السيناريو الهجين C)، و169 توليفة تصميمية لاستكشاف حساسية LCOW لعوامل الطلب على الماء والكهرباء.</p>
+
+    <div class="day-picker card">
+      <div class="day-picker-head">
+        <h3>استكشف يومًا من السنة</h3>
+        <span class="day-picker-value" id="dayLabel">اليوم 180</span>
+      </div>
+      <input type="range" id="daySlider" min="1" max="365" value="180" class="slider">
+      <div class="day-details" id="dayDetails">
+        <div class="day-detail-item"><span class="dd-label">الإنتاج</span><span class="dd-value" id="ddProd">-</span></div>
+        <div class="day-detail-item"><span class="dd-label">نسبة الاستغلال</span><span class="dd-value" id="ddUtil">-</span></div>
+        <div class="day-detail-item"><span class="dd-label">LCOW</span><span class="dd-value" id="ddLcow">-</span></div>
+        <div class="day-detail-item"><span class="dd-label">الحالة</span><span class="dd-value" id="ddStatus">-</span></div>
+      </div>
+    </div>
+
+    <div class="chart-card card">
+      <div class="chart-head">
+        <h3>نسبة استغلال منظومة SMART100 عبر السنة</h3>
+        <p>خط أحمر متقطع عند 100% يمثل الحد الأقصى للسعة المركّبة (10 وحدات)</p>
+      </div>
+      <div class="chart-wrap"><canvas id="utilChart" role="img" aria-label="رسم بياني يوضح نسبة استغلال منظومة SMART100 يوميًا عبر 365 يومًا، بمتوسط 80.5% وبدون أي يوم يتجاوز السعة القصوى"></canvas></div>
+    </div>
+
+    <div class="chart-card card">
+      <div class="chart-head">
+        <h3>تكلفة المياه المكافئة (LCOW) عبر السنة</h3>
+        <p>تذبذب موسمي طفيف مرتبط بالطلب الصيفي والشتوي على المياه — المتوسط السنوي $5.588/م³</p>
+      </div>
+      <div class="chart-wrap"><canvas id="lcowChart" role="img" aria-label="رسم بياني يوضح تكلفة المياه المكافئة LCOW يوميًا عبر 365 يومًا، بمتوسط سنوي 5.588 دولار للمتر المكعب"></canvas></div>
+    </div>
+
+    <div class="why-callout card reveal" style="margin-bottom:26px; border-inline-start: 3px solid var(--nuclear);">
+      <span class="why-callout-icon">📊</span>
+      <p>
+        <strong>الأرخص ليس دائمًا الأقل حملًا.</strong> بين السيناريوهات التصميمية الأربعة الثابتة،
+        "طلب مرتفع (مياه)" يسجّل أدنى LCOW ($5.40/م³) لأن الإنتاج الإضافي يوزّع التكلفة الرأسمالية
+        الثابتة على كمية أكبر من المياه، بينما "طلب مرتفع (كهرباء)" يسجّل أعلى LCOW ($5.82/م³) لأنه
+        يرفع التكلفة التشغيلية دون أي إنتاج مائي إضافي يقابلها.
+        <a href="scenarios.html" style="color:var(--nuclear-glow); font-weight:700;">جدول السيناريوهات الكامل ↗</a>
+      </p>
+    </div>
+
+    <div class="chart-card card">
+      <div class="chart-head">
+        <h3>خريطة حرارية: أثر عاملي الماء والكهرباء على LCOW</h3>
+        <p>169 توليفة تصميمية — عامل الكهرباء (المحور الأفقي) × عامل الماء (المحور الرأسي)</p>
+      </div>
+      <div class="heatmap-legend">
+        <span class="legend-endpoint" style="color:var(--good)">🟢 منخفض</span>
+        <div class="legend-scale">
+          <div class="legend-gradient"></div>
+          <div class="legend-ticks"><span id="legendMin">-</span><span id="legendMid">-</span><span id="legendMax">-</span></div>
+        </div>
+        <span class="legend-endpoint" style="color:var(--critical)">🔴 مرتفع</span>
+      </div>
+      <p class="heatmap-hint">
+        <span class="hint-hover">مرّر الماوس فوق أي خلية لعرض القيمة الدقيقة</span>
+        <span class="hint-scroll">اسحب أفقيًا لعرض كامل الجدول ←</span>
+      </p>
+      <div class="heatmap-wrap"><div id="heatmap" class="heatmap"></div></div>
+      <div class="heatmap-tooltip" id="heatmapTooltip"></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== CO2 comparison ===== -->
+<section class="section section-alt" id="results">
+  <div class="section-inner">
+    <span class="section-tag">Environmental Impact</span>
+    <h2 class="section-title">SMART100 مقابل الغاز الطبيعي</h2>
+    <p class="section-lead">مقارنة الانبعاثات السنوية لتغطية نفس الحمل الحراري المكافئ عبر السنة الكاملة، لو استمرت المحطة على الوقود الأحفوري.</p>
+
+    <div class="co2-compare">
+      <div class="co2-bar-group card">
+        <div class="co2-bar-item">
+          <span class="co2-bar-label">الغاز الطبيعي (CCGT)</span>
+          <div class="co2-bar-track"><div class="co2-bar co2-bar-gas" data-value="8.54" style="width:0%"></div></div>
+          <span class="co2-bar-num">8.54 مليون طن CO₂/سنة</span>
+        </div>
+        <div class="co2-bar-item">
+          <span class="co2-bar-label">مفاعلات SMART100</span>
+          <div class="co2-bar-track"><div class="co2-bar co2-bar-smr" data-value="0.28" style="width:0%"></div></div>
+          <span class="co2-bar-num">279,236 طن CO₂/سنة</span>
+        </div>
+      </div>
+      <div class="co2-savings-badge">
+        <span class="co2-savings-num">8.27</span>
+        <span class="co2-savings-unit">مليون طن CO₂ توفير سنوي</span>
+        <span class="co2-savings-pct">تخفيض بنسبة 96.7%</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== Conclusion ===== -->
+<section class="section">
+  <div class="section-inner">
+    <div class="home-cta-band reveal">
+      <h2>منظومة متكاملة، جاهزة لدراسة أعمق</h2>
+      <p>10 وحدات SMART100 قادرة على تغطية حمل رأس الخير الحراري والكهربائي على مدار 365 يومًا دون استثناء، بمتوسط LCOW يبلغ $5.588/م³ وتخفيض شبه كامل للانبعاثات — نقلة مباشرة تخدم مستهدفات رؤية 2030.</p>
+      <div class="home-cta-links">
+        <a href="reactor.html" class="btn btn-primary">استكشف مفاعل SMART100 ⚛</a>
+        <a href="index.html" class="btn btn-ghost">العودة للرئيسية</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="footer-inner">
+    <div>
+      <div class="footer-brand">SMART100 × رأس الخير</div>
+      <p class="footer-desc">منصة هندسية تفاعلية تدرس دمج مفاعل SMART100 النووي الصغير مع منظومة تحلية المياه في محطة رأس الخير — مشروع بحثي/هندسي.</p>
+    </div>
+    <div class="footer-cols">
+      <div class="footer-col">
+        <h5>المنصة</h5>
+        <a href="index.html">الرئيسية</a>
+        <a href="reactor.html">مفاعل SMART100</a>
+        <a href="integration.html">التكامل</a>
+      </div>
+      <div class="footer-col">
+        <h5>المصادر</h5>
+        <a href="glossary.html">المسرد</a>
+        <a href="references.html">المراجع</a>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom">مشروع بحثي · مبني على نموذج محاكاة Python (model.py / simulation.py / comparison.py)</div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.4/dist/chart.umd.min.js"></script>
+<script src="js/nav.js"></script>
+<script src="js/data.js"></script>
+<script src="js/integration.js"></script>
+</body>
+</html>

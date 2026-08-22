@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SMART100 × رأس الخير — منصة التكامل النووي-التحلوي</title>
+<meta name="description" content="دراسة هندسية تفاعلية لدمج مفاعل SMART100 النووي الصغير مع منظومة تحلية المياه في محطة رأس الخير السعودية.">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg%20xmlns=%22http://www.w3.org/2000/svg%22%20viewBox=%220%200%2064%2064%22%3E%3Ccircle%20cx=%2232%22%20cy=%2232%22%20r=%226%22%20fill=%22%233f8fd6%22/%3E%3Cg%20fill=%22none%22%20stroke=%22%233f8fd6%22%20stroke-width=%224%22%3E%3Cellipse%20cx=%2232%22%20cy=%2232%22%20rx=%2228%22%20ry=%2212%22/%3E%3Cellipse%20cx=%2232%22%20cy=%2232%22%20rx=%2228%22%20ry=%2212%22%20transform=%22rotate(60%2032%2032)%22/%3E%3Cellipse%20cx=%2232%22%20cy=%2232%22%20rx=%2228%22%20ry=%2212%22%20transform=%22rotate(120%2032%2032)%22/%3E%3C/g%3E%3C/svg%3E">
+<meta property="og:type" content="website">
+<meta property="og:title" content="SMART100 × رأس الخير — منصة التكامل النووي-التحلوي">
+<meta property="og:description" content="دراسة هندسية تفاعلية لدمج مفاعل SMART100 النووي الصغير مع منظومة تحلية المياه في محطة رأس الخير السعودية.">
+<meta property="og:locale" content="ar_SA">
+<meta name="twitter:card" content="summary">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="css/design-system.css">
+<link rel="stylesheet" href="css/home.css">
+<link rel="stylesheet" href="css/process.css">
+</head>
+<body>
+
+<nav class="site-nav">
+  <div class="nav-row">
+    <a href="index.html" class="nav-brand">
+      <span class="nav-brand-mark">⚙</span>
+      <span>SMART100 <small>Ras Al-Khair Integration</small></span>
+    </a>
+    <div class="nav-groups">
+      <div class="nav-group"><a href="index.html">الرئيسية</a></div>
+      <div class="nav-group">
+        <button type="button" aria-haspopup="true" aria-expanded="false">المحطة والتحلية <span class="nav-caret" aria-hidden="true">▾</span></button>
+        <div class="nav-dropdown">
+          <a href="plant.html">محطة رأس الخير</a>
+          <a href="desalination.html">تقنيات التحلية</a>
+          <a href="msf.html">MSF</a>
+          <a href="ro.html">RO</a>
+          <a href="tech-comparison.html">مقارنة التقنيات</a>
+        </div>
+      </div>
+      <div class="nav-group">
+        <button type="button" aria-haspopup="true" aria-expanded="false">مفاعل SMART100 <span class="nav-caret" aria-hidden="true">▾</span></button>
+        <div class="nav-dropdown">
+          <a href="reactor.html">مفاعل SMART100</a>
+          <a href="how-it-works.html">كيف يعمل؟</a>
+        </div>
+      </div>
+      <div class="nav-group">
+        <button type="button" aria-haspopup="true" aria-expanded="false">التكامل والمنظومة <span class="nav-caret" aria-hidden="true">▾</span></button>
+        <div class="nav-dropdown">
+          <a href="integration.html">التكامل مع رأس الخير</a>
+          <a href="energy-flow.html">تدفق الطاقة</a>
+          <a href="system-architecture.html">هندسة المنظومة</a>
+        </div>
+      </div>
+      <div class="nav-group">
+        <button type="button" aria-haspopup="true" aria-expanded="false">التحليل <span class="nav-caret" aria-hidden="true">▾</span></button>
+        <div class="nav-dropdown">
+          <a href="performance.html">الأداء</a>
+          <a href="scenarios.html">السيناريوهات</a>
+          <a href="safety.html">الأمان</a>
+          <a href="simulation.html">المحاكاة</a>
+        </div>
+      </div>
+      <div class="nav-group">
+        <button type="button" aria-haspopup="true" aria-expanded="false">مصادر <span class="nav-caret" aria-hidden="true">▾</span></button>
+        <div class="nav-dropdown">
+          <a href="glossary.html">المسرد</a>
+          <a href="references.html">المراجع</a>
+        </div>
+      </div>
+    </div>
+    <div class="nav-cta"><a href="integration.html" class="btn btn-primary">استكشف التكامل</a></div>
+    <button class="nav-toggle" id="navToggle" aria-label="القائمة" aria-expanded="false" aria-controls="navMobile"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+<div class="nav-mobile" id="navMobile">
+  <a href="index.html" style="display:block;padding:16px 4px;color:var(--ink);font-size:0.98rem;font-weight:700;border-bottom:1px solid var(--border);">الرئيسية</a>
+  <div class="nav-mobile-group">
+    <button type="button" aria-haspopup="true" aria-expanded="false">المحطة والتحلية <span class="nav-caret" aria-hidden="true">▾</span></button>
+    <div class="nav-mobile-sub">
+      <a href="plant.html"><span>🏭</span> محطة رأس الخير</a>
+      <a href="desalination.html"><span>💧</span> تقنيات التحلية</a>
+      <a href="msf.html"><span>🌡️</span> MSF</a>
+      <a href="ro.html"><span>🧪</span> RO</a>
+      <a href="tech-comparison.html"><span>⚖️</span> مقارنة التقنيات</a>
+    </div>
+  </div>
+  <div class="nav-mobile-group">
+    <button type="button" aria-haspopup="true" aria-expanded="false">مفاعل SMART100 <span class="nav-caret" aria-hidden="true">▾</span></button>
+    <div class="nav-mobile-sub">
+      <a href="reactor.html"><span>⚛️</span> مفاعل SMART100</a>
+      <a href="how-it-works.html"><span>⚙️</span> كيف يعمل؟</a>
+    </div>
+  </div>
+  <div class="nav-mobile-group">
+    <button type="button" aria-haspopup="true" aria-expanded="false">التكامل والمنظومة <span class="nav-caret" aria-hidden="true">▾</span></button>
+    <div class="nav-mobile-sub">
+      <a href="integration.html"><span>🔗</span> التكامل مع رأس الخير</a>
+      <a href="energy-flow.html"><span>⚡</span> تدفق الطاقة</a>
+      <a href="system-architecture.html"><span>🧩</span> هندسة المنظومة</a>
+    </div>
+  </div>
+  <div class="nav-mobile-group">
+    <button type="button" aria-haspopup="true" aria-expanded="false">التحليل <span class="nav-caret" aria-hidden="true">▾</span></button>
+    <div class="nav-mobile-sub">
+      <a href="performance.html"><span>📈</span> الأداء</a>
+      <a href="scenarios.html"><span>🔀</span> السيناريوهات</a>
+      <a href="safety.html"><span>🛡️</span> الأمان</a>
+      <a href="simulation.html"><span>🧮</span> المحاكاة</a>
+    </div>
+  </div>
+  <div class="nav-mobile-group">
+    <button type="button" aria-haspopup="true" aria-expanded="false">مصادر <span class="nav-caret" aria-hidden="true">▾</span></button>
+    <div class="nav-mobile-sub">
+      <a href="glossary.html"><span>📖</span> المسرد</a>
+      <a href="references.html"><span>📚</span> المراجع</a>
+    </div>
+  </div>
+</div>
+
+<!-- ===== Hero ===== -->
+<header class="home-hero">
+  <div class="home-hero-inner">
+    <div>
+      <span class="eyebrow">⚛ دراسة هندسية-اقتصادية · Nuclear-Desalination Integration</span>
+      <h1 class="hero-title-en">SMART<span class="hl">100</span>-Powered Desalination<br>System for Ras Al-Khair</h1>
+      <p class="hero-sub">
+        كيف يمكن لمفاعل نووي معياري صغير (SMR) مثل <strong style="color:var(--ink)">SMART100</strong> أن يوفّر
+        الحرارة والكهرباء اللازمتين لدعم منظومة تحلية مياه ضخمة كمحطة رأس الخير — بدلًا من الغاز الطبيعي؟
+      </p>
+      <div class="hero-ctas">
+        <a href="reactor.html" class="btn btn-primary">استكشف مفاعل SMART100 ⚛</a>
+        <a href="integration.html" class="btn btn-ghost">شاهد التكامل مع رأس الخير ↗</a>
+      </div>
+      <div class="hero-quickfacts">
+        <div class="hero-qf"><span class="hero-qf-value">10</span><span class="hero-qf-label">وحدات SMART100</span></div>
+        <div class="hero-qf"><span class="hero-qf-value">330</span><span class="hero-qf-label">MWth / وحدة</span></div>
+        <div class="hero-qf"><span class="hero-qf-value">96.7%</span><span class="hero-qf-label">تخفيض انبعاثات</span></div>
+      </div>
+    </div>
+
+    <div class="hero-viz card">
+      <svg viewBox="0 0 420 520" xmlns="http://www.w3.org/2000/svg" id="heroFlowSvg" role="img" aria-label="مخطط تدفق الطاقة من المفاعل النووي إلى المياه المحلاة"></svg>
+      <div class="hero-viz-caption">Nuclear Energy → Heat / Electricity → Desalination → Fresh Water</div>
+    </div>
+  </div>
+</header>
+
+<main>
+
+<!-- ===== Quick facts strip ===== -->
+<section class="section" style="padding-top:0;">
+  <div class="section-inner">
+    <div class="facts-strip">
+      <div class="fact-card card reveal">
+        <div class="fact-icon">🏭</div>
+        <div class="fact-value" data-count="10">0</div>
+        <div class="fact-label">وحدة SMART100 مطلوبة</div>
+      </div>
+      <div class="fact-card card reveal">
+        <div class="fact-icon">💧</div>
+        <div class="fact-value">$5.40–5.82</div>
+        <div class="fact-label">نطاق LCOW حسب السيناريو ($/م³)</div>
+      </div>
+      <div class="fact-card card reveal">
+        <div class="fact-icon">🌍</div>
+        <div class="fact-value" data-count="8.27" data-decimals="2">0</div>
+        <div class="fact-label">مليون طن CO₂ توفير سنوي</div>
+      </div>
+      <div class="fact-card card reveal">
+        <div class="fact-icon">📅</div>
+        <div class="fact-value" data-count="100" data-decimals="0">0</div>
+        <div class="fact-label">% تغطية كامل أيام السنة</div>
+      </div>
+    </div>
+
+    <div class="why-callout card reveal" style="margin-top:20px; border-inline-start: 3px solid var(--nuclear);">
+      <span class="why-callout-icon">📊</span>
+      <p>
+        <strong>نتيجة لافتة من تحليل السيناريوهات:</strong> سيناريو "طلب مرتفع (مياه)" هو الأرخص
+        ($5.40/م³)، بينما "طلب مرتفع (كهرباء)" هو الأعلى تكلفة ($5.82/م³) — لأن زيادة الإنتاج توزّع
+        التكلفة الرأسمالية الثابتة على كمية أكبر من المياه، بينما زيادة الحمل الكهربائي وحده ترفع
+        التكلفة التشغيلية دون أي إنتاج إضافي يقابلها.
+        <a href="scenarios.html" style="color:var(--nuclear-glow); font-weight:700;">التفاصيل الكاملة ↗</a>
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- ===== Project Overview ===== -->
+<section class="section section-alt" id="overview">
+  <div class="section-inner">
+    <span class="section-tag">Project Overview</span>
+    <h2 class="section-title">نظرة عامة على المشروع</h2>
+    <p class="section-lead">
+      يقدّم هذا المشروع دراسة هندسية-اقتصادية لتقييم جدوى دمج عشر وحدات من مفاعل <strong style="color:var(--ink)">SMART100</strong>
+      النووي الصغير كمصدر بديل للحرارة والكهرباء اللازمتين لتشغيل محطة رأس الخير، بدلًا من الاعتماد الكامل
+      على الغاز الطبيعي. يغطي النموذج محاكاة تشغيل سنوية كاملة (365 يومًا)، وتحليل حساسية عبر 169 توليفة
+      تصميمية لعوامل الطلب على الماء والكهرباء، وتقييمًا بيئيًا مقارنًا بمسار الوقود الأحفوري.
+    </p>
+
+    <div class="overview-grid">
+      <div class="overview-card card reveal oc-orange">
+        <div class="overview-card-icon">⚠️</div>
+        <div>
+          <h3>المشكلة</h3>
+          <span class="oc-en">The Problem</span>
+        </div>
+        <p>
+          السعودية من أكثر دول العالم اعتمادًا على تحلية المياه، وهي عملية كثيفة الاستهلاك للطاقة.
+          الاعتماد شبه الكامل على الغاز الطبيعي لتشغيل محطات ضخمة كرأس الخير (1,036,000 م³/يوم)
+          يعني انبعاثات كربونية هائلة، وتعرّضًا لتقلبات الوقود، واستهلاكًا محليًا لموارد كان يمكن تصديرها.
+        </p>
+      </div>
+
+      <div class="overview-card card reveal oc-blue">
+        <div class="overview-card-icon">💡</div>
+        <div>
+          <h3>الحل المقترح</h3>
+          <span class="oc-en">Proposed Solution</span>
+        </div>
+        <p>
+          استبدال مصدر الحرارة والكهرباء لمحطة رأس الخير بمنظومة من عشر وحدات SMART100
+          (100 MWe / 330 MWth لكل وحدة)، بحيث توفر المفاعلات البخار لوحدات MSF الحرارية
+          والكهرباء لمضخات RO — دون المساس بوحدات التحلية القائمة، بل فقط بمصدر طاقتها.
+        </p>
+      </div>
+
+      <div class="overview-card card reveal oc-teal">
+        <div class="overview-card-icon">☢️</div>
+        <div>
+          <h3>لماذا التحلية النووية؟</h3>
+          <span class="oc-en">Why Nuclear Desalination?</span>
+        </div>
+        <p>
+          الطاقة النووية توفر كثافة طاقة هائلة من مساحة صغيرة نسبيًا، وتشغيلًا شبه خالٍ من
+          الانبعاثات، وقدرة على العمل بمعامل استطاعة مرتفع (&gt;90%) على مدار السنة —
+          خصائص مثالية لتغذية عملية تحلية شبه متواصلة كرأس الخير.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== Why SMART100 / Why Ras Al-Khair ===== -->
+<section class="section" id="why">
+  <div class="section-inner">
+    <span class="section-tag">Why This Reactor, Why This Plant</span>
+    <h2 class="section-title">لماذا SMART100؟ ولماذا رأس الخير؟</h2>
+    <p class="section-lead">اختيار المفاعل والموقع لم يكن عشوائيًا — كلاهما يجعل هذا السيناريو قابلًا للتطبيق فعليًا لا نظريًا فقط.</p>
+
+    <div class="why-grid">
+      <div class="why-card card reveal">
+        <span class="badge badge-nuclear">⚛ Why SMART100</span>
+        <h3>تصميم مصمَّم أصلًا للتحلية</h3>
+        <p>
+          يجمع SMART100 الحرارة والكهرباء في تصميم <strong style="color:var(--ink)">Integral PWR</strong> واحد
+          (كل المكونات الرئيسية داخل وعاء ضغط واحد)، وهو مصمَّم أصلًا للتزاوج مع تحلية المياه — يوفر
+          بمفرده نحو 40,000 م³/يوم من المياه العذبة إلى جانب الكهرباء.
+        </p>
+      </div>
+      <div class="why-card card reveal">
+        <span class="badge badge-electric">🤝 Why SMART100</span>
+        <h3>شراكة سعودية-كورية رسمية</h3>
+        <p>
+          ثمرة تعاون رسمي بين <strong style="color:var(--ink)">KAERI</strong> الكورية و<strong style="color:var(--ink)">KA-CARE</strong>
+          السعودية منذ 2015 لتوطين التقنية، ما يجعله الخيار الأكثر واقعية للسياق السعودي
+          مقارنة بمفاعلات SMR أخرى ما زالت بمراحل تطوير أبكر عالميًا.
+        </p>
+      </div>
+      <div class="why-card card reveal">
+        <span class="badge badge-water">🏭 Why Ras Al-Khair</span>
+        <h3>بيئة اختبار هجينة مثالية</h3>
+        <p>
+          محطة رأس الخير واحدة من أكبر محطات التحلية الهجينة عالميًا (8 وحدات MSF + 17 وحدة RO)،
+          ما يجعلها بيئة مثالية لدراسة تكامل SMR مع تحلية حرارية وكهربائية في آنٍ واحد —
+          سيناريو أكثر واقعية من محطة RO أو MSF خالصة.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== Final CTA ===== -->
+<section class="section section-alt">
+  <div class="section-inner">
+    <div class="home-cta-band reveal">
+      <h2>استكشف المنظومة بعمق</h2>
+      <p>من داخل وعاء الضغط إلى منحنيات التشغيل السنوية — تعمّق في التفاصيل الهندسية والاقتصادية للنموذج الكامل.</p>
+      <div class="home-cta-links">
+        <a href="reactor.html" class="btn btn-primary">مفاعل SMART100 التفاعلي (3D) ⚛</a>
+        <a href="integration.html" class="btn btn-ghost">سيناريوهات التكامل والمحاكاة 📊</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="footer-inner">
+    <div>
+      <div class="footer-brand">SMART100 × رأس الخير</div>
+      <p class="footer-desc">منصة هندسية تفاعلية تدرس دمج مفاعل SMART100 النووي الصغير مع منظومة تحلية المياه في محطة رأس الخير — مشروع بحثي/هندسي.</p>
+    </div>
+    <div class="footer-cols">
+      <div class="footer-col">
+        <h5>المنصة</h5>
+        <a href="index.html">الرئيسية</a>
+        <a href="reactor.html">مفاعل SMART100</a>
+        <a href="integration.html">التكامل</a>
+      </div>
+      <div class="footer-col">
+        <h5>المصادر</h5>
+        <a href="glossary.html">المسرد</a>
+        <a href="references.html">المراجع</a>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom">مشروع بحثي · مبني على نموذج محاكاة Python (model.py / simulation.py / comparison.py)</div>
+</footer>
+
+<script src="js/nav.js"></script>
+<script src="js/home.js"></script>
+</body>
+</html>

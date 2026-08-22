@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>المحاكاة | SMART100 × رأس الخير</title>
+<meta name="description" content="منهجية محاكاة السنة الكاملة وبناء مجموعة بيانات التصميم في نموذج SMART100 × رأس الخير.">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg%20xmlns=%22http://www.w3.org/2000/svg%22%20viewBox=%220%200%2064%2064%22%3E%3Ccircle%20cx=%2232%22%20cy=%2232%22%20r=%226%22%20fill=%22%233f8fd6%22/%3E%3Cg%20fill=%22none%22%20stroke=%22%233f8fd6%22%20stroke-width=%224%22%3E%3Cellipse%20cx=%2232%22%20cy=%2232%22%20rx=%2228%22%20ry=%2212%22/%3E%3Cellipse%20cx=%2232%22%20cy=%2232%22%20rx=%2228%22%20ry=%2212%22%20transform=%22rotate(60%2032%2032)%22/%3E%3Cellipse%20cx=%2232%22%20cy=%2232%22%20rx=%2228%22%20ry=%2212%22%20transform=%22rotate(120%2032%2032)%22/%3E%3C/g%3E%3C/svg%3E">
+<meta property="og:type" content="website">
+<meta property="og:title" content="المحاكاة | SMART100 × رأس الخير">
+<meta property="og:description" content="منهجية محاكاة السنة الكاملة وبناء مجموعة بيانات التصميم في نموذج SMART100 × رأس الخير.">
+<meta property="og:locale" content="ar_SA">
+<meta name="twitter:card" content="summary">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="css/design-system.css">
+<link rel="stylesheet" href="css/process.css">
+</head>
+<body>
+
+<nav class="site-nav">
+  <div class="nav-row">
+    <a href="index.html" class="nav-brand">
+      <span class="nav-brand-mark">⚙</span>
+      <span>SMART100 <small>Ras Al-Khair Integration</small></span>
+    </a>
+    <div class="nav-groups">
+      <div class="nav-group"><a href="index.html">الرئيسية</a></div>
+      <div class="nav-group">
+        <button type="button" aria-haspopup="true" aria-expanded="false">المحطة والتحلية <span class="nav-caret" aria-hidden="true">▾</span></button>
+        <div class="nav-dropdown">
+          <a href="plant.html">محطة رأس الخير</a>
+          <a href="desalination.html">تقنيات التحلية</a>
+          <a href="msf.html">MSF</a>
+          <a href="ro.html">RO</a>
+          <a href="tech-comparison.html">مقارنة التقنيات</a>
+        </div>
+      </div>
+      <div class="nav-group">
+        <button type="button" aria-haspopup="true" aria-expanded="false">مفاعل SMART100 <span class="nav-caret" aria-hidden="true">▾</span></button>
+        <div class="nav-dropdown">
+          <a href="reactor.html">مفاعل SMART100</a>
+          <a href="how-it-works.html">كيف يعمل؟</a>
+        </div>
+      </div>
+      <div class="nav-group">
+        <button type="button" aria-haspopup="true" aria-expanded="false">التكامل والمنظومة <span class="nav-caret" aria-hidden="true">▾</span></button>
+        <div class="nav-dropdown">
+          <a href="integration.html">التكامل مع رأس الخير</a>
+          <a href="energy-flow.html">تدفق الطاقة</a>
+          <a href="system-architecture.html">هندسة المنظومة</a>
+        </div>
+      </div>
+      <div class="nav-group">
+        <button type="button" aria-haspopup="true" aria-expanded="false">التحليل <span class="nav-caret" aria-hidden="true">▾</span></button>
+        <div class="nav-dropdown">
+          <a href="performance.html">الأداء</a>
+          <a href="scenarios.html">السيناريوهات</a>
+          <a href="safety.html">الأمان</a>
+          <a href="simulation.html">المحاكاة</a>
+        </div>
+      </div>
+      <div class="nav-group">
+        <button type="button" aria-haspopup="true" aria-expanded="false">مصادر <span class="nav-caret" aria-hidden="true">▾</span></button>
+        <div class="nav-dropdown">
+          <a href="glossary.html">المسرد</a>
+          <a href="references.html">المراجع</a>
+        </div>
+      </div>
+    </div>
+    <div class="nav-cta"><a href="integration.html" class="btn btn-primary">استكشف التكامل</a></div>
+    <button class="nav-toggle" id="navToggle" aria-label="القائمة" aria-expanded="false" aria-controls="navMobile"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+<div class="nav-mobile" id="navMobile">
+  <a href="index.html" style="display:block;padding:16px 4px;color:var(--ink);font-size:0.98rem;font-weight:700;border-bottom:1px solid var(--border);">الرئيسية</a>
+  <div class="nav-mobile-group">
+    <button type="button" aria-haspopup="true" aria-expanded="false">المحطة والتحلية <span class="nav-caret" aria-hidden="true">▾</span></button>
+    <div class="nav-mobile-sub">
+      <a href="plant.html"><span>🏭</span> محطة رأس الخير</a>
+      <a href="desalination.html"><span>💧</span> تقنيات التحلية</a>
+      <a href="msf.html"><span>🌡️</span> MSF</a>
+      <a href="ro.html"><span>🧪</span> RO</a>
+      <a href="tech-comparison.html"><span>⚖️</span> مقارنة التقنيات</a>
+    </div>
+  </div>
+  <div class="nav-mobile-group">
+    <button type="button" aria-haspopup="true" aria-expanded="false">مفاعل SMART100 <span class="nav-caret" aria-hidden="true">▾</span></button>
+    <div class="nav-mobile-sub">
+      <a href="reactor.html"><span>⚛️</span> مفاعل SMART100</a>
+      <a href="how-it-works.html"><span>⚙️</span> كيف يعمل؟</a>
+    </div>
+  </div>
+  <div class="nav-mobile-group">
+    <button type="button" aria-haspopup="true" aria-expanded="false">التكامل والمنظومة <span class="nav-caret" aria-hidden="true">▾</span></button>
+    <div class="nav-mobile-sub">
+      <a href="integration.html"><span>🔗</span> التكامل مع رأس الخير</a>
+      <a href="energy-flow.html"><span>⚡</span> تدفق الطاقة</a>
+      <a href="system-architecture.html"><span>🧩</span> هندسة المنظومة</a>
+    </div>
+  </div>
+  <div class="nav-mobile-group">
+    <button type="button" aria-haspopup="true" aria-expanded="false">التحليل <span class="nav-caret" aria-hidden="true">▾</span></button>
+    <div class="nav-mobile-sub">
+      <a href="performance.html"><span>📈</span> الأداء</a>
+      <a href="scenarios.html"><span>🔀</span> السيناريوهات</a>
+      <a href="safety.html"><span>🛡️</span> الأمان</a>
+      <a href="simulation.html"><span>🧮</span> المحاكاة</a>
+    </div>
+  </div>
+  <div class="nav-mobile-group">
+    <button type="button" aria-haspopup="true" aria-expanded="false">مصادر <span class="nav-caret" aria-hidden="true">▾</span></button>
+    <div class="nav-mobile-sub">
+      <a href="glossary.html"><span>📖</span> المسرد</a>
+      <a href="references.html"><span>📚</span> المراجع</a>
+    </div>
+  </div>
+</div>
+
+<!-- ===== Hero ===== -->
+<header class="proc-hero">
+  <div class="proc-hero-inner">
+    <span class="eyebrow">🧮 منهجية النموذج</span>
+    <h1>المحاكاة</h1>
+    <span class="en-name">Simulation Methodology</span>
+    <p>
+      هذه الصفحة تشرح <strong style="color:var(--ink)">كيف بُنيت</strong> محاكاة السنة الكاملة ومجموعة
+      بيانات التصميم — لاستكشاف <strong style="color:var(--ink)">النتائج</strong> نفسها تفاعليًا، انتقل
+      إلى لوحة التكامل.
+    </p>
+  </div>
+</header>
+
+<main>
+
+<!-- ===== Year simulation ===== -->
+<section class="section" id="year-sim" style="padding-top:0;">
+  <div class="section-inner">
+    <span class="section-tag">simulation.py</span>
+    <h2 class="section-title">محاكاة السنة الكاملة (365 يوم)</h2>
+    <p class="section-lead">
+      بدل افتراض طلب ثابت طوال السنة، يولّد النموذج طلبًا موسميًا واقعيًا بذروة صيفية وانخفاض شتوي،
+      باستخدام دالة جيبية (Sine Wave) بسيطة:
+    </p>
+
+    <div class="card reveal" style="padding:26px 30px;">
+      <pre class="mono" style="margin:0; font-size:0.86rem; color:var(--ink-secondary); overflow-x:auto; line-height:1.9;">seasonal   = 1.1 + 0.2 × sin((day − 100) / 365 × 2π)
+water_mult = round(seasonal, 3)
+elec_mult  = round(seasonal × 0.98, 3)</pre>
+    </div>
+
+    <p class="section-lead" style="margin-top:22px;">
+      هذه الدالة تُنتج قيمة تتذبذب بين 0.9 و1.3 على مدار السنة، مع انزياح طوري (Phase Shift) بمقدار
+      100 يوم يجعل الذروة تقع قرب منتصف الصيف (نحو يوم 190) والقاع في الشتاء — نمط اعتيادي لمنحنى الطلب
+      على تحلية المياه في مناخ خليجي. عامل الكهرباء يتبع عامل الماء بنسبة 98% تقريبًا لتقارب طبيعة الحمل بين المسارين.
+    </p>
+
+    <div class="metric-grid" style="margin-top:26px;">
+      <div class="metric-card card reveal">
+        <div class="metric-icon">📅</div>
+        <div class="metric-value">365</div>
+        <div class="metric-label">يوم محاكاة</div>
+      </div>
+      <div class="metric-card card reveal">
+        <div class="metric-icon">📈</div>
+        <div class="metric-value">0.90–1.30</div>
+        <div class="metric-label">نطاق عامل الماء الموسمي</div>
+      </div>
+      <div class="metric-card card reveal">
+        <div class="metric-icon">☀️</div>
+        <div class="metric-value">يوم ~190</div>
+        <div class="metric-label">ذروة الطلب الصيفية</div>
+      </div>
+      <div class="metric-card card reveal">
+        <div class="metric-icon">❄️</div>
+        <div class="metric-value">يوم ~10</div>
+        <div class="metric-label">أدنى طلب شتوي</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== Dataset generation ===== -->
+<section class="section section-alt" id="dataset">
+  <div class="section-inner">
+    <span class="section-tag">model.py</span>
+    <h2 class="section-title">بناء مجموعة بيانات التصميم (169 توليفة)</h2>
+    <p class="section-lead">
+      إلى جانب المحاكاة اليومية المتسلسلة، يولّد النموذج شبكة توليفات ثابتة لاختبار حساسية LCOW لعاملي
+      الماء والكهرباء بشكل مستقل — وهي ما تعرضها الخريطة الحرارية في لوحة التكامل.
+    </p>
+
+    <div class="card reveal" style="padding:26px 30px;">
+      <pre class="mono" style="margin:0; font-size:0.86rem; color:var(--ink-secondary); overflow-x:auto; line-height:1.9;">water_factors = [0.80, 0.85, 0.90, ..., 1.40]   # 13 قيمة
+elec_factors  = [0.80, 0.85, 0.90, ..., 1.40]   # 13 قيمة
+
+for wf in water_factors:
+    for ef in elec_factors:
+        production, thermal, electric, total_eq = calculate_scenario(wf, ef)
+        utilization = total_eq / (10 × 330)
+        LCOW        = calculate_lcow(production, total_eq)</pre>
+    </div>
+
+    <div class="metric-grid" style="margin-top:26px;">
+      <div class="metric-card card reveal">
+        <div class="metric-icon">🔢</div>
+        <div class="metric-value">13 × 13</div>
+        <div class="metric-label">شبكة عاملي الماء والكهرباء</div>
+      </div>
+      <div class="metric-card card reveal">
+        <div class="metric-icon">📊</div>
+        <div class="metric-value">169</div>
+        <div class="metric-label">توليفة تصميمية إجمالية</div>
+      </div>
+      <div class="metric-card card reveal">
+        <div class="metric-icon">↔️</div>
+        <div class="metric-value">0.80–1.40</div>
+        <div class="metric-label">نطاق كل عامل (خطوة 0.05)</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== Calculation pipeline ===== -->
+<section class="section" id="pipeline">
+  <div class="section-inner">
+    <span class="section-tag">The Pipeline</span>
+    <h2 class="section-title">سلسلة الحسابات — من العامل إلى LCOW</h2>
+
+    <div class="timeline">
+      <div class="timeline-step reveal">
+        <div class="timeline-num">1</div>
+        <div class="timeline-body">
+          <h3>عامل الماء والكهرباء</h3>
+          <span class="tl-en">water_mult, elec_mult</span>
+          <p>نقطة الانطلاق لكل حساب — إما من المنحنى الموسمي اليومي أو من شبكة التصميم الثابتة.</p>
+        </div>
+      </div>
+      <div class="timeline-step reveal">
+        <div class="timeline-num">2</div>
+        <div class="timeline-body">
+          <h3>الإنتاج والحمل</h3>
+          <span class="tl-en">Production, Thermal & Electric Load</span>
+          <p>يُشتَق حجم الإنتاج اليومي، ثم الحمل الحراري لـMSF والحمل الكهربائي لـRO والأحمال المساعدة.</p>
+        </div>
+      </div>
+      <div class="timeline-step reveal">
+        <div class="timeline-num">3</div>
+        <div class="timeline-body">
+          <h3>الحمل الحراري المكافئ الكلي</h3>
+          <span class="tl-en">total_thermal_eq</span>
+          <p>يُحوَّل الحمل الكهربائي إلى مكافئ حراري (بقسمته على كفاءة SMART100 30.3%) ويُجمَع مع الحمل الحراري المباشر.</p>
+        </div>
+      </div>
+      <div class="timeline-step reveal">
+        <div class="timeline-num">4</div>
+        <div class="timeline-body">
+          <h3>نسبة الاستغلال</h3>
+          <span class="tl-en">Utilization Rate</span>
+          <p>الحمل الكلي المكافئ مقسومًا على السعة المركّبة القصوى (10 وحدات × 330 MWth-eq) — يحدد إن كان اليوم "مناسبًا" (≤100%).</p>
+        </div>
+      </div>
+      <div class="timeline-step reveal">
+        <div class="timeline-num">5</div>
+        <div class="timeline-body">
+          <h3>LCOW</h3>
+          <span class="tl-en">Levelized Cost of Water</span>
+          <p>(التكلفة الرأسمالية السنوية الثابتة + التكلفة التشغيلية المرتبطة بالحمل) ÷ الإنتاج السنوي = التكلفة المكافئة للمياه بالدولار لكل م³.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== CTA ===== -->
+<section class="section section-alt">
+  <div class="section-inner">
+    <div class="home-cta-band reveal">
+      <h2>استكشف نتائج هذه المنهجية تفاعليًا</h2>
+      <p>Slider ليوم مُختار، منحنيات الاستغلال وLCOW عبر السنة، والخريطة الحرارية الكاملة لـ169 توليفة.</p>
+      <div class="home-cta-links">
+        <a href="integration.html" class="btn btn-primary">لوحة المحاكاة التفاعلية ↗</a>
+        <a href="scenarios.html" class="btn btn-ghost">السيناريوهات التصميمية</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="footer-inner">
+    <div>
+      <div class="footer-brand">SMART100 × رأس الخير</div>
+      <p class="footer-desc">منصة هندسية تفاعلية تدرس دمج مفاعل SMART100 النووي الصغير مع منظومة تحلية المياه في محطة رأس الخير — مشروع بحثي/هندسي.</p>
+    </div>
+    <div class="footer-cols">
+      <div class="footer-col">
+        <h5>المنصة</h5>
+        <a href="index.html">الرئيسية</a>
+        <a href="reactor.html">مفاعل SMART100</a>
+        <a href="integration.html">التكامل</a>
+      </div>
+      <div class="footer-col">
+        <h5>المصادر</h5>
+        <a href="glossary.html">المسرد</a>
+        <a href="references.html">المراجع</a>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom">مشروع بحثي · مبني على نموذج محاكاة Python (model.py / simulation.py / comparison.py)</div>
+</footer>
+
+<script src="js/nav.js"></script>
+<script>document.addEventListener('DOMContentLoaded', () => initReveal('.reveal'));</script>
+</body>
+</html>
