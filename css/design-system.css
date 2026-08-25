@@ -38,6 +38,7 @@
   --thermal-tint:  rgba(255,122,69,0.12);
   --electric-tint: rgba(255,194,60,0.12);
   --water-tint:    rgba(45,217,195,0.12);
+  --critical-tint: rgba(239,87,87,0.12);
 
   --radius-sm: 8px;
   --radius-md: 14px;

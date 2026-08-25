@@ -240,6 +240,109 @@
   </div>
 </section>
 
+<!-- ===== Maintenance / N-1 Reliability ===== -->
+<section class="section" id="maintenance">
+  <div class="section-inner">
+    <span class="section-tag">Reliability — N-1 Analysis</span>
+    <h2 class="section-title">هل النظام آمن أثناء صيانة وحدة واحدة؟</h2>
+    <p class="section-lead">
+      كل وحدة SMART100 تحتاج تزويد وقود كل 3 سنوات، وتتوقف بالكامل عن الإنتاج خلال ذلك — نموذج
+      السيناريوهات الأربعة الأساسي يفترض ضمنيًا أن كل الوحدات العشر تعمل 100% دائمًا. هذا التحليل
+      يختبر: هل تكفي 9 وحدات (10-1) لتغطية كل سيناريو؟
+    </p>
+    <div class="proc-badges" style="margin-bottom:30px;">
+      <span class="badge badge-muted">مدة الصيانة المفترضة: 30–45 يومًا (تقدير عام، غير مؤكد رسميًا لـSMART100)</span>
+    </div>
+
+    <div class="card reveal" style="padding:6px;">
+      <div class="compare-table-wrap">
+        <table class="compare-table">
+          <thead>
+            <tr>
+              <th>السيناريو</th>
+              <th>الحمل المطلوب</th>
+              <th>الاستغلال بـ9 وحدات</th>
+              <th>الحالة</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th>عادي</th>
+              <td>2,369.8 MWth-eq</td>
+              <td>79.8%</td>
+              <td><strong style="color:var(--good)">✅ آمن</strong></td>
+            </tr>
+            <tr>
+              <th>طلب مرتفع (مياه)</th>
+              <td>2,872.0 MWth-eq</td>
+              <td>96.7%</td>
+              <td><strong style="color:var(--warn)">✅ آمن (هامش ضيق)</strong></td>
+            </tr>
+            <tr>
+              <th>طلب مرتفع (كهرباء)</th>
+              <td>2,463.8 MWth-eq</td>
+              <td>82.9%</td>
+              <td><strong style="color:var(--good)">✅ آمن</strong></td>
+            </tr>
+            <tr>
+              <th>ذروة الطلب</th>
+              <td>3,264.0 MWth-eq</td>
+              <td><strong style="color:var(--critical)">109.9%</strong></td>
+              <td><strong style="color:var(--critical)">❌ فشل (عجز 293.7 MWth-eq)</strong></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="why-callout card reveal" style="margin-top:22px; border-inline-start: 3px solid var(--critical);">
+      <span class="why-callout-icon">⚠️</span>
+      <p>
+        <strong>التوصية: النظام يحتاج N+1 (11 وحدة) للأمان الكامل في كل الأوقات.</strong> السيناريوهات
+        الثلاثة الأولى تبقى آمنة بـ9 وحدات، لكن "ذروة الطلب" (أعلى حمل مسجَّل بالنموذج) يفشل — الحمل
+        المطلوب يتجاوز السعة المتاحة بـ293.7 MWth-eq. لضمان التغطية الكاملة حتى في أسوأ سيناريو أثناء
+        توقف وحدة واحدة للصيانة، يلزم <strong style="color:var(--critical)">11 وحدة</strong> بدل 10.
+      </p>
+    </div>
+
+    <div class="metric-grid" style="margin-top:22px;">
+      <div class="metric-card card reveal">
+        <div class="metric-icon">💰</div>
+        <div class="metric-value">+$0.14–0.19</div>
+        <div class="metric-label">زيادة LCOW لكل م³ عند الانتقال لـ11 وحدة</div>
+      </div>
+      <div class="metric-card card reveal">
+        <div class="metric-icon">🏭</div>
+        <div class="metric-value">1,000M$</div>
+        <div class="metric-label">تكلفة رأسمالية إضافية للوحدة الاحتياطية</div>
+      </div>
+      <div class="metric-card card reveal">
+        <div class="metric-icon">❄️</div>
+        <div class="metric-value" style="color:var(--good);">0/37</div>
+        <div class="metric-label">يوم تجاوز سعة لو جُدولت الصيانة شتاءً (9 وحدات فقط)</div>
+      </div>
+      <div class="metric-card card reveal">
+        <div class="metric-icon">📊</div>
+        <div class="metric-value">70.4%</div>
+        <div class="metric-label">متوسط الاستغلال أثناء نافذة الصيانة الشتوية</div>
+      </div>
+    </div>
+
+    <div class="why-callout card reveal" style="margin-top:22px; border-inline-start: 3px solid var(--good);">
+      <span class="why-callout-icon">❄️</span>
+      <p>
+        <strong>بديل أرخص من N+1: الجدولة الذكية.</strong> فحص "ذروة الطلب" أعلاه يمثّل أسوأ حالة نظرية
+        (طلب أقصى على الماء والكهرباء معًا). لكن محاكاة السنة الكاملة تُظهر أن الطلب الفعلي في منتصف
+        الشتاء أقل بكثير (استغلال 70.1–70.4% فقط بـ9 وحدات). لو جُدولت نافذة الصيانة (37 يومًا) حول أدنى
+        نقطة بالطلب الموسمي بدل توقف عشوائي بأي وقت من السنة، تبقى الوحدات العشر الحالية كافية — <strong
+        style="color:var(--good)">0 يوم تجاوز سعة طوال السنة المحاكاة بالكامل</strong> — دون الحاجة لدفع
+        تكلفة وحدة حادية عشرة. القرار بين N+1 والجدولة الذكية هو مفاضلة بين الأمان المطلق (يغطي أي توقف
+        طارئ غير مخطَّط، وليس فقط الصيانة المجدولة) والتكلفة الرأسمالية الإضافية.
+      </p>
+    </div>
+  </div>
+</section>
+
 <!-- ===== Emissions ===== -->
 <section class="section" id="emissions">
   <div class="section-inner">
