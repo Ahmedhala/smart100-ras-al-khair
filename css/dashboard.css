@@ -1,0 +1,44 @@
+/* ==========================================================================
+   dashboard.html — page-specific pieces not already covered by process.css
+   ========================================================================== */
+
+/* ---- energy/water split bar wrapper ---- */
+.dash-split-card{ padding: 26px 28px; }
+.dash-split-card h3{ font-size: 0.98rem; margin-bottom: 4px; }
+.dash-split-card .dash-split-note{ font-size: 0.84rem; color: var(--ink-muted); margin-bottom: 16px; }
+
+/* ---- N-1 reliability status card ---- */
+.dash-status-card{ display:flex; gap: 20px; align-items:flex-start; padding: 26px 28px; }
+.dash-status-icon{ font-size: 1.8rem; flex-shrink:0; }
+.dash-status-body h3{ font-size: 1rem; margin-bottom: 8px; }
+.dash-status-body p{ font-size: 0.9rem; margin-bottom: 16px; }
+.dash-status-rows{ display:flex; flex-direction:column; gap: 10px; }
+.dash-status-row{
+  display:flex; justify-content:space-between; align-items:center; gap: 12px;
+  padding: 10px 14px; border-radius: 10px; font-size: 0.86rem;
+}
+.dash-status-row.is-good{ background: rgba(51,196,106,0.1); color: var(--ink); }
+.dash-status-row.is-critical{ background: var(--critical-tint); color: var(--ink); }
+.dash-status-row strong{ font-family:'IBM Plex Mono',monospace; }
+.dash-status-row.is-good strong{ color: var(--good); }
+.dash-status-row.is-critical strong{ color: var(--critical); }
+
+/* ---- control-room quick-access grid ---- */
+.dash-nav-grid{ display:grid; grid-template-columns: repeat(4, 1fr); gap: 14px; }
+.dash-nav-tile{
+  display:flex; flex-direction:column; gap: 6px; padding: 20px 18px;
+  transition: border-color .15s, transform .15s;
+}
+.dash-nav-tile:hover{ transform: translateY(-2px); border-color: var(--border-strong); }
+.dash-nav-tile-icon{ font-size: 1.5rem; }
+.dash-nav-tile h4{ font-size: 0.92rem; }
+.dash-nav-tile span{ font-size: 0.78rem; color: var(--ink-muted); }
+.dash-nav-tile .dash-nav-arrow{ margin-top: auto; font-size: 0.8rem; color: var(--nuclear-glow); padding-top: 6px; }
+
+@media (max-width: 980px){
+  .dash-nav-grid{ grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 640px){
+  .dash-nav-grid{ grid-template-columns: 1fr; }
+  .dash-status-card{ flex-direction:column; padding: 18px; }
+}

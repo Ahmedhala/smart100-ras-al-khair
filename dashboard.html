@@ -3,18 +3,19 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>محطة رأس الخير | SMART100 × رأس الخير</title>
-<meta name="description" content="استكشف مسار المياه الكامل في محطة رأس الخير عبر ثمانية أجزاء تفاعلية — من سحب مياه البحر إلى المياه المنتَجة.">
+<title>لوحة التحكم | SMART100 × رأس الخير</title>
+<meta name="description" content="لوحة تحكم شاملة تجمع أهم مؤشرات المشروع بنظرة واحدة — الإنتاج، LCOW، الانبعاثات، الموثوقية، ووصول سريع لكل صفحة تفصيلية.">
 <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg%20xmlns=%22http://www.w3.org/2000/svg%22%20viewBox=%220%200%2064%2064%22%3E%3Ccircle%20cx=%2232%22%20cy=%2232%22%20r=%226%22%20fill=%22%233f8fd6%22/%3E%3Cg%20fill=%22none%22%20stroke=%22%233f8fd6%22%20stroke-width=%224%22%3E%3Cellipse%20cx=%2232%22%20cy=%2232%22%20rx=%2228%22%20ry=%2212%22/%3E%3Cellipse%20cx=%2232%22%20cy=%2232%22%20rx=%2228%22%20ry=%2212%22%20transform=%22rotate(60%2032%2032)%22/%3E%3Cellipse%20cx=%2232%22%20cy=%2232%22%20rx=%2228%22%20ry=%2212%22%20transform=%22rotate(120%2032%2032)%22/%3E%3C/g%3E%3C/svg%3E">
 <meta property="og:type" content="website">
-<meta property="og:title" content="محطة رأس الخير | SMART100 × رأس الخير">
-<meta property="og:description" content="استكشف مسار المياه الكامل في محطة رأس الخير عبر ثمانية أجزاء تفاعلية — من سحب مياه البحر إلى المياه المنتَجة.">
+<meta property="og:title" content="لوحة التحكم | SMART100 × رأس الخير">
+<meta property="og:description" content="لوحة تحكم شاملة تجمع أهم مؤشرات المشروع بنظرة واحدة — الإنتاج، LCOW، الانبعاثات، الموثوقية، ووصول سريع لكل صفحة تفصيلية.">
 <meta property="og:locale" content="ar_SA">
 <meta name="twitter:card" content="summary">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="css/design-system.css">
 <link rel="stylesheet" href="css/process.css">
+<link rel="stylesheet" href="css/dashboard.css">
 </head>
 <body>
 
@@ -122,155 +123,177 @@
 <!-- ===== Hero ===== -->
 <header class="proc-hero">
   <div class="proc-hero-inner">
-    <span class="eyebrow">🏭 دراسة الحالة</span>
-    <h1>محطة رأس الخير للتحلية</h1>
-    <span class="en-name">Ras Al-Khair Desalination Plant — Hybrid MSF + RO</span>
+    <span class="eyebrow">📊 نظرة شاملة</span>
+    <h1>لوحة التحكم</h1>
+    <span class="en-name">Project Control-Room Dashboard</span>
     <p>
-      واحدة من أكبر محطات التحلية الهجينة في العالم، تجمع بين تقنيتي MSF وRO لتزويد الرياض
-      ومناطق أخرى بالمياه العذبة — وهي بيئة الاختبار الفعلية لهذا المشروع.
+      كل مؤشرات المشروع الرئيسية بنظرة واحدة — الإنتاج، تكلفة المياه، الانبعاثات، والموثوقية أثناء
+      الصيانة — مع وصول سريع لكل نموذج تفاعلي وصفحة تحليل بالموقع.
     </p>
     <div class="proc-badges">
-      <span class="badge badge-water">Hybrid MSF + RO</span>
-      <span class="badge badge-thermal">8 وحدات MSF</span>
-      <span class="badge badge-electric">17 وحدة RO</span>
-      <span class="badge badge-muted">2,400 MW كهرباء مركّبة</span>
-    </div>
-
-    <div class="spec-strip">
-      <div class="spec-item card reveal">
-        <span class="spec-value mono" data-count="1036000">1,036,000</span>
-        <span class="spec-unit">م³/يوم</span>
-        <span class="spec-label">إجمالي الطاقة الإنتاجية</span>
-      </div>
-      <div class="spec-item card reveal">
-        <span class="spec-value">70.2</span>
-        <span class="spec-unit">%</span>
-        <span class="spec-label">حصة MSF من الإنتاج</span>
-      </div>
-      <div class="spec-item card reveal">
-        <span class="spec-value">29.8</span>
-        <span class="spec-unit">%</span>
-        <span class="spec-label">حصة RO من الإنتاج</span>
-      </div>
-      <div class="spec-item card reveal">
-        <span class="spec-value">8</span>
-        <span class="spec-unit">وحدات</span>
-        <span class="spec-label">MSF (تقطير حراري)</span>
-      </div>
-      <div class="spec-item card reveal">
-        <span class="spec-value">17</span>
-        <span class="spec-unit">وحدة</span>
-        <span class="spec-label">RO (تناضح عكسي)</span>
-      </div>
+      <span class="badge badge-muted">🧮 أرقام محاكاة من model.py / simulation.py — وليست بيانات تشغيل حيّة</span>
     </div>
   </div>
 </header>
 
 <main>
 
-<!-- ===== 3D Whole-Plant Model ===== -->
-<section class="section viewer-section" id="plant-model">
+<!-- ===== KPI strip ===== -->
+<section class="section" id="kpis" style="padding-top:0;">
   <div class="section-inner">
-    <span class="section-tag">Explore the Facility</span>
-    <h2 class="section-title">النموذج التفاعلي ثلاثي الأبعاد للمحطة بأكملها</h2>
-    <p class="section-lead">دوّر النموذج بالسحب، كبّر/صغّر بعجلة الماوس، وشغّل حركة التدفق لمشاهدة مسارَي الطاقة (حرارة نحو MSF، كهرباء نحو RO) ومسارات المياه — من المأخذ المشترك إلى خزان الماء المنتَج والتصريف المشترك. اضغط على أي مكوّن لعرض وظيفته.</p>
-
-    <div class="viewer-layout">
-      <div class="viewer-stage card" id="plant3dViewerStage" role="img" aria-label="نموذج ثلاثي الأبعاد تفاعلي لمحطة رأس الخير — وصف نصي كامل لكل مكوّن متاح في قائمة المكوّنات وبطاقات المرجع الكاملة أسفل الصفحة">
-        <div class="viewer-loading" id="plant3dViewerLoading">
-          <div class="viewer-spinner"></div>
-          <span>يتم تحميل النموذج ثلاثي الأبعاد…</span>
-        </div>
-        <div class="viewer-hint">
-          <span class="viewer-hint-badge">🖱️ اسحب للتدوير · عجلة الماوس للتكبير</span>
-        </div>
-        <div class="viewer-controls">
-          <button class="viewer-btn is-active" id="plant3dBtnAutoRotate">⏸ إيقاف الدوران التلقائي</button>
-          <button class="viewer-btn is-active" id="plant3dBtnFlow">⏸ إيقاف حركة التدفق</button>
-          <button class="viewer-btn" id="plant3dBtnReset">↺ إعادة ضبط العرض</button>
-        </div>
+    <span class="section-tag">Key Indicators</span>
+    <h2 class="section-title">المؤشرات الرئيسية</h2>
+    <div class="spec-strip">
+      <div class="spec-item card reveal">
+        <span class="spec-value mono" data-count="1036000">1,036,000</span>
+        <span class="spec-unit">م³/يوم</span>
+        <span class="spec-label">إجمالي الإنتاج</span>
       </div>
+      <div class="spec-item card reveal">
+        <span class="spec-value">$5.588</span>
+        <span class="spec-unit">$/م³</span>
+        <span class="spec-label">متوسط LCOW السنوي</span>
+      </div>
+      <div class="spec-item card reveal">
+        <span class="spec-value" data-count="8.27" data-decimals="2">8.27</span>
+        <span class="spec-unit">مليون طن</span>
+        <span class="spec-label">توفير CO₂ سنويًا (−96.7%)</span>
+      </div>
+      <div class="spec-item card reveal">
+        <span class="spec-value" data-count="10">10</span>
+        <span class="spec-unit">وحدات</span>
+        <span class="spec-label">مفاعلات SMART100 (100 MWe / 330 MWth لكل وحدة)</span>
+      </div>
+      <div class="spec-item card reveal">
+        <span class="spec-value" data-count="80.5" data-decimals="1">80.5</span>
+        <span class="spec-unit">%</span>
+        <span class="spec-label">متوسط الاستغلال السنوي</span>
+      </div>
+    </div>
+  </div>
+</section>
 
-      <div class="viewer-panel card">
-        <div id="plant3dPanelEmpty" class="viewer-panel-empty">
-          👆 اضغط على أي مكوّن في النموذج أو من القائمة أدناه لعرض تفاصيله هنا.
-        </div>
-        <div id="plant3dPanelContent" style="display:none;">
-          <h3 class="viewer-panel-title" id="plant3dPanelTitle"></h3>
-          <span class="viewer-panel-en" id="plant3dPanelEn"></span>
-          <p class="viewer-panel-desc" id="plant3dPanelDesc"></p>
-        </div>
-        <div class="viewer-panel-list">
-          <span class="viewer-panel-list-label">جميع المكوّنات (6)</span>
-          <div id="plant3dComponentButtonList"></div>
+<!-- ===== Production / energy split ===== -->
+<section class="section section-alt" id="split">
+  <div class="section-inner">
+    <span class="section-tag">Where the Energy & Water Go</span>
+    <h2 class="section-title">توزيع الطاقة والإنتاج</h2>
+
+    <div class="dash-split-card card reveal">
+      <h3>MSF (حراري) مقابل RO (كهربائي)</h3>
+      <p class="dash-split-note">نفس النسبة تمامًا تصف حصة كل تقنية من إنتاج المياه، ومن حصتها في طاقة SMART100 الموزَّعة عليها.</p>
+      <div class="flow-stack">
+        <div class="flow-seg is-thermal" style="width:70.2%">MSF — 70.2%</div>
+        <div class="flow-seg is-electric" style="width:29.8%">RO — 29.8%</div>
+      </div>
+      <div class="flow-legend">
+        <span><i style="background:var(--thermal)"></i> بخار حراري → MSF → 70.2% من الإنتاج</span>
+        <span><i style="background:var(--electric)"></i> كهرباء → RO → 29.8% من الإنتاج</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== N-1 reliability status ===== -->
+<section class="section" id="reliability">
+  <div class="section-inner">
+    <span class="section-tag">Reliability — N-1</span>
+    <h2 class="section-title">هل النظام آمن أثناء صيانة وحدة واحدة؟</h2>
+
+    <div class="dash-status-card card reveal">
+      <span class="dash-status-icon">🛠️</span>
+      <div class="dash-status-body">
+        <h3>مشروط بالجدولة الذكية — ليس آمنًا تلقائيًا</h3>
+        <p>9 وحدات (10 ناقص واحدة للصيانة) تكفي 3 من أصل 4 سيناريوهات ثابتة دون أي تغيير. سيناريو "ذروة الطلب" وحده يفشل إن وقعت الصيانة بتوقيت عشوائي — لكنه يُحَل تمامًا بجدولتها شتاءً.</p>
+        <div class="dash-status-rows">
+          <div class="dash-status-row is-critical">
+            <span>بدون جدولة (توقيت عشوائي) — سيناريو ذروة الطلب</span>
+            <strong>يتجاوز السعة بـ293.7 MWth-eq → يحتاج 11 وحدة</strong>
+          </div>
+          <div class="dash-status-row is-good">
+            <span>بجدولة شتوية ذكية (37 يومًا حول أدنى نقطة طلب)</span>
+            <strong>0/37 يوم تجاوز سعة — 10 وحدات تكفي</strong>
+          </div>
         </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ===== Component reference grid (3D model) ===== -->
-<section class="section section-alt" id="plant3d-components">
+<!-- ===== Control-room quick access ===== -->
+<section class="section section-alt" id="quick-access">
   <div class="section-inner">
-    <span class="section-tag">Facility Anatomy</span>
-    <h2 class="section-title">مكوّنات المحطة بالتفصيل</h2>
-    <p class="section-lead">مرجع كامل لكل مكوّن — بنفس بيانات النموذج التفاعلي أعلاه، لسهولة القراءة والمراجعة.</p>
-    <div class="component-grid" id="plant3dComponentGrid"></div>
-  </div>
-</section>
+    <span class="section-tag">Explore Further</span>
+    <h2 class="section-title">وصول سريع</h2>
+    <p class="section-lead">كل بطاقة تفتح النموذج التفاعلي أو التحليل التفصيلي الخاص بها.</p>
 
-<!-- ===== Interactive water-path diagram ===== -->
-<section class="section viewer-section" id="water-path">
-  <div class="section-inner">
-    <span class="section-tag">Water Path — Explore the System</span>
-    <h2 class="section-title">مسار المياه الكامل — ثمانية أجزاء تفاعلية</h2>
-    <p class="section-lead">اضغط على أي جزء من المخطط أو من القائمة الجانبية لمعرفة ما هو، ماذا يفعل، مدخلاته ومخرجاته، وعلاقته ببقية النظام.</p>
-
-    <div class="viewer-layout">
-      <div class="viewer-stage card">
-        <span class="viewer-hint-badge">👆 اضغط على أي عقدة في المخطط</span>
-        <div style="overflow-x:auto;">
-          <svg viewBox="0 40 1300 480" id="plantSvg" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="مخطط مسار المياه في محطة رأس الخير"></svg>
-        </div>
-      </div>
-
-      <div class="viewer-panel card">
-        <div id="plantPanelEmpty" class="viewer-panel-empty">👆 اضغط على أي جزء من المخطط أو من القائمة أدناه لعرض تفاصيله هنا.</div>
-        <div id="plantPanelContent" style="display:none;">
-          <h3 class="viewer-panel-title" id="plantPanelTitle"></h3>
-          <span class="viewer-panel-en" id="plantPanelEn"></span>
-          <p class="viewer-panel-desc" id="plantPanelDesc"></p>
-          <div class="pv-meta" id="plantPanelMeta"></div>
-        </div>
-        <div class="viewer-panel-list">
-          <span class="viewer-panel-list-label">جميع الأجزاء (8)</span>
-          <div id="plantList"></div>
-        </div>
-      </div>
+    <div class="dash-nav-grid">
+      <a href="reactor.html" class="dash-nav-tile card reveal">
+        <span class="dash-nav-tile-icon">⚛️</span>
+        <h4>مفاعل SMART100</h4>
+        <span>نموذج ثلاثي الأبعاد تفاعلي للمفاعل</span>
+        <span class="dash-nav-arrow">افتح ←</span>
+      </a>
+      <a href="msf.html#msf-model" class="dash-nav-tile card reveal">
+        <span class="dash-nav-tile-icon">🌡️</span>
+        <h4>MSF</h4>
+        <span>نموذج ثلاثي الأبعاد لدورة التقطير الومضي</span>
+        <span class="dash-nav-arrow">افتح ←</span>
+      </a>
+      <a href="ro.html#ro-model" class="dash-nav-tile card reveal">
+        <span class="dash-nav-tile-icon">🧪</span>
+        <h4>RO</h4>
+        <span>نموذج ثلاثي الأبعاد لخط التناضح العكسي</span>
+        <span class="dash-nav-arrow">افتح ←</span>
+      </a>
+      <a href="plant.html#plant-model" class="dash-nav-tile card reveal">
+        <span class="dash-nav-tile-icon">🏭</span>
+        <h4>محطة رأس الخير</h4>
+        <span>نموذج ثلاثي الأبعاد للمحطة كاملة</span>
+        <span class="dash-nav-arrow">افتح ←</span>
+      </a>
+      <a href="integration.html#twin-model" class="dash-nav-tile card reveal">
+        <span class="dash-nav-tile-icon">🔗</span>
+        <h4>التكامل (Digital Twin)</h4>
+        <span>الرحلة الكاملة من المفاعل إلى الماء العذب</span>
+        <span class="dash-nav-arrow">افتح ←</span>
+      </a>
+      <a href="performance.html" class="dash-nav-tile card reveal">
+        <span class="dash-nav-tile-icon">📈</span>
+        <h4>الأداء</h4>
+        <span>التحليل الهندسي، الصيانة، والخزان المائي</span>
+        <span class="dash-nav-arrow">افتح ←</span>
+      </a>
+      <a href="scenarios.html" class="dash-nav-tile card reveal">
+        <span class="dash-nav-tile-icon">🔀</span>
+        <h4>السيناريوهات</h4>
+        <span>169 توليفة تصميمية وحساسية LCOW</span>
+        <span class="dash-nav-arrow">افتح ←</span>
+      </a>
+      <a href="safety.html" class="dash-nav-tile card reveal">
+        <span class="dash-nav-tile-icon">🛡️</span>
+        <h4>الأمان</h4>
+        <span>أنظمة الأمان السلبية في SMART100</span>
+        <span class="dash-nav-arrow">افتح ←</span>
+      </a>
     </div>
   </div>
 </section>
 
-<!-- ===== Full reference grid ===== -->
-<section class="section section-alt" id="stages">
-  <div class="section-inner">
-    <span class="section-tag">Full Reference</span>
-    <h2 class="section-title">الأجزاء الثمانية بالتفصيل</h2>
-    <p class="section-lead">مرجع كامل — بنفس بيانات المخطط التفاعلي أعلاه.</p>
-    <div class="component-grid" id="plantGrid"></div>
-  </div>
-</section>
-
-<!-- ===== CTA ===== -->
+<!-- ===== Scope note ===== -->
 <section class="section">
   <div class="section-inner">
-    <div class="home-cta-band reveal">
-      <h2>تعرّف على تقنيتي MSF وRO بعمق أكبر</h2>
-      <p>مخططان تفاعليان منفصلان يشرحان كل مرحلة داخل كل تقنية تحلية على حدة.</p>
-      <div class="home-cta-links">
-        <a href="desalination.html" class="btn btn-primary">تقنيات التحلية بالتفصيل ↗</a>
-        <a href="integration.html" class="btn btn-ghost">التكامل مع SMART100</a>
-      </div>
+    <div class="why-callout card reveal" style="border-inline-start: 3px solid var(--nuclear);">
+      <span class="why-callout-icon">🔬</span>
+      <p>
+        <strong>هذه لوحة تحكم لنموذج بحثي، وليست غرفة تحكم تشغيلية فعلية.</strong> كل رقم بهذه الصفحة
+        مُستخرج مباشرة من نموذج المحاكاة (model.py / simulation.py / comparison.py) الخاص بهذا المشروع
+        — لا يوجد اتصال ببيانات تشغيل حيّة لأي محطة فعلية. راجع
+        <a href="references.html" style="color:var(--nuclear-glow); font-weight:700;">صفحة المراجع</a>
+        لمصادر الأرقام، أو
+        <a href="https://github.com/Ahmedhala/smart100-ras-al-khair/tree/master/model" target="_blank" rel="noopener" style="color:var(--nuclear-glow); font-weight:700;">ملفات النموذج على GitHub ↗</a>
+        لمراجعة المعادلات نفسها.
+      </p>
     </div>
   </div>
 </section>
@@ -287,6 +310,7 @@
       <div class="footer-col">
         <h5>المنصة</h5>
         <a href="index.html">الرئيسية</a>
+        <a href="dashboard.html">لوحة التحكم</a>
         <a href="reactor.html">مفاعل SMART100</a>
         <a href="integration.html">التكامل</a>
       </div>
@@ -300,13 +324,12 @@
   <div class="footer-bottom">مشروع بحثي · مبني على نموذج محاكاة Python (<a href="https://github.com/Ahmedhala/smart100-ras-al-khair/tree/master/model" target="_blank" rel="noopener" style="color:inherit; text-decoration:underline;">model.py / simulation.py / comparison.py ↗</a>)</div>
 </footer>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
 <script src="js/nav.js"></script>
-<script src="js/process-viewer.js"></script>
-<script src="js/plant-data.js"></script>
-<script src="js/plant.js"></script>
-<script src="js/plant-3d-data.js"></script>
-<script src="js/plant-3d.js"></script>
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  initReveal('.reveal');
+  initCounters('.spec-value[data-count]');
+});
+</script>
 </body>
 </html>
