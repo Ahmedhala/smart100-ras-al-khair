@@ -34,7 +34,7 @@
   width: 22px; height:22px; border-radius:50%; display:flex; align-items:center; justify-content:center;
   font-size: 0.72rem; background: rgba(255,255,255,0.08); flex-shrink:0;
 }
-.scenario-tab.is-active .tab-letter{ background: var(--nuclear); color:#fff; }
+.scenario-tab.is-active .tab-letter{ background: var(--nuclear-deep); color:#fff; }
 
 .scenario-panel{ display:none; }
 .scenario-panel.is-active{ display:grid; grid-template-columns: 1fr 1fr; gap: 26px; align-items:center; }
@@ -114,7 +114,7 @@
 .co2-bar-smr{ background: linear-gradient(90deg, #1f9e52, var(--good)); }
 .co2-bar-num{ font-family:'IBM Plex Mono',monospace; font-size: 0.82rem; color: var(--ink-muted); }
 .co2-savings-badge{
-  background: linear-gradient(160deg, var(--nuclear), #1f4f7d); border-radius: var(--radius-lg); color:#fff; box-shadow: var(--shadow-2);
+  background: linear-gradient(160deg, var(--nuclear-deep), #1f4f7d); border-radius: var(--radius-lg); color:#fff; box-shadow: var(--shadow-2);
   display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center; gap: 6px; padding: 24px;
 }
 .co2-savings-num{ font-family:'IBM Plex Mono',monospace; font-size: 2.6rem; font-weight:700; }

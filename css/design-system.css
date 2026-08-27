@@ -20,10 +20,11 @@
   /* ---- ink ---- */
   --ink:           #eef3f7;
   --ink-secondary: #a7b6c4;
-  --ink-muted:     #6c7d8c;
+  --ink-muted:     #7a8b99;   /* lightened from #6c7d8c — WCAG AA contrast fix (was 3.97-4.29:1 on panel surfaces, below the 4.5:1 required for small text) */
 
   /* ---- brand / accents (fixed roles, never cycled) ---- */
-  --nuclear:       #3f8fd6;   /* reactor / core / brand */
+  --nuclear:       #3f8fd6;   /* reactor / core / brand — for text/icons/borders on dark surfaces, NOT for solid fills under white text (3.44:1, fails AA) */
+  --nuclear-deep:  #2c689f;   /* darker nuclear for solid-fill buttons/badges with white text (5.85:1, passes AA) */
   --nuclear-glow:  #6fb6ff;
   --thermal:       #ff7a45;   /* heat / steam / MSF */
   --electric:      #ffc23c;   /* electricity / RO */
@@ -74,7 +75,7 @@ ul,ol{ margin:0; padding:0; list-style:none; }
 button{ font-family: inherit; }
 img, svg, canvas{ max-width: 100%; display:block; }
 
-::selection{ background: var(--nuclear); color:#fff; }
+::selection{ background: var(--nuclear-deep); color:#fff; }
 
 /* ================================================================
    Layout helpers
@@ -113,7 +114,7 @@ img, svg, canvas{ max-width: 100%; display:block; }
   transition: transform .15s, box-shadow .15s, background .15s, border-color .15s;
 }
 .btn-primary{
-  background: linear-gradient(135deg, var(--nuclear), #2a6db0);
+  background: linear-gradient(135deg, var(--nuclear-deep), #2a6db0);
   color: #fff; box-shadow: 0 8px 24px rgba(63,143,214,0.35);
 }
 .btn-primary:hover{ transform: translateY(-2px); box-shadow: 0 12px 32px rgba(63,143,214,0.45); }

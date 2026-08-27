@@ -343,6 +343,104 @@
   </div>
 </section>
 
+<!-- ===== Storage Buffer ===== -->
+<section class="section section-alt" id="storage">
+  <div class="section-inner">
+    <span class="section-tag">Storage Buffer Analysis</span>
+    <h2 class="section-title">هل يوفّر خزان مائي عددًا من الوحدات؟</h2>
+    <p class="section-lead">
+      التصميم الحالي "يلاحق الذروة" (Peak-following) — 10 وحدات مبنية لتغطية أعلى يوم طلب بالسنة لحظيًا.
+      البديل: إنتاج بمعدل ثابت (Load-following) + خزان مائي يمتص فروقات الطلب الموسمية، بدل بناء طاقة
+      إنتاجية تغطي كل ذروة فورًا.
+    </p>
+
+    <div class="card reveal" style="padding:6px; margin-bottom:26px;">
+      <div class="compare-table-wrap">
+        <table class="compare-table">
+          <thead>
+            <tr>
+              <th>حجم الخزان</th>
+              <th>سعة الخزان</th>
+              <th>أقل معدل إنتاج ثابت آمن</th>
+              <th>الوحدات المطلوبة</th>
+              <th>التوفير</th>
+              <th>LCOW</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th>3 أيام</th>
+              <td>3.4 مليون م³</td>
+              <td>1,288,784 م³/يوم (+13.1%)</td>
+              <td>9</td>
+              <td><strong style="color:var(--good)">-1</strong></td>
+              <td><strong style="color:var(--critical)">$5.825</strong></td>
+            </tr>
+            <tr>
+              <th>7 أيام</th>
+              <td>8.0 مليون م³</td>
+              <td>1,245,686 م³/يوم (+9.3%)</td>
+              <td>9</td>
+              <td><strong style="color:var(--good)">-1</strong></td>
+              <td><strong style="color:var(--critical)">$5.682</strong></td>
+            </tr>
+            <tr>
+              <th>14 يومًا</th>
+              <td>16.0 مليون م³</td>
+              <td>1,187,670 م³/يوم (+4.2%)</td>
+              <td>9</td>
+              <td><strong style="color:var(--good)">-1</strong></td>
+              <td>$5.489</td>
+            </tr>
+            <tr>
+              <th>30 يومًا</th>
+              <td>34.2 مليون م³</td>
+              <td>1,139,600 م³/يوم (+0.0%)</td>
+              <td>8</td>
+              <td><strong style="color:var(--good)">-2</strong></td>
+              <td><strong style="color:var(--good)">$5.158</strong></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="why-callout card reveal" style="margin-bottom:26px; border-inline-start: 3px solid var(--critical);">
+      <span class="why-callout-icon">🤔</span>
+      <p>
+        <strong>نتيجة غير بديهية: الخزانات الصغيرة قد تزيد LCOW لا تخفّضه.</strong> خزان 3–14 يومًا يوفّر
+        وحدة واحدة فعلًا (10 ← 9)، لكن LCOW عند 3 و7 أيام أعلى من التصميم الحالي بلا خزان ($5.588)! السبب:
+        هامش الإنتاج الإضافي المطلوب (+13.1% أو +9.3% فوق المتوسط) يعني إنتاج كميات مياه إضافية تُخزَّن أو
+        تُهدَر باستمرار — وتكلفة هذا الإنتاج الزائد تتجاوز توفير الوحدة الواحدة. فقط عند 30 يومًا ينخفض
+        الهامش المطلوب إلى الصفر تقريبًا، فيتحقق توفير حقيقي (وحدتان + LCOW أقل).
+      </p>
+    </div>
+
+    <div class="chart-card card reveal">
+      <div class="chart-head">
+        <h3>مستوى الخزان عبر السنة — أفضل سيناريو (30 يومًا)</h3>
+        <p>يبدأ الخزان نصف ممتلئ؛ لا ينزل تحت الصفر بأي يوم من أيام السنة الكاملة</p>
+      </div>
+      <div class="chart-wrap"><canvas id="storageChart" role="img" aria-label="رسم بياني يوضح مستوى الخزان المائي كنسبة مئوية عبر 365 يومًا لسيناريو خزان 30 يومًا — يبدأ نصف ممتلئ ولا ينزل تحت الصفر بأي يوم"></canvas></div>
+    </div>
+
+    <div class="scope-alert reveal" style="margin-top:26px;">
+      <span class="scope-alert-icon">🚨</span>
+      <div>
+        <h4>تنويه صريح — تكلفة الخزان نفسه غير محسوبة</h4>
+        <p>
+          كل الأرقام أعلاه تقيس <strong>فقط</strong> التغيّر في تكلفة منظومة SMART100 (عدد الوحدات وLCOW
+          الناتج). <strong>لا تشمل إطلاقًا تكلفة إنشاء الخزان المائي نفسه</strong> — وهي عادة إنشاءات
+          مدنية ضخمة. خزان الـ30 يومًا هنا يعني سعة تخزين نحو <strong>34.2 مليون م³</strong> — بحجم بحيرة
+          اصطناعية كبيرة، وليس مجرد صهريج. أي توفير محسوب بجانب المفاعل (2 وحدة، نحو $0.43/م³ تحسّن بـLCOW)
+          يجب مقارنته صراحة بتكلفة إنشاء وصيانة هذا الخزان — وهي تكلفة حقيقية وكبيرة خارج نطاق هذا النموذج،
+          قد تلغي أي توفير محسوب هنا أو تتجاوزه بمراحل.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- ===== Emissions ===== -->
 <section class="section" id="emissions">
   <div class="section-inner">
@@ -411,10 +509,12 @@
       </div>
     </div>
   </div>
-  <div class="footer-bottom">مشروع بحثي · مبني على نموذج محاكاة Python (model.py / simulation.py / comparison.py)</div>
+  <div class="footer-bottom">مشروع بحثي · مبني على نموذج محاكاة Python (<a href="https://github.com/Ahmedhala/smart100-ras-al-khair/tree/master/model" target="_blank" rel="noopener" style="color:inherit; text-decoration:underline;">model.py / simulation.py / comparison.py ↗</a>)</div>
 </footer>
 
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.4/dist/chart.umd.min.js"></script>
 <script src="js/nav.js"></script>
+<script src="js/storage-data.js"></script>
 <script>
 document.addEventListener('DOMContentLoaded', () => {
   initReveal('.reveal');
@@ -429,7 +529,52 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }, { threshold: 0.3 });
   if (bars.length) io.observe(bars[0].closest('.card'));
+
+  buildStorageChart();
 });
+
+function buildStorageChart(){
+  const canvas = document.getElementById('storageChart');
+  if (!canvas || typeof Chart === 'undefined' || typeof STORAGE_DATA === 'undefined') return;
+  const css = getComputedStyle(document.documentElement);
+  const g = (name) => css.getPropertyValue(name).trim();
+  const ink = g('--ink-secondary'), muted = g('--ink-muted'), grid = g('--border'), surface = g('--panel-raised'), water = g('--water');
+
+  const labels = STORAGE_DATA.map(r => r.day);
+  const tankPct = STORAGE_DATA.map(r => r.tank_level_pct);
+
+  new Chart(canvas, {
+    type: 'line',
+    data: {
+      labels,
+      datasets: [{
+        label: 'مستوى الخزان (%)', data: tankPct, borderColor: water,
+        backgroundColor: 'rgba(45,217,195,0.1)', borderWidth: 2, pointRadius: 0,
+        pointHoverRadius: 5, pointHoverBackgroundColor: water, pointHoverBorderColor: surface,
+        pointHoverBorderWidth: 2, fill: true, tension: 0.25,
+      }],
+    },
+    options: {
+      responsive: true, maintainAspectRatio: false,
+      interaction: { mode: 'index', intersect: false },
+      plugins: {
+        legend: { display: false },
+        tooltip: {
+          rtl: true, backgroundColor: surface, titleColor: ink, bodyColor: ink, borderColor: grid, borderWidth: 1, padding: 10,
+          titleFont: { family: 'Tajawal', weight: '700' }, bodyFont: { family: 'Tajawal' },
+          callbacks: {
+            title: (items) => `اليوم ${items[0].label}`,
+            label: (item) => `مستوى الخزان: ${item.formattedValue}%`,
+          },
+        },
+      },
+      scales: {
+        x: { title: { display: true, text: 'اليوم', color: muted, font: { family: 'Tajawal' } }, grid: { display: false }, ticks: { color: muted, maxTicksLimit: 12, font: { family: 'Tajawal' } } },
+        y: { min: 0, max: 100, grid: { color: grid }, ticks: { color: muted, font: { family: 'Tajawal' } }, title: { display: true, text: '% من سعة الخزان', color: muted, font: { family: 'Tajawal' } } },
+      },
+    },
+  });
+}
 </script>
 </body>
 </html>
