@@ -14,6 +14,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="css/design-system.css">
+<link rel="stylesheet" href="css/process.css">
 <link rel="stylesheet" href="css/integration.css">
 </head>
 <body>
@@ -148,6 +149,62 @@
 </header>
 
 <main>
+
+<!-- ===== 3D Digital Twin ===== -->
+<section class="section viewer-section" id="twin-model">
+  <div class="section-inner">
+    <span class="section-tag">Digital Twin — The Full Journey</span>
+    <h2 class="section-title">من المفاعل إلى الماء العذب — النموذج التفاعلي ثلاثي الأبعاد</h2>
+    <p class="section-lead">
+      دوّر النموذج بالسحب، كبّر/صغّر بعجلة الماوس، ثم اضغط <strong style="color:var(--ink)">"تشغيل الرحلة الكاملة"</strong>
+      لمشاهدة رحلة الطاقة والمياه بالترتيب — من مفاعلات SMART100، عبر المسارين الحراري والكهربائي، إلى محطة
+      رأس الخير، ومنها إلى الماء العذب والمحلول الملحي المرفوض. أو اضغط على أي مكوّن مباشرة لعرض تفاصيله.
+    </p>
+
+    <div class="viewer-layout">
+      <div class="viewer-stage card" id="twinViewerStage" role="img" aria-label="نموذج ثلاثي الأبعاد تفاعلي يربط مفاعلات SMART100 بمحطة رأس الخير — وصف نصي كامل لكل مكوّن متاح في قائمة المكوّنات وبطاقات المرجع الكاملة أسفل الصفحة">
+        <div class="viewer-loading" id="twinViewerLoading">
+          <div class="viewer-spinner"></div>
+          <span>يتم تحميل النموذج ثلاثي الأبعاد…</span>
+        </div>
+        <div class="viewer-hint">
+          <span class="viewer-hint-badge">🖱️ اسحب للتدوير · عجلة الماوس للتكبير</span>
+        </div>
+        <div class="viewer-controls">
+          <button class="viewer-btn is-active" id="twinBtnAutoRotate">⏸ إيقاف الدوران التلقائي</button>
+          <button class="viewer-btn is-active" id="twinBtnFlow">⏸ إيقاف حركة التدفق</button>
+          <button class="viewer-btn" id="twinBtnJourney">▶ تشغيل الرحلة الكاملة</button>
+          <button class="viewer-btn" id="twinBtnReset">↺ إعادة ضبط العرض</button>
+        </div>
+      </div>
+
+      <div class="viewer-panel card">
+        <div id="twinPanelEmpty" class="viewer-panel-empty">
+          👆 اضغط على أي مكوّن في النموذج أو من القائمة أدناه لعرض تفاصيله هنا — أو شغّل الرحلة الكاملة.
+        </div>
+        <div id="twinPanelContent" style="display:none;">
+          <h3 class="viewer-panel-title" id="twinPanelTitle"></h3>
+          <span class="viewer-panel-en" id="twinPanelEn"></span>
+          <p class="viewer-panel-desc" id="twinPanelDesc"></p>
+        </div>
+        <div class="viewer-panel-list">
+          <span class="viewer-panel-list-label">جميع المكوّنات (7)</span>
+          <div id="twinComponentButtonList"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== Component reference grid (Digital Twin) ===== -->
+<section class="section section-alt" id="twin-components">
+  <div class="section-inner">
+    <span class="section-tag">System Anatomy</span>
+    <h2 class="section-title">مكوّنات المنظومة الكاملة بالتفصيل</h2>
+    <p class="section-lead">مرجع كامل لكل مكوّن — بنفس بيانات النموذج التفاعلي أعلاه، لسهولة القراءة والمراجعة.</p>
+    <div class="component-grid" id="twinComponentGrid"></div>
+  </div>
+</section>
 
 <!-- ===== System-level diagram ===== -->
 <section class="section" id="system-diagram">
@@ -365,8 +422,12 @@
 </footer>
 
 <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.4/dist/chart.umd.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
 <script src="js/nav.js"></script>
 <script src="js/data.js"></script>
 <script src="js/integration.js"></script>
+<script src="js/digital-twin-data.js"></script>
+<script src="js/digital-twin.js"></script>
 </body>
 </html>

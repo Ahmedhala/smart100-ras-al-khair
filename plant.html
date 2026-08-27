@@ -166,6 +166,57 @@
 
 <main>
 
+<!-- ===== 3D Whole-Plant Model ===== -->
+<section class="section viewer-section" id="plant-model">
+  <div class="section-inner">
+    <span class="section-tag">Explore the Facility</span>
+    <h2 class="section-title">النموذج التفاعلي ثلاثي الأبعاد للمحطة بأكملها</h2>
+    <p class="section-lead">دوّر النموذج بالسحب، كبّر/صغّر بعجلة الماوس، وشغّل حركة التدفق لمشاهدة مسارَي الطاقة (حرارة نحو MSF، كهرباء نحو RO) ومسارات المياه — من المأخذ المشترك إلى خزان الماء المنتَج والتصريف المشترك. اضغط على أي مكوّن لعرض وظيفته.</p>
+
+    <div class="viewer-layout">
+      <div class="viewer-stage card" id="plant3dViewerStage" role="img" aria-label="نموذج ثلاثي الأبعاد تفاعلي لمحطة رأس الخير — وصف نصي كامل لكل مكوّن متاح في قائمة المكوّنات وبطاقات المرجع الكاملة أسفل الصفحة">
+        <div class="viewer-loading" id="plant3dViewerLoading">
+          <div class="viewer-spinner"></div>
+          <span>يتم تحميل النموذج ثلاثي الأبعاد…</span>
+        </div>
+        <div class="viewer-hint">
+          <span class="viewer-hint-badge">🖱️ اسحب للتدوير · عجلة الماوس للتكبير</span>
+        </div>
+        <div class="viewer-controls">
+          <button class="viewer-btn is-active" id="plant3dBtnAutoRotate">⏸ إيقاف الدوران التلقائي</button>
+          <button class="viewer-btn is-active" id="plant3dBtnFlow">⏸ إيقاف حركة التدفق</button>
+          <button class="viewer-btn" id="plant3dBtnReset">↺ إعادة ضبط العرض</button>
+        </div>
+      </div>
+
+      <div class="viewer-panel card">
+        <div id="plant3dPanelEmpty" class="viewer-panel-empty">
+          👆 اضغط على أي مكوّن في النموذج أو من القائمة أدناه لعرض تفاصيله هنا.
+        </div>
+        <div id="plant3dPanelContent" style="display:none;">
+          <h3 class="viewer-panel-title" id="plant3dPanelTitle"></h3>
+          <span class="viewer-panel-en" id="plant3dPanelEn"></span>
+          <p class="viewer-panel-desc" id="plant3dPanelDesc"></p>
+        </div>
+        <div class="viewer-panel-list">
+          <span class="viewer-panel-list-label">جميع المكوّنات (6)</span>
+          <div id="plant3dComponentButtonList"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== Component reference grid (3D model) ===== -->
+<section class="section section-alt" id="plant3d-components">
+  <div class="section-inner">
+    <span class="section-tag">Facility Anatomy</span>
+    <h2 class="section-title">مكوّنات المحطة بالتفصيل</h2>
+    <p class="section-lead">مرجع كامل لكل مكوّن — بنفس بيانات النموذج التفاعلي أعلاه، لسهولة القراءة والمراجعة.</p>
+    <div class="component-grid" id="plant3dComponentGrid"></div>
+  </div>
+</section>
+
 <!-- ===== Interactive water-path diagram ===== -->
 <section class="section viewer-section" id="water-path">
   <div class="section-inner">
@@ -247,9 +298,13 @@
   <div class="footer-bottom">مشروع بحثي · مبني على نموذج محاكاة Python (<a href="https://github.com/Ahmedhala/smart100-ras-al-khair/tree/master/model" target="_blank" rel="noopener" style="color:inherit; text-decoration:underline;">model.py / simulation.py / comparison.py ↗</a>)</div>
 </footer>
 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
 <script src="js/nav.js"></script>
 <script src="js/process-viewer.js"></script>
 <script src="js/plant-data.js"></script>
 <script src="js/plant.js"></script>
+<script src="js/plant-3d-data.js"></script>
+<script src="js/plant-3d.js"></script>
 </body>
 </html>

@@ -28,11 +28,39 @@
   box-shadow: var(--shadow-2);
 }
 .viewer-stage svg{ width:100%; height:auto; display:block; }
+.viewer-stage canvas{ display:block; width:100%; height:100%; }
+.viewer-stage:has(canvas){ aspect-ratio: 4/3.1; padding: 0; }
 .viewer-hint-badge{
   display:inline-block; background: rgba(7,11,17,0.72); backdrop-filter: blur(6px);
   border: 1px solid var(--border-strong); border-radius: 999px;
   padding: 7px 14px; font-size: 0.74rem; color: var(--ink-secondary); margin-bottom: 14px;
 }
+.viewer-hint{
+  position:absolute; top: 14px; right: 14px; left: 14px;
+  display:flex; justify-content:space-between; align-items:flex-start; gap: 10px; pointer-events:none;
+}
+.viewer-hint .viewer-hint-badge{ margin-bottom: 0; pointer-events:none; }
+.viewer-controls{
+  position:absolute; bottom: 14px; right: 14px; left:14px;
+  display:flex; justify-content:space-between; gap: 10px; flex-wrap: wrap;
+}
+.viewer-btn{
+  pointer-events:all; background: rgba(7,11,17,0.72); backdrop-filter: blur(6px);
+  border: 1px solid var(--border-strong); color: var(--ink); font-size: 0.78rem; font-weight:700;
+  padding: 8px 16px; border-radius: 999px; cursor:pointer; transition: background .15s, border-color .15s;
+  display:flex; align-items:center; gap:6px;
+}
+.viewer-btn:hover{ background: rgba(63,143,214,0.2); border-color: var(--nuclear); }
+.viewer-btn.is-active{ background: var(--nuclear-deep); border-color: var(--nuclear-deep); color:#fff; }
+.viewer-loading{
+  position:absolute; inset:0; display:flex; align-items:center; justify-content:center; flex-direction:column; gap: 14px;
+  background: var(--bg-2); color: var(--ink-muted); font-size: 0.85rem; transition: opacity .4s;
+}
+.viewer-spinner{
+  width: 34px; height:34px; border-radius:50%; border: 3px solid var(--border-strong); border-top-color: var(--nuclear);
+  animation: spin 0.9s linear infinite;
+}
+@keyframes spin{ to{ transform: rotate(360deg); } }
 
 .viewer-panel{ padding: 24px; min-height: 340px; display:flex; flex-direction:column; }
 .viewer-panel-empty{ color: var(--ink-muted); font-size: 0.9rem; text-align:center; margin: auto 0; }
@@ -177,6 +205,11 @@
   .metric-grid{ grid-template-columns: 1fr 1fr; }
   .lcow-bar-item{ grid-template-columns: 100px 1fr 70px; gap: 8px; }
   .lcow-bar-name{ font-size: 0.78rem; }
+  .viewer-stage:has(canvas){ aspect-ratio: 4/5.2; }
+  .viewer-hint-badge{ font-size: 0.68rem; padding: 5px 10px; }
+  .viewer-controls{ flex-direction: column; bottom: 10px; right: 10px; left: 10px; }
+  .viewer-btn{ width: 100%; justify-content: center; font-size: 0.74rem; padding: 9px 12px; }
+  .viewer-panel{ padding: 18px; min-height: auto; }
 }
 
 /* ---- timeline / operating-cycle stepper (How It Works) ---- */
