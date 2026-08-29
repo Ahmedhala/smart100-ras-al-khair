@@ -1,5 +1,5 @@
 // ==========================================================================
-// Digital Twin — interactive 3D model (Three.js r128, UMD build)
+// Digital Twin-Inspired Simulation — interactive 3D model (Three.js r128, UMD build)
 // The full system-level journey: SMART100 -> thermal/electric paths ->
 // Ras Al-Khair plant <- seawater -> fresh water + reject brine.
 // Stylized & correctly labeled, not a certified engineering drawing — see

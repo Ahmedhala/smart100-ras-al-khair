@@ -16,6 +16,7 @@
 <link rel="stylesheet" href="css/design-system.css">
 <link rel="stylesheet" href="css/home.css">
 <link rel="stylesheet" href="css/process.css">
+<link rel="stylesheet" href="css/evidence-badges.css">
 </head>
 <body>
 
@@ -43,6 +44,8 @@
         <div class="nav-dropdown">
           <a href="reactor.html">مفاعل SMART100</a>
           <a href="how-it-works.html">كيف يعمل؟</a>
+          <a href="acp100-benchmark.html">ACP100 Benchmark</a>
+          <a href="three-system-comparison.html">المقارنة الثلاثية الكاملة</a>
         </div>
       </div>
       <div class="nav-group">
@@ -92,6 +95,8 @@
     <div class="nav-mobile-sub">
       <a href="reactor.html"><span>⚛️</span> مفاعل SMART100</a>
       <a href="how-it-works.html"><span>⚙️</span> كيف يعمل؟</a>
+      <a href="acp100-benchmark.html"><span>🇨🇳</span> ACP100 Benchmark</a>
+      <a href="three-system-comparison.html"><span>📊</span> المقارنة الثلاثية الكاملة</a>
     </div>
   </div>
   <div class="nav-mobile-group">
@@ -153,26 +158,39 @@
 <!-- ===== Quick facts strip ===== -->
 <section class="section" style="padding-top:0;">
   <div class="section-inner">
+    <div class="ev-legend reveal">
+      <span class="ev-legend-label">دليل تصنيف الأدلة:</span>
+      <span class="ev-legend-item is-official"><span class="ev-legend-dot"></span> Official — مصدر رسمي</span>
+      <span class="ev-legend-item is-peer-reviewed"><span class="ev-legend-dot"></span> Peer Reviewed — بحث محكّم</span>
+      <span class="ev-legend-item is-calculated"><span class="ev-legend-dot"></span> Calculated — محسوب بمعادلات المشروع</span>
+      <span class="ev-legend-item is-estimated"><span class="ev-legend-dot"></span> Estimated — تقدير هندسي</span>
+      <span class="ev-legend-item is-user-input"><span class="ev-legend-dot"></span> User Input — عدّله المستخدم</span>
+    </div>
     <div class="facts-strip">
       <div class="fact-card card reveal">
         <div class="fact-icon">🏭</div>
         <div class="fact-value" data-count="10">10</div>
         <div class="fact-label">وحدة SMART100 مطلوبة</div>
+        <span class="ev-badge ev-calculated" style="margin-top:8px;">🧮 Calculated</span>
       </div>
       <div class="fact-card card reveal">
         <div class="fact-icon">💧</div>
         <div class="fact-value">$5.40–5.82</div>
         <div class="fact-label">نطاق LCOW حسب السيناريو ($/م³)</div>
+        <span class="ev-badge ev-calculated" style="margin-top:8px;">🧮 Calculated</span>
       </div>
       <div class="fact-card card reveal">
         <div class="fact-icon">🌍</div>
         <div class="fact-value" data-count="8.27" data-decimals="2">8.27</div>
         <div class="fact-label">مليون طن CO₂ توفير سنوي</div>
+        <span class="ev-badge ev-calculated" style="margin-top:8px;">🧮 Calculated</span>
+        <a href="integration.html#results" style="display:block; font-size:0.72rem; color:var(--ink-muted); margin-top:8px;">هذا رقم المحاكاة السنوية المعتمد — محرك الكربون التفاعلي بصفحة التكامل يعطي ≈8.7M بمنهجية مختلفة، <span style="color:var(--nuclear-glow);">اعرف السبب ↗</span></a>
       </div>
       <div class="fact-card card reveal">
         <div class="fact-icon">📅</div>
         <div class="fact-value" data-count="100" data-decimals="0">100</div>
         <div class="fact-label">% تغطية كامل أيام السنة</div>
+        <span class="ev-badge ev-calculated" style="margin-top:8px;">🧮 Calculated</span>
       </div>
     </div>
 
@@ -216,7 +234,8 @@
         </div>
         <p>
           السعودية من أكثر دول العالم اعتمادًا على تحلية المياه، وهي عملية كثيفة الاستهلاك للطاقة.
-          الاعتماد شبه الكامل على الغاز الطبيعي لتشغيل محطات ضخمة كرأس الخير (1,036,000 م³/يوم)
+          الاعتماد شبه الكامل على الغاز الطبيعي لتشغيل محطات ضخمة كرأس الخير (1,036,000 م³/يوم
+          <span class="ev-badge ev-official">✓ Official</span>)
           يعني انبعاثات كربونية هائلة، وتعرّضًا لتقلبات الوقود، واستهلاكًا محليًا لموارد كان يمكن تصديرها.
         </p>
       </div>
@@ -229,7 +248,7 @@
         </div>
         <p>
           استبدال مصدر الحرارة والكهرباء لمحطة رأس الخير بمنظومة من عشر وحدات SMART100
-          (100 MWe / 330 MWth لكل وحدة)، بحيث توفر المفاعلات البخار لوحدات MSF الحرارية
+          (100 MWe / 330 MWth لكل وحدة <span class="ev-badge ev-official">✓ Official</span>)، بحيث توفر المفاعلات البخار لوحدات MSF الحرارية
           والكهرباء لمضخات RO — دون المساس بوحدات التحلية القائمة، بل فقط بمصدر طاقتها.
         </p>
       </div>

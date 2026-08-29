@@ -15,6 +15,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="css/design-system.css">
 <link rel="stylesheet" href="css/process.css">
+<link rel="stylesheet" href="css/evidence-badges.css">
 <link rel="stylesheet" href="css/dashboard.css">
 </head>
 <body>
@@ -43,6 +44,8 @@
         <div class="nav-dropdown">
           <a href="reactor.html">مفاعل SMART100</a>
           <a href="how-it-works.html">كيف يعمل؟</a>
+          <a href="acp100-benchmark.html">ACP100 Benchmark</a>
+          <a href="three-system-comparison.html">المقارنة الثلاثية الكاملة</a>
         </div>
       </div>
       <div class="nav-group">
@@ -92,6 +95,8 @@
     <div class="nav-mobile-sub">
       <a href="reactor.html"><span>⚛️</span> مفاعل SMART100</a>
       <a href="how-it-works.html"><span>⚙️</span> كيف يعمل؟</a>
+      <a href="acp100-benchmark.html"><span>🇨🇳</span> ACP100 Benchmark</a>
+      <a href="three-system-comparison.html"><span>📊</span> المقارنة الثلاثية الكاملة</a>
     </div>
   </div>
   <div class="nav-mobile-group">
@@ -138,8 +143,155 @@
 
 <main>
 
+<!-- ===== Neutral research question ===== -->
+<section class="section" style="padding-top:28px; padding-bottom:0;">
+  <div class="section-inner">
+    <div class="dash-question-banner card reveal">
+      <p class="dq-en">"Can an SMR-integrated desalination system provide reliable water production with lower energy consumption and carbon emissions than conventional desalination pathways?"</p>
+      <p class="dq-ar">هل يمكن لمنظومة تحلية مدعومة بمفاعل SMR أن توفّر إنتاجًا مائيًا موثوقًا باستهلاك طاقة وانبعاثات كربونية أقل من مسارات التحلية التقليدية؟</p>
+      <p class="dq-note">The answer is calculated from the selected scenario and assumptions — not predetermined.<br>الجواب محسوب من السيناريو والافتراضات المختارة — وليس محدَّدًا سلفًا.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ===== Run Scenario builder ===== -->
+<section class="section section-alt" id="run-scenario">
+  <div class="section-inner">
+    <span class="section-tag">Get Your Own Answer</span>
+    <h2 class="section-title">شغّل سيناريوك الخاص</h2>
+    <p class="section-lead">اختر مفاعلًا وتقنية تحلية، ثم اضغط "تشغيل" — النتائج محسوبة حيًّا بنفس معادلات هذا المشروع، لا مخزَّنة مسبقًا.</p>
+
+    <div class="calc-card card reveal">
+      <div class="calc-inputs">
+        <div class="calc-field">
+          <label for="rsReactor">المفاعل</label>
+          <select id="rsReactor">
+            <option value="smart100">SMART100 (100 MWe / 330 MWth)</option>
+            <option value="acp100">ACP100 (125 MWe / 385 MWth)</option>
+            <option value="our-system">نظامنا المقترح</option>
+          </select>
+        </div>
+        <div class="calc-field">
+          <label for="rsTech">تقنية التحلية</label>
+          <select id="rsTech">
+            <option value="hybrid">Hybrid (70.2% MSF / 29.8% RO)</option>
+            <option value="ro">RO — تناضح عكسي بالكامل</option>
+            <option value="msf">MSF — تقطير ومضي بالكامل</option>
+            <option value="med">MED — تقطير متعدد التأثير</option>
+          </select>
+        </div>
+        <button class="btn btn-primary" id="rsRun" type="button">▶ تشغيل السيناريو</button>
+        <p class="calc-hint" id="rsPending" style="display:none;"></p>
+      </div>
+
+      <div id="rsResults" class="calc-inputs" style="display:none;">
+        <div class="dash-run-outputs">
+          <div class="dash-run-output"><span class="dash-run-output-value" id="rsOutWater">–</span><span class="dash-run-output-label">Water Production (م³/يوم)</span></div>
+          <div class="dash-run-output"><span class="dash-run-output-value" id="rsOutEnergy">–</span><span class="dash-run-output-label">Energy Consumption (kWh-eq/م³)</span></div>
+          <div class="dash-run-output"><span class="dash-run-output-value" id="rsOutCo2Emit">–</span><span class="dash-run-output-label">CO₂ Emissions (ألف طن/سنة)</span></div>
+          <div class="dash-run-output"><span class="dash-run-output-value" id="rsOutCo2Avoid">–</span><span class="dash-run-output-label">CO₂ Avoided (مليون طن/سنة)</span></div>
+          <div class="dash-run-output"><span class="dash-run-output-value" id="rsOutCost">–</span><span class="dash-run-output-label">Cost — LCOW ($/م³)</span></div>
+          <div class="dash-run-output"><span class="dash-run-output-value" id="rsOutEfficiency">–</span><span class="dash-run-output-label">Efficiency (%)</span></div>
+          <div class="dash-run-output"><span class="dash-run-output-value" id="rsOutUtilization">–</span><span class="dash-run-output-label">Reactor Utilization (%)</span></div>
+          <div class="dash-run-output"><span class="dash-run-output-value" id="rsOutUnits">–</span><span class="dash-run-output-label">عدد الوحدات المطلوبة</span></div>
+        </div>
+        <p class="calc-hint" id="rsUtilNote" style="margin-top:4px;"></p>
+
+        <div style="margin-top:16px;">
+          <span class="dash-mode-metric-label" style="display:block; margin-bottom:8px;">Scenario Ranking (LCOW)</span>
+          <div class="dash-run-rank" id="rsRanking"></div>
+        </div>
+
+        <div class="dash-run-links">
+          <button class="btn btn-ghost dash-run-toggle" type="button" data-target="rsAssumptionsWrap">📋 View Assumptions</button>
+          <button class="btn btn-ghost dash-run-toggle" type="button" data-target="rsSourcesWrap">🔗 View Sources</button>
+        </div>
+        <div class="dash-run-detail" id="rsAssumptionsWrap"><div id="rsAssumptions"></div></div>
+        <div class="dash-run-detail" id="rsSourcesWrap"><div id="rsSources"></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== Dashboard Modes ===== -->
+<section class="section" id="modes">
+  <div class="section-inner">
+    <span class="section-tag">Three Ways to Read This Project</span>
+    <h2 class="section-title">أوضاع العرض</h2>
+    <p class="section-lead">نفس البيانات المعتمدة بالموقع، منظَّمة حسب من يقرأها — بدون أي رقم جديد لم يُذكر بصفحة أخرى.</p>
+
+    <div class="dash-mode-tabs" id="modeTabs">
+      <button class="dash-mode-tab is-active" data-mode="engineering">⚙️ Engineering Mode</button>
+      <button class="dash-mode-tab" data-mode="decision">📋 Decision Maker Mode</button>
+      <button class="dash-mode-tab" data-mode="research">🔬 Research Mode</button>
+    </div>
+
+    <div class="dash-mode-panel is-active" data-panel="engineering">
+      <div class="dash-mode-grid">
+        <div class="dash-mode-metric card reveal"><span class="dash-mode-metric-value">100 MWe</span><span class="dash-mode-metric-label">Reactor Power (لكل وحدة)</span><span class="ev-badge ev-official" style="margin-top:8px;">✓ Official</span></div>
+        <div class="dash-mode-metric card reveal"><span class="dash-mode-metric-value">330 MWth</span><span class="dash-mode-metric-label">Thermal Power (لكل وحدة)</span><span class="ev-badge ev-official" style="margin-top:8px;">✓ Official</span></div>
+        <div class="dash-mode-metric card reveal"><span class="dash-mode-metric-value">142.4 MWe</span><span class="dash-mode-metric-label">Electrical Load (سيناريو عادي)</span><span class="ev-badge ev-calculated" style="margin-top:8px;">🧮 Calculated</span></div>
+        <div class="dash-mode-metric card reveal"><span class="dash-mode-metric-value">≈842 kg/s</span><span class="dash-mode-metric-label">Steam Flow (MSF، سيناريو عادي)</span><span class="ev-badge ev-calculated" style="margin-top:8px;">🧮 Calculated</span></div>
+        <div class="dash-mode-metric card reveal"><span class="dash-mode-metric-value">غير منشور</span><span class="dash-mode-metric-label">Reactor Outlet Temperature</span><span class="badge badge-muted" style="margin-top:8px;">لا مصدر رسمي لـSMART100</span></div>
+        <div class="dash-mode-metric card reveal"><span class="dash-mode-metric-value">غير منشور</span><span class="dash-mode-metric-label">Primary Pressure</span><span class="badge badge-muted" style="margin-top:8px;">لا مصدر رسمي لـSMART100</span></div>
+        <div class="dash-mode-metric card reveal"><span class="dash-mode-metric-value">1,036,000 م³/يوم</span><span class="dash-mode-metric-label">Water Flow (إنتاج)</span><span class="ev-badge ev-official" style="margin-top:8px;">✓ Official</span></div>
+        <div class="dash-mode-metric card reveal"><span class="dash-mode-metric-value">47.95 kWh-eq/م³</span><span class="dash-mode-metric-label">Energy Consumption (نوعي مدمج)</span><span class="ev-badge ev-calculated" style="margin-top:8px;">🧮 Calculated</span></div>
+      </div>
+      <p class="calc-hint" style="margin-top:14px;">درجة الحرارة والضغط منشوران رسميًا لمرجع ACP100 فقط (319.5°C / 15 MPa) — راجع <a href="acp100-benchmark.html" style="color:var(--nuclear-glow);">صفحة ACP100 Benchmark</a>؛ لا يوجد مصدر رسمي مكافئ لـSMART100 عُثر عليه.</p>
+    </div>
+
+    <div class="dash-mode-panel" data-panel="decision">
+      <div class="dash-mode-grid">
+        <div class="dash-mode-metric card reveal"><span class="dash-mode-metric-value">1,036,000</span><span class="dash-mode-metric-label">Water Production (م³/يوم)</span><span class="ev-badge ev-official" style="margin-top:8px;">✓ Official</span></div>
+        <div class="dash-mode-metric card reveal"><span class="dash-mode-metric-value">$5.588</span><span class="dash-mode-metric-label">Cost — LCOW ($/م³، متوسط سنوي)</span><span class="ev-badge ev-calculated" style="margin-top:8px;">🧮 Calculated</span></div>
+        <div class="dash-mode-metric card reveal"><span class="dash-mode-metric-value">8.27M</span><span class="dash-mode-metric-label">CO₂ Avoided (طن/سنة)</span><span class="ev-badge ev-calculated" style="margin-top:8px;">🧮 Calculated</span></div>
+        <div class="dash-mode-metric card reveal"><span class="dash-mode-metric-value">مشروط</span><span class="dash-mode-metric-label">Reliability (N-1، بالجدولة الذكية)</span><span class="ev-badge ev-calculated" style="margin-top:8px;">🧮 Calculated</span></div>
+        <div class="dash-mode-metric card reveal"><span class="dash-mode-metric-value">47.95 kWh-eq/م³</span><span class="dash-mode-metric-label">Energy Consumption (نوعي مدمج)</span><span class="ev-badge ev-calculated" style="margin-top:8px;">🧮 Calculated</span></div>
+        <div class="dash-mode-metric card reveal is-wide" style="grid-column:1/-1; text-align:right;">
+          <span class="dash-mode-metric-label" style="display:block; margin-bottom:10px;">Scenario Ranking (LCOW، من الأرخص للأغلى) <span class="ev-badge ev-calculated">🧮 Calculated</span></span>
+          <div class="dash-run-rank">
+            <div class="dash-run-rank-row"><span>1. طلب مرتفع (مياه)</span><strong style="color:var(--good)">$5.40</strong></div>
+            <div class="dash-run-rank-row"><span>2. ذروة الطلب</span><strong>$5.46</strong></div>
+            <div class="dash-run-rank-row"><span>3. عادي</span><strong>$5.67</strong></div>
+            <div class="dash-run-rank-row"><span>4. طلب مرتفع (كهرباء)</span><strong style="color:var(--critical)">$5.82</strong></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="dash-mode-panel" data-panel="research">
+      <div class="dash-mode-grid" style="grid-template-columns: repeat(2,1fr);">
+        <div class="dash-research-item card reveal">
+          <h4>📋 Assumptions <span class="ev-badge ev-estimated">≈ Estimated</span></h4>
+          <p>معامل القدرة 92%، دورة تزوّد وقود ≈36 شهرًا، مدة صيانة 30–45 يومًا — كلها افتراضات هندسية موثَّقة صراحة، لا أرقام رسمية.</p>
+        </div>
+        <div class="dash-research-item card reveal">
+          <h4>📐 Equations <span class="ev-badge ev-calculated">🧮 Calculated</span></h4>
+          <p>GOR، LCOW، CRF — كل المعادلات الكاملة في <a href="https://github.com/Ahmedhala/smart100-ras-al-khair/tree/master/model" target="_blank" rel="noopener" style="color:var(--nuclear-glow);">model.py على GitHub ↗</a>.</p>
+        </div>
+        <div class="dash-research-item card reveal">
+          <h4>📥 Input Data <span class="ev-badge ev-official">✓ Official</span></h4>
+          <p>100 MWe/330 MWth (KAERI)، 1,036,000 م³/يوم (SWCC) — راجع <a href="references.html" style="color:var(--nuclear-glow);">صفحة المراجع</a>.</p>
+        </div>
+        <div class="dash-research-item card reveal">
+          <h4>🔗 Source <span class="ev-badge ev-official">✓ Official</span></h4>
+          <p>كل مصدر مرتبط مباشرة بشارة Evidence Badge أينما ظهر رقم بالموقع — <a href="references.html" style="color:var(--nuclear-glow);">قائمة كاملة ↗</a>.</p>
+        </div>
+        <div class="dash-research-item card reveal">
+          <h4>🎲 Uncertainty <span class="ev-badge ev-calculated">🧮 Calculated</span></h4>
+          <p>تحليل Monte Carlo (1000 عينة) لـLCOW وCO₂ المتجنَّب — <a href="scenarios.html#uncertainty" style="color:var(--nuclear-glow);">القسم الكامل ↗</a>.</p>
+        </div>
+        <div class="dash-research-item card reveal">
+          <h4>📊 Sensitivity Analysis <span class="ev-badge ev-calculated">🧮 Calculated</span></h4>
+          <p>Tornado Chart لثمانية متغيرات مؤثرة على LCOW — <a href="scenarios.html#tornado" style="color:var(--nuclear-glow);">القسم الكامل ↗</a>.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- ===== KPI strip ===== -->
-<section class="section" id="kpis" style="padding-top:0;">
+<section class="section section-alt" id="kpis" style="padding-top:0;">
   <div class="section-inner">
     <span class="section-tag">Key Indicators</span>
     <h2 class="section-title">المؤشرات الرئيسية</h2>
@@ -174,7 +326,7 @@
 </section>
 
 <!-- ===== Production / energy split ===== -->
-<section class="section section-alt" id="split">
+<section class="section" id="split">
   <div class="section-inner">
     <span class="section-tag">Where the Energy & Water Go</span>
     <h2 class="section-title">توزيع الطاقة والإنتاج</h2>
@@ -195,7 +347,7 @@
 </section>
 
 <!-- ===== N-1 reliability status ===== -->
-<section class="section" id="reliability">
+<section class="section section-alt" id="reliability">
   <div class="section-inner">
     <span class="section-tag">Reliability — N-1</span>
     <h2 class="section-title">هل النظام آمن أثناء صيانة وحدة واحدة؟</h2>
@@ -221,7 +373,7 @@
 </section>
 
 <!-- ===== Control-room quick access ===== -->
-<section class="section section-alt" id="quick-access">
+<section class="section" id="quick-access">
   <div class="section-inner">
     <span class="section-tag">Explore Further</span>
     <h2 class="section-title">وصول سريع</h2>
@@ -254,7 +406,7 @@
       </a>
       <a href="integration.html#twin-model" class="dash-nav-tile card reveal">
         <span class="dash-nav-tile-icon">🔗</span>
-        <h4>التكامل (Digital Twin)</h4>
+        <h4>التكامل (Digital Twin-Inspired Simulation)</h4>
         <span>الرحلة الكاملة من المفاعل إلى الماء العذب</span>
         <span class="dash-nav-arrow">افتح ←</span>
       </a>
@@ -281,7 +433,7 @@
 </section>
 
 <!-- ===== Scope note ===== -->
-<section class="section">
+<section class="section section-alt">
   <div class="section-inner">
     <div class="why-callout card reveal" style="border-inline-start: 3px solid var(--nuclear);">
       <span class="why-callout-icon">🔬</span>
@@ -325,10 +477,23 @@
 </footer>
 
 <script src="js/nav.js"></script>
+<script src="js/sensitivity-engine.js"></script>
+<script src="js/run-scenario.js"></script>
 <script>
 document.addEventListener('DOMContentLoaded', () => {
   initReveal('.reveal');
   initCounters('.spec-value[data-count]');
+  initRunScenario();
+
+  document.querySelectorAll('.dash-mode-tab').forEach(tab => {
+    tab.addEventListener('click', () => {
+      document.querySelectorAll('.dash-mode-tab').forEach(t => t.classList.remove('is-active'));
+      document.querySelectorAll('.dash-mode-panel').forEach(p => p.classList.remove('is-active'));
+      tab.classList.add('is-active');
+      const panel = document.querySelector(`.dash-mode-panel[data-panel="${tab.dataset.mode}"]`);
+      if (panel) panel.classList.add('is-active');
+    });
+  });
 });
 </script>
 </body>

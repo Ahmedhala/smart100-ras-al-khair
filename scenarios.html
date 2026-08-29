@@ -15,6 +15,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="css/design-system.css">
 <link rel="stylesheet" href="css/process.css">
+<link rel="stylesheet" href="css/evidence-badges.css">
 </head>
 <body>
 
@@ -42,6 +43,8 @@
         <div class="nav-dropdown">
           <a href="reactor.html">مفاعل SMART100</a>
           <a href="how-it-works.html">كيف يعمل؟</a>
+          <a href="acp100-benchmark.html">ACP100 Benchmark</a>
+          <a href="three-system-comparison.html">المقارنة الثلاثية الكاملة</a>
         </div>
       </div>
       <div class="nav-group">
@@ -91,6 +94,8 @@
     <div class="nav-mobile-sub">
       <a href="reactor.html"><span>⚛️</span> مفاعل SMART100</a>
       <a href="how-it-works.html"><span>⚙️</span> كيف يعمل؟</a>
+      <a href="acp100-benchmark.html"><span>🇨🇳</span> ACP100 Benchmark</a>
+      <a href="three-system-comparison.html"><span>📊</span> المقارنة الثلاثية الكاملة</a>
     </div>
   </div>
   <div class="nav-mobile-group">
@@ -138,6 +143,16 @@
   <div class="section-inner">
     <span class="section-tag">All Four Scenarios</span>
     <h2 class="section-title">مقارنة تفصيلية</h2>
+
+    <div class="ev-legend reveal">
+      <span class="ev-legend-label">دليل تصنيف الأدلة:</span>
+      <span class="ev-legend-item is-official"><span class="ev-legend-dot"></span> Official — مصدر رسمي</span>
+      <span class="ev-legend-item is-peer-reviewed"><span class="ev-legend-dot"></span> Peer Reviewed — بحث محكّم</span>
+      <span class="ev-legend-item is-calculated"><span class="ev-legend-dot"></span> Calculated — محسوب بمعادلات المشروع</span>
+      <span class="ev-legend-item is-estimated"><span class="ev-legend-dot"></span> Estimated — تقدير هندسي</span>
+      <span class="ev-legend-item is-user-input"><span class="ev-legend-dot"></span> User Input — عدّله المستخدم</span>
+    </div>
+    <p class="calc-hint" style="margin-bottom:16px;">كل أرقام الجدول التالي <span class="ev-badge ev-calculated">🧮 Calculated</span> — مخرجات مباشرة من <code>model.py</code> (دالة <code>calculate_scenario</code>).</p>
 
     <div class="card reveal" style="padding:6px;">
       <div class="compare-table-wrap">
@@ -266,6 +281,7 @@
     </div>
 
     <h3 style="margin: 34px 0 16px; font-size:1.1rem;">النسبة المثلى مقابل النسبة الفعلية — لكل سيناريو</h3>
+    <p class="calc-hint" style="margin-bottom:12px;">كل أرقام الجدول والرسم البياني التاليين <span class="ev-badge ev-calculated">🧮 Calculated</span> — من <code>calculate_optimal_ratio()</code> بملف <code>model.py</code>.</p>
     <div class="card reveal" style="padding:6px;">
       <div class="compare-table-wrap">
         <table class="compare-table">
@@ -365,6 +381,7 @@
     </div>
 
     <h3 style="margin: 34px 0 16px; font-size:1.1rem;">مقارنة: التصميم المتوازي مقابل السيناريو التسلسلي</h3>
+    <p class="calc-hint" style="margin-bottom:12px;">كل أرقام الجدول التالي <span class="ev-badge ev-calculated">🧮 Calculated</span> — مبنية على افتراض نسبة الطاقة-إلى-الماء <span class="ev-badge ev-estimated">≈ Estimated</span> الموضَّح أسفل الجدول.</p>
     <div class="card reveal" style="padding:6px;">
       <div class="compare-table-wrap">
         <table class="compare-table">
@@ -440,8 +457,8 @@
     <div class="why-callout card reveal" style="margin-top:22px; border-inline-start: 3px solid var(--nuclear);">
       <span class="why-callout-icon">📋</span>
       <p>
-        <strong>حول افتراض نسبة الطاقة-إلى-الماء:</strong> النموذج يعتمد 12 MW/MIGD كتقدير هندسي تقريبي
-        من داخل النطاق الموثق أكاديميًا (10.2–17.5 MW/MIGD لتوربينات الاستخراج التكثيفية القديمة قبل
+        <strong>حول افتراض نسبة الطاقة-إلى-الماء:</strong> النموذج يعتمد 12 MW/MIGD <span class="ev-badge ev-estimated">≈ Estimated</span> كتقدير هندسي تقريبي
+        من داخل النطاق الموثق أكاديميًا (10.2–17.5 MW/MIGD <span class="ev-badge ev-peer-reviewed">📄 Peer Reviewed — Al-Mutaz 2004</span> لتوربينات الاستخراج التكثيفية القديمة قبل
         1982) — <strong>وليس رقمًا رسميًا محددًا لمحطة رأس الخير</strong>. توربينات الضغط الخلفي الفعلية
         (المستخدمة حاليًا) تعطي نسبة أقل من هذا النطاق. تحليل الحساسية على الطرفين (10.2 و17.5) يُبقي
         النتيجة الجوهرية ثابتة: فائض كهربائي كبير دائمًا، بين 1,489 و2,657 MWe عند سيناريو الطلب العادي.
@@ -451,9 +468,74 @@
     <div class="ref-item card reveal" style="margin-top:22px;">
       <span class="ref-num">📚</span>
       <div>
-        <h4>Al-Mutaz, I.S.</h4>
+        <h4>Al-Mutaz, I.S. <span class="ev-badge ev-peer-reviewed">📄 Peer Reviewed</span></h4>
         <span class="ref-meta">"Characteristics of dual purpose MSF desalination plants" · جامعة الملك سعود</span>
         <p>المصدر العلمي لنطاق نسبة الطاقة-إلى-الماء الموثق لتوربينات محطات MSF السعودية المزدوجة الغرض، المستخدم في بناء هذا السيناريو.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== Tornado sensitivity analysis ===== -->
+<section class="section section-alt" id="tornado">
+  <div class="section-inner">
+    <span class="section-tag">Sensitivity Analysis</span>
+    <h2 class="section-title">تحليل الحساسية — Tornado Chart</h2>
+    <p class="section-lead">
+      تأثير ثمانية متغيرات على LCOW (سيناريو عادي، 10 وحدات) — كل متغير يتغيّر بمفرده ضمن نطاق واقعي بينما
+      يبقى الباقي ثابتًا عند قيمته الأساسية، بنفس منطق تحليل الـ169 توليفة في <code>model.py</code>.
+      المتغيرات مرتَّبة من الأكبر تأثيرًا للأصغر. كل نتيجة <span class="ev-badge ev-calculated">🧮 Calculated</span>.
+    </p>
+
+    <div class="chart-card card reveal">
+      <div class="chart-head">
+        <h3>تأثير كل متغير على LCOW ($/م³)</h3>
+        <p>الخط الرأسي المتقطع = القيمة الأساسية (Baseline) <span id="tornadoBaselineLabel">$5.67</span></p>
+      </div>
+      <div class="chart-wrap" style="height:420px;"><canvas id="tornadoChart" role="img" aria-label="رسم Tornado يوضح تأثير ثمانية متغيرات على تكلفة المياه المكافئة، مرتبة من الأكبر تأثيرًا للأصغر"></canvas></div>
+    </div>
+
+    <div class="card reveal" style="padding:6px; margin-top:20px;">
+      <div class="compare-table-wrap">
+        <table class="compare-table">
+          <thead><tr><th>المتغير</th><th>النطاق المختبَر</th><th>LCOW عند الحد الأدنى</th><th>LCOW عند الحد الأعلى</th><th>الأثر</th></tr></thead>
+          <tbody id="tornadoTableBody"></tbody>
+        </table>
+      </div>
+    </div>
+    <p class="calc-hint" style="margin-top:14px;">سعر الكربون التوضيحي (10–50 $/طن) <span class="ev-badge ev-estimated">≈ Estimated</span> — قيمة سياسية توضيحية غير مرتبطة بأي تسعير رسمي سعودي أو دولي محدَّد؛ يُطبَّق على LCOW معدَّل (مخصومًا منه قيمة الكربون المتجنَّب) لأغراض المقارنة فقط.</p>
+  </div>
+</section>
+
+<!-- ===== Monte Carlo uncertainty analysis ===== -->
+<section class="section" id="uncertainty">
+  <div class="section-inner">
+    <span class="section-tag">Uncertainty Analysis</span>
+    <h2 class="section-title">تحليل عدم اليقين — Monte Carlo</h2>
+    <p class="section-lead">
+      محاكاة Monte Carlo فعلية (1000 عينة، تُنفَّذ في متصفحك مباشرة) على خمسة متغيرات غير مؤكدة معًا
+      (RO energy، الطلب على المياه، معامل القدرة، سعر الطاقة النووية، كثافة انبعاث الغاز) — بانحراف معياري
+      10% حول كل قيمة مركزية <span class="ev-badge ev-estimated">≈ Estimated — افتراض هندسي، لا إحصاء مُقاس</span>.
+    </p>
+
+    <div class="card reveal" style="padding:26px 28px;">
+      <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:12px; margin-bottom:20px;">
+        <h3 style="font-size:1.02rem;">نتائج المحاكاة (P10 / P50 / P90)</h3>
+        <button class="btn btn-ghost" id="mcRerun" type="button">🎲 إعادة تشغيل المحاكاة (عيّنة جديدة)</button>
+      </div>
+
+      <h4 style="font-size:0.88rem; color:var(--ink-muted); margin-bottom:10px;">LCOW ($/م³) <span class="ev-badge ev-calculated">🧮 Calculated</span></h4>
+      <div class="calc-results" style="margin-bottom:26px;">
+        <div class="calc-result-card"><span class="calc-result-value" id="mcLcowP10">–</span><span class="calc-result-label">P10 (متفائل)</span></div>
+        <div class="calc-result-card"><span class="calc-result-value" id="mcLcowP50">–</span><span class="calc-result-label">P50 (الوسيط)</span></div>
+        <div class="calc-result-card"><span class="calc-result-value" id="mcLcowP90">–</span><span class="calc-result-label">P90 (متحفظ)</span></div>
+      </div>
+
+      <h4 style="font-size:0.88rem; color:var(--ink-muted); margin-bottom:10px;">CO₂ المتجنَّب (مليون طن/سنة) <span class="ev-badge ev-calculated">🧮 Calculated</span></h4>
+      <div class="calc-results">
+        <div class="calc-result-card"><span class="calc-result-value" id="mcCo2P10">–</span><span class="calc-result-label">P10 (متحفظ)</span></div>
+        <div class="calc-result-card"><span class="calc-result-value" id="mcCo2P50">–</span><span class="calc-result-label">P50 (الوسيط)</span></div>
+        <div class="calc-result-card"><span class="calc-result-value" id="mcCo2P90">–</span><span class="calc-result-label">P90 (متفائل)</span></div>
       </div>
     </div>
   </div>
@@ -501,12 +583,94 @@
 <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.4/dist/chart.umd.min.js"></script>
 <script src="js/nav.js"></script>
 <script src="js/optimal-ratio-data.js"></script>
+<script src="js/sensitivity-engine.js"></script>
 <script>
 document.addEventListener('DOMContentLoaded', () => {
   initReveal('.reveal');
   buildCascadeDiagram();
   buildOptimalRatioChart();
+  buildTornadoChart();
+  initMonteCarlo();
 });
+
+function fmtUsd(n){ return '$' + n.toFixed(3); }
+
+function buildTornadoChart(){
+  const canvas = document.getElementById('tornadoChart');
+  if (!canvas || typeof Chart === 'undefined' || typeof runTornado === 'undefined') return;
+  const { baselineLcow, results } = runTornado();
+  document.getElementById('tornadoBaselineLabel').textContent = fmtUsd(baselineLcow);
+
+  const tbody = document.getElementById('tornadoTableBody');
+  if (tbody){
+    tbody.innerHTML = results.map(r => `
+      <tr>
+        <th>${r.label}</th>
+        <td>${typeof r.low === 'number' && r.low > 1000 ? r.low.toLocaleString('en-US') : r.low} — ${typeof r.high === 'number' && r.high > 1000 ? r.high.toLocaleString('en-US') : r.high}</td>
+        <td>${fmtUsd(r.lcowLow)}</td>
+        <td>${fmtUsd(r.lcowHigh)}</td>
+        <td><strong>${fmtUsd(r.impact)}</strong></td>
+      </tr>`).join('');
+  }
+
+  const css = getComputedStyle(document.documentElement);
+  const g = (name) => css.getPropertyValue(name).trim();
+  const ink = g('--ink-secondary'), muted = g('--ink-muted'), grid = g('--border'), surface = g('--panel-raised');
+  const thermal = g('--thermal'), electric = g('--electric');
+
+  new Chart(canvas, {
+    type: 'bar',
+    data: {
+      labels: results.map(r => r.label),
+      datasets: [{
+        label: 'نطاق LCOW ($/م³)',
+        data: results.map(r => [Math.min(r.lcowLow, r.lcowHigh), Math.max(r.lcowLow, r.lcowHigh)]),
+        backgroundColor: results.map(r => r.lcowHigh >= r.lcowLow ? hexA(thermal, 0.65) : hexA(electric, 0.65)),
+        borderColor: results.map(r => r.lcowHigh >= r.lcowLow ? thermal : electric),
+        borderWidth: 1.5, borderRadius: 4,
+      }],
+    },
+    options: {
+      indexAxis: 'y', responsive: true, maintainAspectRatio: false,
+      plugins: {
+        legend: { display: false },
+        tooltip: {
+          rtl: true, backgroundColor: surface, titleColor: ink, bodyColor: ink, borderColor: grid, borderWidth: 1, padding: 10,
+          titleFont: { family: 'Tajawal', weight: '700' }, bodyFont: { family: 'Tajawal' },
+          callbacks: { label: (item) => `${fmtUsd(item.raw[0])} — ${fmtUsd(item.raw[1])}` },
+        },
+      },
+      scales: {
+        x: { grid: { color: grid }, ticks: { color: muted, font: { family: 'Tajawal' }, callback: (v) => '$' + v }, title: { display: true, text: 'LCOW ($/م³)', color: muted, font: { family: 'Tajawal' } } },
+        y: { grid: { display: false }, ticks: { color: ink, font: { family: 'Tajawal', size: 11 } } },
+      },
+    },
+  });
+
+  function hexA(hex, alpha){
+    const h = hex.replace('#','');
+    const n = parseInt(h.length===3 ? h.split('').map(x=>x+x).join('') : h, 16);
+    return `rgba(${(n>>16)&255},${(n>>8)&255},${n&255},${alpha})`;
+  }
+}
+
+function initMonteCarlo(){
+  const btn = document.getElementById('mcRerun');
+  if (!btn || typeof runMonteCarlo === 'undefined') return;
+
+  function run(){
+    const { lcow, co2 } = runMonteCarlo(1000, 0.10);
+    document.getElementById('mcLcowP10').textContent = fmtUsd(lcow.p10);
+    document.getElementById('mcLcowP50').textContent = fmtUsd(lcow.p50);
+    document.getElementById('mcLcowP90').textContent = fmtUsd(lcow.p90);
+    document.getElementById('mcCo2P10').textContent = co2.p10.toFixed(2);
+    document.getElementById('mcCo2P50').textContent = co2.p50.toFixed(2);
+    document.getElementById('mcCo2P90').textContent = co2.p90.toFixed(2);
+  }
+
+  btn.addEventListener('click', run);
+  run();
+}
 
 function buildOptimalRatioChart(){
   const canvas = document.getElementById('optimalRatioChart');

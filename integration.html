@@ -15,6 +15,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="css/design-system.css">
 <link rel="stylesheet" href="css/process.css">
+<link rel="stylesheet" href="css/evidence-badges.css">
 <link rel="stylesheet" href="css/integration.css">
 </head>
 <body>
@@ -43,6 +44,8 @@
         <div class="nav-dropdown">
           <a href="reactor.html">مفاعل SMART100</a>
           <a href="how-it-works.html">كيف يعمل؟</a>
+          <a href="acp100-benchmark.html">ACP100 Benchmark</a>
+          <a href="three-system-comparison.html">المقارنة الثلاثية الكاملة</a>
         </div>
       </div>
       <div class="nav-group">
@@ -92,6 +95,8 @@
     <div class="nav-mobile-sub">
       <a href="reactor.html"><span>⚛️</span> مفاعل SMART100</a>
       <a href="how-it-works.html"><span>⚙️</span> كيف يعمل؟</a>
+      <a href="acp100-benchmark.html"><span>🇨🇳</span> ACP100 Benchmark</a>
+      <a href="three-system-comparison.html"><span>📊</span> المقارنة الثلاثية الكاملة</a>
     </div>
   </div>
   <div class="nav-mobile-group">
@@ -133,18 +138,22 @@
       <div class="integ-stat card reveal">
         <div class="integ-stat-value" data-count="10">10</div>
         <div class="integ-stat-label">وحدات SMART100</div>
+        <span class="ev-badge ev-calculated" style="margin-top:8px;">🧮 Calculated</span>
       </div>
       <div class="integ-stat card reveal">
         <div class="integ-stat-value">$5.40–5.82</div>
         <div class="integ-stat-label">LCOW حسب السيناريو ($/م³)</div>
+        <span class="ev-badge ev-calculated" style="margin-top:8px;">🧮 Calculated</span>
       </div>
       <div class="integ-stat card reveal">
         <div class="integ-stat-value" data-count="8.27" data-decimals="2">8.27</div>
         <div class="integ-stat-label">مليون طن CO₂ توفير سنوي</div>
+        <span class="ev-badge ev-calculated" style="margin-top:8px;">🧮 Calculated</span>
       </div>
       <div class="integ-stat card reveal">
         <div class="integ-stat-value" data-count="96.7" data-decimals="1">96.7</div>
         <div class="integ-stat-label">% تخفيض انبعاثات مقابل الغاز</div>
+        <span class="ev-badge ev-calculated" style="margin-top:8px;">🧮 Calculated</span>
       </div>
     </div>
   </div>
@@ -152,15 +161,32 @@
 
 <main>
 
-<!-- ===== 3D Digital Twin ===== -->
+<div class="section-inner" style="padding-top:28px;">
+  <div class="ev-legend reveal">
+    <span class="ev-legend-label">دليل تصنيف الأدلة:</span>
+    <span class="ev-legend-item is-official"><span class="ev-legend-dot"></span> Official — مصدر رسمي</span>
+    <span class="ev-legend-item is-peer-reviewed"><span class="ev-legend-dot"></span> Peer Reviewed — بحث محكّم</span>
+    <span class="ev-legend-item is-calculated"><span class="ev-legend-dot"></span> Calculated — محسوب بمعادلات المشروع</span>
+    <span class="ev-legend-item is-estimated"><span class="ev-legend-dot"></span> Estimated — تقدير هندسي</span>
+    <span class="ev-legend-item is-user-input"><span class="ev-legend-dot"></span> User Input — عدّله المستخدم</span>
+  </div>
+</div>
+
+<!-- ===== 3D Digital Twin-Inspired Simulation ===== -->
 <section class="section viewer-section" id="twin-model">
   <div class="section-inner">
-    <span class="section-tag">Digital Twin — The Full Journey</span>
+    <span class="section-tag">Digital Twin-Inspired Simulation — The Full Journey</span>
     <h2 class="section-title">من المفاعل إلى الماء العذب — النموذج التفاعلي ثلاثي الأبعاد</h2>
     <p class="section-lead">
       دوّر النموذج بالسحب، كبّر/صغّر بعجلة الماوس، ثم اضغط <strong style="color:var(--ink)">"تشغيل الرحلة الكاملة"</strong>
       لمشاهدة رحلة الطاقة والمياه بالترتيب — من مفاعلات SMART100، عبر المسارين الحراري والكهربائي، إلى محطة
       رأس الخير، ومنها إلى الماء العذب والمحلول الملحي المرفوض. أو اضغط على أي مكوّن مباشرة لعرض تفاصيله.
+    </p>
+    <p class="calc-hint" style="margin-bottom:18px;">
+      <strong style="color:var(--ink);">تنويه دقيق بالمصطلح:</strong> هذا نموذج ثلاثي الأبعاد ومحاكاة تفاعلية (Digital
+      Twin-Inspired Simulation) مبني على معادلات <code>model.py</code> — <strong>وليس توأمًا رقميًا حقيقيًا
+      (Digital Twin)</strong> بمعناه الصناعي الدقيق: لا يوجد اتصال ببيانات تشغيل حيّة أو استشعار فعلي لأي
+      محطة قائمة. كل حركة وقيمة هنا محسوبة من النموذج، لا مقروءة من جهاز حقيقي.
     </p>
 
     <div class="viewer-layout">
@@ -198,7 +224,7 @@
   </div>
 </section>
 
-<!-- ===== Component reference grid (Digital Twin) ===== -->
+<!-- ===== Component reference grid (Digital Twin-Inspired Simulation) ===== -->
 <section class="section section-alt" id="twin-components">
   <div class="section-inner">
     <span class="section-tag">System Anatomy</span>
@@ -235,7 +261,7 @@
   <div class="section-inner">
     <span class="section-tag">Three Integration Scenarios</span>
     <h2 class="section-title">ثلاثة سيناريوهات للتكامل</h2>
-    <p class="section-lead">يمكن توجيه طاقة SMART100 بثلاث طرق مختلفة حسب أولوية الإنتاج — لكل سيناريو أثره الخاص على LCOW ونوع التحلية المستفيدة.</p>
+    <p class="section-lead">يمكن توجيه طاقة SMART100 بثلاث طرق مختلفة حسب أولوية الإنتاج — لكل سيناريو أثره الخاص على LCOW ونوع التحلية المستفيدة. كل الأرقام أدناه <span class="ev-badge ev-calculated">🧮 Calculated</span> من <code>model.py</code>.</p>
 
     <div class="scenario-tabs" id="scenarioTabs">
       <button class="scenario-tab is-active" data-scenario="A"><span class="tab-letter">A</span> التحلية الحرارية</button>
@@ -355,31 +381,99 @@
   </div>
 </section>
 
-<!-- ===== CO2 comparison ===== -->
+<!-- ===== Interactive Carbon Calculation Engine ===== -->
 <section class="section section-alt" id="results">
   <div class="section-inner">
-    <span class="section-tag">Environmental Impact</span>
-    <h2 class="section-title">SMART100 مقابل الغاز الطبيعي</h2>
-    <p class="section-lead">مقارنة الانبعاثات السنوية لتغطية نفس الحمل الحراري المكافئ عبر السنة الكاملة، لو استمرت المحطة على الوقود الأحفوري.</p>
+    <span class="section-tag">Environmental Impact — Interactive</span>
+    <h2 class="section-title">محرك حساب الكربون التفاعلي</h2>
+    <p class="section-lead">
+      <code>CO₂ Avoided = Baseline Emissions − Nuclear Scenario Emissions</code> ·
+      <code>Carbon Reduction % = (CO₂ Avoided / Baseline) × 100</code>.
+      حرّك أي قيمة لإعادة الحساب فورًا — شارة القيمة تتحول تلقائيًا من مصدرها الأصلي إلى
+      <span class="ev-badge ev-user-input">✏️ User Input</span> بمجرد تعديلها.
+    </p>
 
-    <div class="co2-compare">
+    <div class="co2-compare" style="margin-bottom:26px;">
       <div class="co2-bar-group card">
         <div class="co2-bar-item">
-          <span class="co2-bar-label">الغاز الطبيعي (CCGT)</span>
-          <div class="co2-bar-track"><div class="co2-bar co2-bar-gas" data-value="8.54" style="width:0%"></div></div>
-          <span class="co2-bar-num">8.54 مليون طن CO₂/سنة</span>
+          <span class="co2-bar-label">خط الأساس (شبكة/غاز CCGT)</span>
+          <div class="co2-bar-track"><div class="co2-bar co2-bar-gas" id="ccGasBar" style="width:0%"></div></div>
+          <span class="co2-bar-num"><span id="ccOutBaseline">–</span> مليون طن CO₂/سنة</span>
         </div>
         <div class="co2-bar-item">
           <span class="co2-bar-label">مفاعلات SMART100</span>
-          <div class="co2-bar-track"><div class="co2-bar co2-bar-smr" data-value="0.28" style="width:0%"></div></div>
-          <span class="co2-bar-num">279,236 طن CO₂/سنة</span>
+          <div class="co2-bar-track"><div class="co2-bar co2-bar-smr" id="ccNuclearBar" style="width:0%"></div></div>
+          <span class="co2-bar-num"><span id="ccOutNuclear">–</span> مليون طن CO₂/سنة</span>
         </div>
       </div>
       <div class="co2-savings-badge">
-        <span class="co2-savings-num">8.27</span>
+        <span class="co2-savings-num" id="ccOutAvoided">–</span>
         <span class="co2-savings-unit">مليون طن CO₂ توفير سنوي</span>
-        <span class="co2-savings-pct">تخفيض بنسبة 96.7%</span>
+        <span class="co2-savings-pct">تخفيض بنسبة <span id="ccOutReductionPct">–</span>%</span>
       </div>
+    </div>
+
+    <div class="calc-card card reveal">
+      <div class="calc-inputs">
+        <div class="calc-field">
+          <label for="ccWaterProd">إنتاج المياه (م³/يوم) <span class="ev-badge ev-official" id="ccBadge_waterProd" data-default-class="ev-official" data-default-label="✓ Official">✓ Official</span></label>
+          <input type="number" id="ccWaterProd" min="1000" step="1000" value="1036000">
+        </div>
+        <div class="calc-field">
+          <label for="ccSpecificEnergy">الاستهلاك النوعي المدمج (kWh-eq/م³) <span class="ev-badge ev-calculated" id="ccBadge_specificEnergy" data-default-class="ev-calculated" data-default-label="🧮 Calculated">🧮 Calculated</span></label>
+          <input type="number" id="ccSpecificEnergy" min="1" step="0.01" value="47.95">
+          <p class="calc-hint">مزيج 70.2% MSF (62.7 kWh_th/م³) + 29.8% RO (4.0 kWh_e/م³ ÷ كفاءة 0.303) — نفس ثوابت model.py.</p>
+        </div>
+        <div class="calc-field">
+          <label for="ccCapacityFactor">معامل قدرة المحطة (%) <span class="ev-badge ev-estimated" id="ccBadge_capacityFactor" data-default-class="ev-estimated" data-default-label="≈ Estimated">≈ Estimated</span></label>
+          <input type="range" id="ccCapacityFactor" class="calc-slider" min="50" max="100" step="1" value="92">
+        </div>
+        <div class="calc-field">
+          <label for="ccGridIntensity">كثافة كربون الشبكة/الغاز CCGT (g CO₂/kWh) <span class="ev-badge ev-official" id="ccBadge_gridIntensity" data-default-class="ev-official" data-default-label="✓ Official">✓ Official</span></label>
+          <input type="range" id="ccGridIntensity" class="calc-slider" min="300" max="900" step="5" value="490">
+          <p class="calc-hint">الافتراضي 490 — الوسيط المرجعي لدورة حياة الغاز الطبيعي CCGT حسب IPCC AR5، Annex III.</p>
+        </div>
+        <div class="calc-field">
+          <label for="ccFossilFactor">معامل انبعاث الغاز الطبيعي (kg CO₂/GJ) <span class="ev-badge ev-official" id="ccBadge_fossilFactor" data-default-class="ev-official" data-default-label="✓ Official">✓ Official</span></label>
+          <input type="number" id="ccFossilFactor" min="1" step="0.1" value="56.1">
+          <p class="calc-hint">الافتراضي 56.1 — IPCC 2006 Guidelines, Vol. 2 (Energy). يُستخدَم لحساب استهلاك الغاز المتجنَّب أدناه فقط.</p>
+        </div>
+        <div class="calc-field">
+          <label for="ccNuclearIntensity">انبعاثات دورة الحياة النووية (g CO₂/kWh) <span class="ev-badge ev-official" id="ccBadge_nuclearIntensity" data-default-class="ev-official" data-default-label="✓ Official">✓ Official</span></label>
+          <input type="range" id="ccNuclearIntensity" class="calc-slider" min="0" max="50" step="1" value="12">
+          <p class="calc-hint">الافتراضي 12 — الوسيط المرجعي لدورة حياة الطاقة النووية حسب IPCC AR5، Annex III.</p>
+        </div>
+        <button class="btn btn-ghost" id="ccReset" type="button" style="align-self:flex-start;">↺ إعادة ضبط كل القيم الافتراضية</button>
+      </div>
+
+      <div class="calc-results">
+        <div class="calc-result-card is-wide">
+          <span class="ev-badge ev-calculated">🧮 Calculated</span>
+          <span class="calc-result-value" id="ccOutCapacity">–</span>
+          <span class="calc-result-label">MW — السعة النووية المركّبة المطلوبة عند معامل القدرة هذا</span>
+        </div>
+        <div class="calc-result-card">
+          <span class="calc-result-value" id="ccOutGasAvoided">–</span>
+          <span class="calc-result-label">طن غاز طبيعي متجنَّب سنويًا</span>
+        </div>
+        <div class="calc-result-card">
+          <span class="calc-result-value" id="ccOutBarrels">–</span>
+          <span class="calc-result-label">برميل نفط مكافئ سنويًا</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="why-callout card reveal" style="margin-top:22px; border-inline-start: 3px solid var(--nuclear);">
+      <span class="why-callout-icon">📐</span>
+      <p>
+        <strong>لماذا القيمة الافتراضية هنا (≈8.7 مليون طن) تختلف قليلًا عن الرقم المعتمد
+        <a href="index.html" style="color:var(--nuclear-glow);">بالصفحة الرئيسية وبقية صفحات الموقع ↗</a> (8.27 مليون طن)؟</strong>
+        هذا المحرك يحسب "من الإنتاج تصاعديًا" (إنتاج المياه × استهلاك نوعي مدمج × كثافة كربون IPCC العامة)،
+        بينما الرقم المعتمد بباقي الموقع محسوب عبر <code>comparison.py</code> من محاكاة يومية فعلية (365 يومًا)
+        لسعة الأسطول الفعلية المركَّبة (10 وحدات، بما فيها هامش تغطية سيناريو الذروة) مضروبة في نسبة الاستغلال
+        اليومية الحقيقية، بمعامل انبعاث غاز محدَّد بالاحتراق المباشر لا بكثافة الشبكة العامة. كلا المنهجين
+        سليم؛ الفرق (~5%) يعكس اختلاف المنهجية لا خطأ حسابيًا — وهذا بالضبط سبب وجود شارات الأدلة على هذه الصفحة.
+      </p>
     </div>
   </div>
 </section>
@@ -431,5 +525,6 @@
 <script src="js/integration.js"></script>
 <script src="js/digital-twin-data.js"></script>
 <script src="js/digital-twin.js"></script>
+<script src="js/carbon-calculator.js"></script>
 </body>
 </html>

@@ -1,0 +1,11 @@
+/* ==========================================================================
+   acp100-benchmark.html — page-specific pieces not already covered by
+   process.css / design-system.css / evidence-badges.css
+   ========================================================================== */
+
+/* ---- accordion timeline (extends .timeline from process.css) ---- */
+.timeline-step{ cursor: pointer; }
+.timeline-step .timeline-detail{ display:none; margin-top: 10px; padding-top: 10px; border-top: 1px dashed var(--border); font-size: 0.86rem; }
+.timeline-step.is-open .timeline-detail{ display:block; }
+.timeline-step.is-current .timeline-num{ border-color: var(--good); color: var(--good); }
+.timeline-toggle-hint{ font-size: 0.72rem; color: var(--ink-muted); margin-inline-start: auto; flex-shrink:0; align-self:flex-start; padding-top: 8px; }

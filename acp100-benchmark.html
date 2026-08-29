@@ -1,0 +1,616 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ACP100 — دراسة حالة مرجعية | SMART100 × رأس الخير</title>
+<meta name="description" content="مقارنة SMART100 بأقرب مشروع SMR حقيقي قيد الإنشاء عالميًا — ACP100 (Linglong One) الصيني: مواصفات موثّقة، جدول زمني، وحاسبة إنتاج مياه تفاعلية.">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg%20xmlns=%22http://www.w3.org/2000/svg%22%20viewBox=%220%200%2064%2064%22%3E%3Ccircle%20cx=%2232%22%20cy=%2232%22%20r=%226%22%20fill=%22%233f8fd6%22/%3E%3Cg%20fill=%22none%22%20stroke=%22%233f8fd6%22%20stroke-width=%224%22%3E%3Cellipse%20cx=%2232%22%20cy=%2232%22%20rx=%2228%22%20ry=%2212%22/%3E%3Cellipse%20cx=%2232%22%20cy=%2232%22%20rx=%2228%22%20ry=%2212%22%20transform=%22rotate(60%2032%2032)%22/%3E%3Cellipse%20cx=%2232%22%20cy=%2232%22%20rx=%2228%22%20ry=%2212%22%20transform=%22rotate(120%2032%2032)%22/%3E%3C/g%3E%3C/svg%3E">
+<meta property="og:type" content="website">
+<meta property="og:title" content="ACP100 — دراسة حالة مرجعية | SMART100 × رأس الخير">
+<meta property="og:description" content="مقارنة SMART100 بأقرب مشروع SMR حقيقي قيد الإنشاء عالميًا — ACP100 (Linglong One) الصيني: مواصفات موثّقة، جدول زمني، وحاسبة إنتاج مياه تفاعلية.">
+<meta property="og:locale" content="ar_SA">
+<meta name="twitter:card" content="summary">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="css/design-system.css">
+<link rel="stylesheet" href="css/process.css">
+<link rel="stylesheet" href="css/evidence-badges.css">
+<link rel="stylesheet" href="css/acp100-benchmark.css">
+</head>
+<body>
+
+<nav class="site-nav">
+  <div class="nav-row">
+    <a href="index.html" class="nav-brand">
+      <span class="nav-brand-mark">⚙</span>
+      <span>SMART100 <small>Ras Al-Khair Integration</small></span>
+    </a>
+    <div class="nav-groups">
+      <div class="nav-group"><a href="index.html">الرئيسية</a></div>
+      <div class="nav-group"><a href="dashboard.html">لوحة التحكم</a></div>
+      <div class="nav-group">
+        <button type="button" aria-haspopup="true" aria-expanded="false">المحطة والتحلية <span class="nav-caret" aria-hidden="true">▾</span></button>
+        <div class="nav-dropdown">
+          <a href="plant.html">محطة رأس الخير</a>
+          <a href="desalination.html">تقنيات التحلية</a>
+          <a href="msf.html">MSF</a>
+          <a href="ro.html">RO</a>
+          <a href="tech-comparison.html">مقارنة التقنيات</a>
+        </div>
+      </div>
+      <div class="nav-group">
+        <button type="button" aria-haspopup="true" aria-expanded="false">مفاعل SMART100 <span class="nav-caret" aria-hidden="true">▾</span></button>
+        <div class="nav-dropdown">
+          <a href="reactor.html">مفاعل SMART100</a>
+          <a href="how-it-works.html">كيف يعمل؟</a>
+          <a href="acp100-benchmark.html">ACP100 Benchmark</a>
+          <a href="three-system-comparison.html">المقارنة الثلاثية الكاملة</a>
+        </div>
+      </div>
+      <div class="nav-group">
+        <button type="button" aria-haspopup="true" aria-expanded="false">التكامل والمنظومة <span class="nav-caret" aria-hidden="true">▾</span></button>
+        <div class="nav-dropdown">
+          <a href="integration.html">التكامل مع رأس الخير</a>
+          <a href="energy-flow.html">تدفق الطاقة</a>
+          <a href="system-architecture.html">هندسة المنظومة</a>
+        </div>
+      </div>
+      <div class="nav-group">
+        <button type="button" aria-haspopup="true" aria-expanded="false">التحليل <span class="nav-caret" aria-hidden="true">▾</span></button>
+        <div class="nav-dropdown">
+          <a href="performance.html">الأداء</a>
+          <a href="scenarios.html">السيناريوهات</a>
+          <a href="safety.html">الأمان</a>
+          <a href="simulation.html">المحاكاة</a>
+        </div>
+      </div>
+      <div class="nav-group">
+        <button type="button" aria-haspopup="true" aria-expanded="false">مصادر <span class="nav-caret" aria-hidden="true">▾</span></button>
+        <div class="nav-dropdown">
+          <a href="glossary.html">المسرد</a>
+          <a href="references.html">المراجع</a>
+        </div>
+      </div>
+    </div>
+    <div class="nav-cta"><a href="integration.html" class="btn btn-primary">استكشف التكامل</a></div>
+    <button class="nav-toggle" id="navToggle" aria-label="القائمة" aria-expanded="false" aria-controls="navMobile"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+<div class="nav-mobile" id="navMobile">
+  <a href="index.html" style="display:block;padding:16px 4px;color:var(--ink);font-size:0.98rem;font-weight:700;border-bottom:1px solid var(--border);">الرئيسية</a>
+  <a href="dashboard.html" style="display:block;padding:16px 4px;color:var(--ink);font-size:0.98rem;font-weight:700;border-bottom:1px solid var(--border);">لوحة التحكم</a>
+  <div class="nav-mobile-group">
+    <button type="button" aria-haspopup="true" aria-expanded="false">المحطة والتحلية <span class="nav-caret" aria-hidden="true">▾</span></button>
+    <div class="nav-mobile-sub">
+      <a href="plant.html"><span>🏭</span> محطة رأس الخير</a>
+      <a href="desalination.html"><span>💧</span> تقنيات التحلية</a>
+      <a href="msf.html"><span>🌡️</span> MSF</a>
+      <a href="ro.html"><span>🧪</span> RO</a>
+      <a href="tech-comparison.html"><span>⚖️</span> مقارنة التقنيات</a>
+    </div>
+  </div>
+  <div class="nav-mobile-group">
+    <button type="button" aria-haspopup="true" aria-expanded="false">مفاعل SMART100 <span class="nav-caret" aria-hidden="true">▾</span></button>
+    <div class="nav-mobile-sub">
+      <a href="reactor.html"><span>⚛️</span> مفاعل SMART100</a>
+      <a href="how-it-works.html"><span>⚙️</span> كيف يعمل؟</a>
+      <a href="acp100-benchmark.html"><span>🇨🇳</span> ACP100 Benchmark</a>
+      <a href="three-system-comparison.html"><span>📊</span> المقارنة الثلاثية الكاملة</a>
+    </div>
+  </div>
+  <div class="nav-mobile-group">
+    <button type="button" aria-haspopup="true" aria-expanded="false">التكامل والمنظومة <span class="nav-caret" aria-hidden="true">▾</span></button>
+    <div class="nav-mobile-sub">
+      <a href="integration.html"><span>🔗</span> التكامل مع رأس الخير</a>
+      <a href="energy-flow.html"><span>⚡</span> تدفق الطاقة</a>
+      <a href="system-architecture.html"><span>🧩</span> هندسة المنظومة</a>
+    </div>
+  </div>
+  <div class="nav-mobile-group">
+    <button type="button" aria-haspopup="true" aria-expanded="false">التحليل <span class="nav-caret" aria-hidden="true">▾</span></button>
+    <div class="nav-mobile-sub">
+      <a href="performance.html"><span>📈</span> الأداء</a>
+      <a href="scenarios.html"><span>🔀</span> السيناريوهات</a>
+      <a href="safety.html"><span>🛡️</span> الأمان</a>
+      <a href="simulation.html"><span>🧮</span> المحاكاة</a>
+    </div>
+  </div>
+  <div class="nav-mobile-group">
+    <button type="button" aria-haspopup="true" aria-expanded="false">مصادر <span class="nav-caret" aria-hidden="true">▾</span></button>
+    <div class="nav-mobile-sub">
+      <a href="glossary.html"><span>📖</span> المسرد</a>
+      <a href="references.html"><span>📚</span> المراجع</a>
+    </div>
+  </div>
+</div>
+
+<!-- ===== Hero ===== -->
+<header class="proc-hero">
+  <div class="proc-hero-inner">
+    <span class="eyebrow">🇨🇳 دراسة حالة مرجعية</span>
+    <h1>ACP100 (Linglong One) — أقرب مشروع SMR حقيقي للمقارنة</h1>
+    <span class="en-name">Real-World SMR Benchmark — CNNC, Changjiang, Hainan, China</span>
+    <p>
+      هذه الصفحة تختبر افتراضات نموذج SMART100 × رأس الخير مقابل أقرب مشروع مفاعل نووي صغير معياري
+      قيد الإنشاء فعليًا في العالم اليوم — ACP100 الصيني. كل رقم هنا إما موثّق رسميًا (IAEA/CNNC/WNN)
+      وله رابط مصدر مباشر، أو محسوب صراحة من هذا الموقع ومُعلَّم كذلك — بدون خلط بين الاثنين.
+    </p>
+    <div class="proc-badges">
+      <span class="badge badge-muted">🏭 CNNC — الصين</span>
+      <span class="ev-badge ev-official">✓ 125 MWe — Official</span>
+      <span class="badge badge-muted">🛠️ قيد اختبارات ما قبل التشغيل (Verified 29 Aug 2026)</span>
+    </div>
+  </div>
+</header>
+
+<main>
+
+<div class="section-inner" style="padding-top:28px;">
+  <div class="ev-legend reveal">
+    <span class="ev-legend-label">دليل تصنيف الأدلة:</span>
+    <span class="ev-legend-item is-official"><span class="ev-legend-dot"></span> Official — مصدر رسمي (IAEA/CNNC/حكومي)</span>
+    <span class="ev-legend-item is-peer-reviewed"><span class="ev-legend-dot"></span> Peer Reviewed — بحث محكّم</span>
+    <span class="ev-legend-item is-calculated"><span class="ev-legend-dot"></span> Calculated — محسوب بمعادلات المشروع</span>
+    <span class="ev-legend-item is-estimated"><span class="ev-legend-dot"></span> Estimated — تقدير هندسي</span>
+    <span class="ev-legend-item is-user-input"><span class="ev-legend-dot"></span> User Input — عدّله المستخدم</span>
+  </div>
+</div>
+
+<!-- ===== Section 1: Official specs ===== -->
+<section class="section" id="specs" style="padding-top:0;">
+  <div class="section-inner">
+    <span class="section-tag">Section 1 — Verified Specifications</span>
+    <h2 class="section-title">ACP100 كمرجع واقعي (Real-World Benchmark)</h2>
+    <p class="section-lead">كل قيمة بالجدول أدناه موثّقة من مصدر رسمي — IAEA أو CNNC أو World Nuclear News — وتحمل شارة "Official". لا قيمة هنا محسوبة أو مقدَّرة.</p>
+
+    <div class="card reveal" style="padding:6px;">
+      <div class="compare-table-wrap">
+        <table class="compare-table">
+          <thead>
+            <tr><th>المعيار</th><th>القيمة</th><th>الحالة</th></tr>
+          </thead>
+          <tbody>
+            <tr><th>القدرة الحرارية (Thermal Power)</th><td>385 MWth</td><td><span class="ev-badge ev-official">✓ Official</span></td></tr>
+            <tr><th>القدرة الكهربائية (Electrical Power)</th><td>125 MWe</td><td><span class="ev-badge ev-official">✓ Official</span></td></tr>
+            <tr><th>نوع المفاعل</th><td>مياه مضغوطة متكامل (Integral PWR)</td><td><span class="ev-badge ev-official">✓ Official</span></td></tr>
+            <tr><th>حزم الوقود (Fuel Assemblies)</th><td>57 حزمة (طراز CF3S، تخصيب 4.2%)</td><td><span class="ev-badge ev-official">✓ Official</span></td></tr>
+            <tr><th>دورة التزوّد بالوقود</th><td>24 شهرًا (سنتان)</td><td><span class="ev-badge ev-official">✓ Official</span></td></tr>
+            <tr><th>العمر التصميمي</th><td>60 سنة</td><td><span class="ev-badge ev-official">✓ Official</span></td></tr>
+            <tr><th>حرارة خروج المبرّد من القلب</th><td>319.5°C</td><td><span class="ev-badge ev-official">✓ Official</span></td></tr>
+            <tr><th>متوسط حرارة الدارة الأولية</th><td>303°C</td><td><span class="ev-badge ev-official">✓ Official</span></td></tr>
+            <tr><th>ضغط الدارة الأولية</th><td>15 MPa</td><td><span class="ev-badge ev-official">✓ Official</span></td></tr>
+            <tr><th>مراجعة السلامة IAEA</th><td>اجتازها 2016 — أول SMR بالعالم يحقق ذلك</td><td><span class="ev-badge ev-official">✓ Official</span></td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="why-callout card reveal" style="margin-top:22px; border-inline-start: 3px solid var(--critical);">
+      <span class="why-callout-icon">⚠️</span>
+      <p>
+        <strong>حول رقم "160 MWe" المتداول أحيانًا:</strong> لا يوجد مصدر رسمي موثوق (IAEA/CNNC/WNN) يذكر
+        160 ميجاواط كهربائي كقيمة لـACP100. القيمة الرسمية الوحيدة الموثّقة باستمرار عبر كل المصادر
+        الأولية هي <strong style="color:var(--ink)">125 MWe</strong>. لهذا لا نذكر 160 كقيمة بديلة أو
+        نطاق محتمل بهذا الموقع — فقط كتنويه بوجود لبس متداول يجب تجنّبه.
+      </p>
+    </div>
+
+    <div class="ref-list" style="margin-top:26px;">
+      <span class="viewer-panel-list-label" style="display:block; margin-bottom:6px;">المصادر</span>
+      <div class="ref-item card reveal">
+        <span class="ref-num">01</span>
+        <div>
+          <h4><a href="https://www.world-nuclear-news.org/articles/first-main-pump-installed-in-chinese-smr" target="_blank" rel="noopener" style="color:var(--nuclear-glow);">First main pump installed in Chinese SMR ↗</a></h4>
+          <span class="ref-meta">World Nuclear News · 17 April 2025</span>
+          <p>القدرة الكهربائية (125 MWe)، نوع المفاعل، أول صب خرسانة، مدة الإنشاء المخططة، اجتياز مراجعة السلامة IAEA 2016.</p>
+        </div>
+      </div>
+      <div class="ref-item card reveal">
+        <span class="ref-num">02</span>
+        <div>
+          <h4><a href="https://nucleus.iaea.org/sites/smr/SMR_Platform_Meeting_Public_Assets/INT2023%20Workshops%202023-%20Technology%20Development%20and%20Applications%20of%20Small%20Modular%20Reactor%20for%20SMRs/Interregional%20Event%20on%20Technology%20Development%20and%20Applications%20of%20Small%20Modular%20Reactors/0_02_CNNC.pdf" target="_blank" rel="noopener" style="color:var(--nuclear-glow);">CNNC — Advancements in R&amp;D and Construction of SMRs (Song Danrong) ↗</a></h4>
+          <span class="ref-meta">IAEA Nucleus — SMR Platform, 2023 Interregional Workshop</span>
+          <p>عرض تقني رسمي من CNNC عبر منصة IAEA — المصدر الأساسي للمواصفات الفيزيائية التفصيلية (حزم الوقود، الحرارة، الضغط).</p>
+        </div>
+      </div>
+      <div class="ref-item card reveal">
+        <span class="ref-num">03</span>
+        <div>
+          <h4><a href="https://aris.iaea.org/Publications/SMR_catalogue_2024.pdf" target="_blank" rel="noopener" style="color:var(--nuclear-glow);">IAEA ARIS — Advanced Reactors Information System, SMR Catalogue 2024 ↗</a></h4>
+          <span class="ref-meta">International Atomic Energy Agency</span>
+          <p>الكتالوج الرسمي للوكالة الدولية للطاقة الذرية لمفاعلات SMR — يتضمن مدخل ACP100 المعتمد رسميًا من CNNC.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== Section 2: Timeline ===== -->
+<section class="section section-alt" id="timeline-section">
+  <div class="section-inner">
+    <span class="section-tag">Section 2 — Current Status</span>
+    <h2 class="section-title">الجدول الزمني لتطوير ACP100</h2>
+    <p class="section-lead">اضغط على أي محطة لعرض تفاصيلها. كل تاريخ بهذا الجدول <span class="ev-badge ev-official">✓ Official</span> — موثّق من WNN/CNNC (راجع مصادر القسم 1 والروابط داخل كل محطة).</p>
+
+    <div class="timeline">
+      <div class="timeline-step card reveal">
+        <div class="timeline-num">2010</div>
+        <div class="timeline-body">
+          <h3>بداية البحث والتطوير</h3>
+          <span class="tl-en">CNNC begins ACP100 R&amp;D</span>
+          <p>بدأت CNNC العمل على تصميم ACP100 — مفاعل معياري صغير متعدد الأغراض (كهرباء + تدفئة + تحلية) مشتق من تصميم ACP1000 الأكبر.</p>
+          <div class="timeline-detail">أُدرِج المشروع لاحقًا كـ"مشروع رئيسي" ضمن الخطة الخمسية الثانية عشرة للصين.</div>
+        </div>
+      </div>
+      <div class="timeline-step card reveal">
+        <div class="timeline-num">2014</div>
+        <div class="timeline-body">
+          <h3>اكتمال التصميم الأولي</h3>
+          <span class="tl-en">Preliminary design completed</span>
+          <p>اكتمل التصميم الهندسي الأولي التفصيلي للمفاعل بقدرته المعتمدة 125 MWe / 385 MWth.</p>
+          <div class="timeline-detail">مهّد هذا الاكتمال للمرحلة التالية: تقديم التصميم لمراجعة السلامة الدولية.</div>
+        </div>
+      </div>
+      <div class="timeline-step card reveal">
+        <div class="timeline-num">2016</div>
+        <div class="timeline-body">
+          <h3>اجتياز مراجعة السلامة IAEA</h3>
+          <span class="tl-en">Passed IAEA Generic Reactor Safety Review</span>
+          <p>أصبح ACP100 أول مفاعل SMR في العالم يجتاز مراجعة سلامة عامة رسمية من الوكالة الدولية للطاقة الذرية — علامة فارقة عالميًا لفئة مفاعلات SMR بأكملها، وليس فقط لهذا المشروع.</p>
+          <div class="timeline-detail">هذه المراجعة تقييم تصميمي عام (Generic Design Review)، وليست ترخيصًا تشغيليًا نهائيًا لموقع محدد.</div>
+        </div>
+      </div>
+      <div class="timeline-step card reveal">
+        <div class="timeline-num">2021</div>
+        <div class="timeline-body">
+          <h3>أول صب خرسانة — بداية الإنشاء الفعلي</h3>
+          <span class="tl-en">First concrete pour — 13 July 2021</span>
+          <p>بدأ الإنشاء الفعلي في موقع تشانغجيانغ بجزيرة هاينان الصينية، بمدة إنشاء مخططة قدرها 58 شهرًا حتى التشغيل التجاري المستهدف.</p>
+          <div class="timeline-detail">تلا ذلك: بدء تركيب المعدات (ديسمبر 2022)، اكتمال الهيكل الداخلي الرئيسي (مارس 2023)، وتركيب قبة الاحتواء الخارجية (فبراير 2025).</div>
+        </div>
+      </div>
+      <div class="timeline-step card reveal">
+        <div class="timeline-num">2025</div>
+        <div class="timeline-body">
+          <h3>اكتمال اختبار البرودة الوظيفي</h3>
+          <span class="tl-en">Cold Functional Test completed — 16 October 2025</span>
+          <p>اجتاز المفاعل اختبار الحالة الباردة للدارة الأولية — تحقّق من إحكام وسلامة وعاء الضغط والصمامات والأنابيب، وجودة تركيب المعدات، تمهيدًا لاختبارات الحرارة (Hot Functional Tests).</p>
+          <div class="timeline-detail">تلا ذلك اختبار تشغيل توربيني غير نووي (Non-Nuclear Steam Start-up Test) بتاريخ 23 ديسمبر 2025.</div>
+        </div>
+      </div>
+      <div class="timeline-step is-current card reveal">
+        <div class="timeline-num">⏳</div>
+        <div class="timeline-body">
+          <h3>الحالة الحالية — قيد اختبارات ما قبل التشغيل</h3>
+          <span class="tl-en">Pre-commissioning tests — Verified as of 29 August 2026</span>
+          <p>
+            المفاعل حاليًا <strong style="color:var(--ink)">قيد اختبارات ما قبل التشغيل (pre-commissioning tests)</strong>
+            — لم يبدأ التشغيل التجاري ولم يتصل بالشبكة الكهربائية بعد، رغم تصريحات CNNC المتكررة باستهداف
+            "النصف الأول من 2026" لبدء التشغيل التجاري. حتى منتصف عام 2026، لا تزال بيانات IAEA الرسمية
+            لا تُظهر حرجية أولى (First Criticality) ولا اتصالًا بالشبكة.
+          </p>
+          <div class="timeline-detail">
+            المصدر: World Nuclear News، "New Chinese reactors reach start-up milestones" (3 أغسطس 2026) —
+            يصف ACP100/Linglong One صراحةً بأنه "currently undergoing pre-commissioning tests".
+            <a href="https://www.world-nuclear-news.org/articles/chinese-reactors-start-up-milestones" target="_blank" rel="noopener" style="color:var(--nuclear-glow); font-weight:700;">مصدر المقالة ↗</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== Section 3: Desalination benchmark ===== -->
+<section class="section" id="desal-benchmark">
+  <div class="section-inner">
+    <span class="section-tag">Section 3 — Desalination Benchmark</span>
+    <h2 class="section-title">هل هناك رقم إنتاج مياه رسمي لـACP100؟</h2>
+
+    <div class="why-callout card reveal" style="border-inline-start: 3px solid var(--nuclear);">
+      <span class="why-callout-icon">🔍</span>
+      <p>
+        لم يُعثر (بحث أُجري بتاريخ 29 أغسطس 2026) على دراسة محكّمة أو مصدر رسمي — IAEA أو CNNC أو World
+        Nuclear News — ينشر رقم إنتاج مياه فعلي (م³/يوم) لـACP100 مقترنًا بتقنية تحلية محددة (MED أو RO
+        أو MSF). القدرة الحرارية والكهربائية موثّقتان رسميًا (385 MWth / 125 MWe — راجع القسم 1)، لكن
+        ربطهما بإنتاج مياه فعلي يتطلب افتراض تقنية تحلية ومعامل تحويل محدَّد — وهذا <strong style="color:var(--ink)">رقم محسوب، لا موثَّق</strong>.
+      </p>
+      <p style="margin-top:12px;">
+        أثناء هذا البحث وجدنا فعلًا تضاربًا في أرقام غير رسمية متداولة على الإنترنت لهذا الموضوع تحديدًا —
+        أحد المصادر غير الموثوقة نسب لـACP100 رقم إنتاج مياه مقترنًا خطأً بمواصفات 100 MWe / 330 MWth،
+        وهي مواصفات <strong style="color:var(--ink)">SMART100 لا ACP100</strong> (التي مواصفاتها الفعلية
+        125 MWe / 385 MWth) — ما يؤكد سبب استبعاد هذا الموقع لأي رقم إنتاج مياه غير مسنَد رسميًا لـACP100.
+      </p>
+      <p style="margin-top:12px;">
+        أي رقم إنتاج مياه لـACP100 معروض بهذا الموقع هو <span class="ev-badge ev-calculated">🧮 محسوب (Calculated)</span>
+        عبر الحاسبة أدناه، بمعادلات هذا المشروع نفسها — وليس رقمًا رسميًا (Official).
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- ===== Section 4: Water production calculator ===== -->
+<section class="section section-alt" id="calculator">
+  <div class="section-inner">
+    <span class="section-tag">Section 4 — Interactive Calculator</span>
+    <h2 class="section-title">حاسبة إنتاج المياه لـACP100</h2>
+    <p class="section-lead">
+      تستخدم هذه الحاسبة نفس معادلات نموذج هذا المشروع (model.py) — GOR للتحلية الحرارية، والاستهلاك
+      النوعي الكهربائي للتناضح العكسي — لكن مطبَّقة على مواصفات ACP100 الرسمية (385 MWth / 125 MWe) بدل SMART100.
+      كل نتيجة أدناه <span class="ev-badge ev-calculated">🧮 محسوبة (Calculated)</span>، وليست رقمًا رسميًا.
+    </p>
+
+    <div class="calc-card card reveal">
+      <div class="calc-inputs">
+        <div class="calc-field">
+          <label for="calcUnits">عدد وحدات ACP100</label>
+          <input type="number" id="calcUnits" min="1" max="50" value="1">
+        </div>
+        <div class="calc-field">
+          <label for="calcTech">تقنية التحلية</label>
+          <select id="calcTech">
+            <option value="msf">MSF — حرارية بالكامل</option>
+            <option value="ro">RO — كهربائية بالكامل</option>
+            <option value="hybrid" selected>Hybrid — مزيج (MSF + RO)</option>
+          </select>
+        </div>
+        <div class="calc-field" id="calcShareRow">
+          <label for="calcShare">نسبة MSF من الإنتاج <span class="calc-live-value" id="calcShareValue">70.2%</span></label>
+          <input type="range" id="calcShare" class="calc-slider" min="0" max="100" step="0.1" value="70.2">
+          <p class="calc-hint">القيمة الافتراضية (70.2%) هي نفس نسبة MSF الفعلية بمحطة رأس الخير في هذا النموذج.</p>
+        </div>
+        <div class="calc-field">
+          <label for="calcCf">معامل الحمل (Capacity Factor) <span class="calc-live-value" id="calcCfValue">92%</span></label>
+          <input type="range" id="calcCf" class="calc-slider" min="0" max="100" step="1" value="92">
+        </div>
+        <div class="calc-field" id="calcSpecificThRow">
+          <label for="calcSpecificTh">الاستهلاك النوعي الحراري لـMSF (kWh_th/م³)</label>
+          <input type="number" id="calcSpecificTh" min="1" step="0.1" value="62.7">
+          <p class="calc-hint">الافتراضي 62.7 = نفس معامل GOR≈10 المعتمد بنموذج هذا المشروع.</p>
+        </div>
+        <div class="calc-field" id="calcSpecificElRow">
+          <label for="calcSpecificEl">الاستهلاك النوعي الكهربائي لـRO (kWh_e/م³)</label>
+          <input type="number" id="calcSpecificEl" min="0.1" step="0.1" value="4.0">
+          <p class="calc-hint">الافتراضي 4.0 — نفس القيمة المعتمدة بنموذج هذا المشروع لوحدات RO.</p>
+        </div>
+      </div>
+
+      <div class="calc-results">
+        <div class="calc-result-card is-wide">
+          <span class="ev-badge ev-calculated">🧮 محسوب</span>
+          <span class="calc-result-value" id="outDaily">–</span>
+          <span class="calc-result-label">م³/يوم — الإنتاج اليومي الإجمالي</span>
+        </div>
+        <div class="calc-result-card">
+          <span class="calc-result-value" id="outAnnual">–</span>
+          <span class="calc-result-label">م³/سنة — الإنتاج السنوي</span>
+        </div>
+        <div class="calc-result-card">
+          <span class="calc-result-value" id="outPerUnit">–</span>
+          <span class="calc-result-label">م³/يوم لكل مفاعل واحد</span>
+        </div>
+        <div class="calc-result-card">
+          <span class="calc-result-value" id="outThermalUsed">–</span>
+          <span class="calc-result-label">MWth — الطاقة الحرارية المستهلكة</span>
+        </div>
+        <div class="calc-result-card">
+          <span class="calc-result-value" id="outElectricUsed">–</span>
+          <span class="calc-result-label">MWe — الطاقة الكهربائية المستهلكة</span>
+        </div>
+        <div class="calc-result-card">
+          <span class="calc-result-value" id="outPerMwe">–</span>
+          <span class="calc-result-label">م³/يوم لكل 1 MWe مركّب</span>
+        </div>
+        <div class="calc-result-card">
+          <span class="calc-result-value" id="outPerMwth">–</span>
+          <span class="calc-result-label">م³/يوم لكل 1 MWth مركّب</span>
+        </div>
+      </div>
+    </div>
+
+    <p class="calc-hint" style="margin-top:14px;">
+      ⚠️ الحاسبة تفترض أن كامل الطاقة الحرارية/الكهربائية المتاحة من الوحدات المحدَّدة مخصَّصة للتحلية فقط
+      (بلا أي حمل كهربائي آخر على الشبكة) — سيناريو نظري لفهم الحد الأقصى النظري، وليس تصميم محطة فعلية.
+      تُستثنى من هذه الحاسبة المبسَّطة الطاقة الكهربائية المساعدة لمضخات MSF نفسها (≈3 kWh_e/م³ إضافية في
+      نموذج هذا المشروع الكامل) لتبسيط الحساب.
+    </p>
+  </div>
+</section>
+
+<!-- ===== Section 5: Three-system comparison ===== -->
+<section class="section" id="three-way">
+  <div class="section-inner">
+    <span class="section-tag">Section 5 — Three-System Comparison</span>
+    <h2 class="section-title">ACP100 مقابل SMART100 مقابل نظامنا المقترح</h2>
+    <p class="section-lead">
+      بيانات ACP100 وSMART100 من المصادر الموثّقة أعلاه وبقية صفحات هذا الموقع. عمود "نظامنا" متروك صراحة كـ"قيد التطوير" أينما لا يوجد قرار نهائي بعد.
+      نسخة موسَّعة بشرح تفصيلي لكل معيار متاحة في
+      <a href="three-system-comparison.html" style="color:var(--nuclear-glow); font-weight:700;">صفحة المقارنة الثلاثية الكاملة ↗</a>.
+    </p>
+
+    <div class="card reveal" style="padding:6px;">
+      <div class="compare-table-wrap">
+        <table class="compare-table">
+          <thead>
+            <tr><th>المعيار</th><th>🇨🇳 ACP100</th><th>🇰🇷 SMART100</th><th>⚙️ نظامنا المقترح</th></tr>
+          </thead>
+          <tbody>
+            <tr><th>نوع المفاعل</th><td>مياه مضغوطة متكامل (Integral PWR)</td><td>مياه مضغوطة متكامل (Integral PWR)</td><td>قيد التطوير ضمن هذا المشروع</td></tr>
+            <tr><th>القدرة الحرارية</th><td>385 MWth</td><td>330 MWth</td><td>قيد التطوير ضمن هذا المشروع</td></tr>
+            <tr><th>القدرة الكهربائية</th><td>125 MWe</td><td>100 MWe</td><td>قيد التطوير ضمن هذا المشروع</td></tr>
+            <tr><th>السلامة</th><td>اجتاز مراجعة سلامة عامة من IAEA عام 2016 — أول SMR بالعالم يحقق ذلك</td><td>أنظمة أمان سلبية (Passive Safety) تعمل بالجاذبية والحمل الحراري الطبيعي؛ تصميم Integral PWR يقلّل الوصلات الخارجية الكبيرة</td><td>قيد التطوير ضمن هذا المشروع</td></tr>
+            <tr><th>العمر التصميمي</th><td>60 سنة</td><td>60 سنة</td><td>قيد التطوير ضمن هذا المشروع</td></tr>
+            <tr><th>دورة التزوّد بالوقود</th><td>24 شهرًا (سنتان)</td><td>كل 3 سنوات (تقدير هندسي عام، غير مؤكد رسميًا لهذا المفاعل تحديدًا)</td><td>قيد التطوير ضمن هذا المشروع</td></tr>
+            <tr><th>تقنية التحلية المدعومة</th><td>تصميم متعدد الأغراض (كهرباء + تدفئة + تحلية)؛ لا يوجد رقم إنتاج مياه رسمي مقترن بتقنية محددة — راجع القسم 3</td><td>مصمَّم أصلًا للتزاوج مع التحلية — نحو 40,000 م³/يوم لكل وحدة؛ مطبَّق بهذا النموذج على مزيج MSF (70.2%) + RO (29.8%)</td><td>قيد التطوير ضمن هذا المشروع</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== Section 6: ACP100 + Saudi Arabia ===== -->
+<section class="section section-alt" id="saudi-analysis">
+  <div class="section-inner">
+    <span class="section-tag">Section 6 — ACP100 + Saudi Arabia</span>
+    <h2 class="section-title">ACP100 والسعودية — تحليل هندسي للسياق</h2>
+    <p class="section-lead">
+      هذا قسم سياقي (Context) لفهم أين يقع ACP100 نظريًا ضمن مشهد الطاقة والمياه السعودي — وليس تحليل جدوى
+      لموقع محدد. محطة رأس الخير تُستخدَم كمرجع لأنها بيئة الاختبار الفعلية لهذا المشروع بأكمله.
+    </p>
+
+    <div class="card reveal" style="padding:6px;">
+      <div class="compare-table-wrap">
+        <table class="compare-table">
+          <thead><tr><th>المؤشر</th><th>الواقع السعودي الحالي</th><th>الحالة</th></tr></thead>
+          <tbody>
+            <tr><th>الطلب الكهربائي</th><td>ذروة صيفية تتجاوز 65 GW (2025)؛ سعة توليد إجمالية ≈100.6 GW (2025) تتجه نحو 147.45 GW بحلول 2030</td><td><span class="ev-badge ev-official">✓ Official</span></td></tr>
+            <tr><th>الطلب على التحلية</th><td>سعة إجمالية تتجاوز 9 مليون م³/يوم (SWCC + محطات IWPP خاصة)؛ القطاع الخاص يستهدف التوسع من 2 إلى 7 مليون م³/يوم بحلول 2026</td><td><span class="ev-badge ev-official">✓ Official</span></td></tr>
+            <tr><th>المواقع الساحلية</th><td>سواحل البحر الأحمر (جدة، ينبع، رابغ، الشعيبة) وسواحل الخليج العربي (رأس الخير، الجبيل، الخفجي) — رأس الخير مرجع هذا المشروع</td><td><span class="ev-badge ev-official">✓ Official</span></td></tr>
+            <tr><th>البنية التحتية الحالية</th><td>شبكة SWCC المباشرة + محطات IWPP خاصة متنامية العدد ضمن برنامج الخصخصة</td><td><span class="ev-badge ev-official">✓ Official</span></td></tr>
+            <tr><th>اعتماد MSF</th><td>مهيمن تاريخيًا (64% من الإنتاج حتى بيانات 2018 — آخر توزيع رسمي منشور عُثر عليه)</td><td><span class="ev-badge ev-official">✓ Official (بيانات 2018)</span></td></tr>
+            <tr><th>توسّع RO</th><td>حصة متنامية (20% حتى 2018)؛ المشاريع الجديدة (IWPP) تفضّل RO لكفاءتها الطاقية الأعلى — لا رقم رسمي أحدث لنسبة 2026 عُثر عليه</td><td><span class="ev-badge ev-official">✓ Official (بيانات 2018) + اتجاه معروف</span></td></tr>
+            <tr><th>كثافة الطاقة (MSF مقابل RO)</th><td>نفس الفجوة الفيزيائية المستخدمة بنموذج هذا المشروع: MSF ≈ 62.7 kWh_th/م³ (GOR≈10) مقابل RO ≈ 4 kWh_e/م³</td><td><span class="ev-badge ev-calculated">🧮 من نموذج هذا المشروع</span></td></tr>
+            <tr><th>كثافة الكربون</th><td>معظم أسطول SWCC الحالي يعمل بالغاز/النفط — بالضبط الفجوة التي يستهدف دمج SMR سدّها؛ راجع صفحة الأداء والتكامل لمقارنة الانبعاثات المحسوبة لسيناريو SMART100×رأس الخير تحديدًا</td><td><span class="ev-badge ev-calculated">🧮 من نموذج هذا المشروع</span></td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="why-callout card reveal" style="margin-top:22px; border-inline-start: 3px solid var(--critical);">
+      <span class="why-callout-icon">⚠️</span>
+      <p>
+        <strong>هل يمكن لـACP100 أن "يستبدل" محطة سعودية معيّنة؟</strong> لا يوجد دليل درا سي منشور
+        (بحث أُجري بتاريخ 29 أغسطس 2026) يدعم ادعاءً مباشرًا كهذا لأي موقع سعودي تحديدًا — ولا يقدّم هذا
+        الموقع مثل هذا الادعاء. المنهجية الأقرب المتاحة علنًا لتقييم سؤال مشابه هي
+        <a href="https://www.sciencedirect.com/science/article/abs/pii/S0306454925008060" target="_blank" rel="noopener" style="color:var(--nuclear-glow); font-weight:700;">دراسة تكامل SMR مع البنية التحتية الإماراتية القائمة ↗</a>
+        (ScienceDirect، 14 نوفمبر 2025)، التي تستخدم أداة DEEP التابعة لـIAEA لتقييم دمج ست تقنيات SMR
+        مختلفة مع محطات تحلية إماراتية قائمة فعليًا (مثل محطة الطويلة). هذه منهجية مشابهة يمكن تطبيقها
+        مستقبلًا على مواقع سعودية، لا نتيجة جاهزة يمكن نقلها مباشرة للسياق السعودي.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- ===== Section 7: ACP100 vs Ras Al Khair — Conceptual Comparison ===== -->
+<section class="section" id="acp100-vs-rak">
+  <div class="section-inner">
+    <span class="section-tag">Section 7 — Conceptual Comparison Only</span>
+    <h2 class="section-title">ACP100 مقابل رأس الخير — مقارنة مفاهيمية</h2>
+    <div class="why-callout card reveal" style="border-inline-start: 3px solid var(--critical); margin-bottom:24px;">
+      <span class="why-callout-icon">🚫</span>
+      <p>
+        <strong>هذه مقارنة مفاهيمية (Conceptual Comparison) فقط — وليست تصميم محطة فعلي ولا توصية هندسية.</strong>
+        الأرقام أدناه محسوبة بتطبيق نفس منهجية هذا المشروع (نفس معادلات <code>model.py</code>، نفس أربعة
+        سيناريوهات الطلب) على مواصفات ACP100 بدل SMART100، لغرض توضيحي فقط: "لو استُبدل SMART100 نظريًا
+        بـACP100 لتغطية نفس حمل رأس الخير — كم وحدة ستلزم؟"
+      </p>
+    </div>
+
+    <div class="card reveal" style="padding:6px;">
+      <div class="compare-table-wrap">
+        <table class="compare-table">
+          <thead><tr><th>المعيار</th><th>🇨🇳 ACP100 (مفاهيمي)</th><th>🇰🇷 SMART100 (معتمد بالنموذج)</th></tr></thead>
+          <tbody>
+            <tr><th>عدد الوحدات المطلوبة (سيناريو الذروة)</th><td>9 وحدات <span class="ev-badge ev-calculated">🧮 محسوب</span></td><td>10 وحدات <span class="ev-badge ev-calculated">🧮 معتمد بالنموذج (Calculated)</span></td></tr>
+            <tr><th>السعة الحرارية الإجمالية المركّبة</th><td>3,465 MWth (9 × 385)</td><td>3,300 MWth (10 × 330)</td></tr>
+            <tr><th>السعة الكهربائية الإجمالية المركّبة</th><td>1,125 MWe (9 × 125)</td><td>1,000 MWe (10 × 100)</td></tr>
+            <tr><th>الإنتاج المستهدف (سيناريو عادي)</th><td>1,036,000 م³/يوم</td><td>1,036,000 م³/يوم (فعلي — معتمد)</td></tr>
+            <tr><th>مصدر الطاقة</th><td>نووي 100% (مفاهيمي)</td><td>نووي 100% — بدل الغاز الطبيعي المفترض حاليًا بنموذج هذا المشروع</td></tr>
+            <tr><th>الانبعاثات</th><td>بنفس رتبة توفير SMART100 تقريبًا (فرق طفيف فقط بعدد الوحدات)؛ لم يُحسَب رقم منفصل</td><td>8.27 مليون طن CO₂ توفير سنويًا <span class="ev-badge ev-calculated">🧮 معتمد بالنموذج (Calculated)</span></td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <p class="calc-hint" style="margin-top:14px;">
+      لماذا 9 لا 10؟ كفاءة تحويل ACP100 الحرارية-الكهربائية الرسمية (125/385 ≈ 32.5%) أعلى قليلًا من
+      SMART100 (100/330 ≈ 30.3%)، وكل وحدة أكبر فيزيائيًا (385 مقابل 330 MWth) — ما يقلّل عدد الوحدات
+      المطلوب بمقياس <em>العدد</em> رغم أن السعة الإجمالية المركّبة النهائية أعلى في حالة ACP100.
+    </p>
+  </div>
+</section>
+
+<!-- ===== Section 8: Research Gap Analysis ===== -->
+<section class="section section-alt" id="gap-analysis">
+  <div class="section-inner">
+    <span class="section-tag">Section 8 — Research Gap Analysis</span>
+    <h2 class="section-title">أين يقع هذا المشروع من الأدبيات البحثية القائمة؟</h2>
+
+    <div class="card reveal" style="padding:26px 28px; margin-bottom:18px;">
+      <h3 style="font-size:1rem; color:var(--nuclear-glow); font-family:'IBM Plex Mono',monospace; margin-bottom:10px;">What existing research solves</h3>
+      <p>
+        التحليل التقني-الاقتصادي لربط SMR بالتحلية موجود وموثّق —
+        <a href="https://doi.org/10.1016/j.desal.2025.118624" target="_blank" rel="noopener" style="color:var(--nuclear-glow); font-weight:700;">Yoo et al. 2025, Desalination 602 ↗</a>؛
+        <a href="https://nucleus.iaea.org/Pages/deep.aspx" target="_blank" rel="noopener" style="color:var(--nuclear-glow); font-weight:700;">أداة DEEP التابعة لـIAEA ↗</a>؛
+        <a href="https://www.sciencedirect.com/science/article/abs/pii/S0306454925008060" target="_blank" rel="noopener" style="color:var(--nuclear-glow); font-weight:700;">دراسة UAE 2025 ↗</a>
+        التي تستخدم DEEP لمقارنة NuScale/SMART/BWRX-300/HTR-PM (ومفاعلات إضافية) مع RO/MSF/MED.
+      </p>
+    </div>
+
+    <div class="card reveal" style="padding:26px 28px; margin-bottom:18px;">
+      <h3 style="font-size:1rem; color:var(--thermal); font-family:'IBM Plex Mono',monospace; margin-bottom:10px;">What is still missing</h3>
+      <p>
+        منصة تفاعلية موحّدة تجمع هذا التحليل بواجهة قرار حية، بدل أوراق بحثية ثابتة أو أدوات desktop
+        مغلقة مثل DEEP.
+      </p>
+    </div>
+
+    <div class="card reveal" style="padding:26px 28px;">
+      <h3 style="font-size:1rem; color:var(--good); font-family:'IBM Plex Mono',monospace; margin-bottom:10px;">What this project contributes</h3>
+      <p>
+        <a href="dashboard.html" style="color:var(--nuclear-glow);">Dashboard تفاعلي ↗</a> +
+        شفافية مصدر كل رقم (Evidence badges — كما بهذه الصفحة أعلاه) +
+        تحليل حساسية وعدم يقين حي (<a href="scenarios.html" style="color:var(--nuclear-glow);">169 توليفة تصميمية ↗</a>،
+        <a href="performance.html" style="color:var(--nuclear-glow);">تحليلات N-1 والخزان المائي ↗</a>) +
+        <a href="integration.html#twin-model" style="color:var(--nuclear-glow);">تصوّر Digital Twin-Inspired Simulation ↗</a> +
+        <a href="three-system-comparison.html" style="color:var(--nuclear-glow);">مقارنة ثلاثة أنظمة جنبًا لجنب ↗</a> —
+        تركيبة العرض والتفاعلية هي المساهمة، وليس اكتشاف تقني جديد.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- ===== CTA ===== -->
+<section class="section">
+  <div class="section-inner">
+    <div class="home-cta-band reveal">
+      <h2>كيف يقارَن SMART100 بمفاعلات SMR الأخرى؟</h2>
+      <p>راجع صفحة المفاعل للنموذج ثلاثي الأبعاد الكامل، أو صفحة المراجع لكل مصادر هذا المشروع.</p>
+      <div class="home-cta-links">
+        <a href="reactor.html" class="btn btn-primary">مفاعل SMART100 ⚛</a>
+        <a href="references.html" class="btn btn-ghost">كل المراجع</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="footer-inner">
+    <div>
+      <div class="footer-brand">SMART100 × رأس الخير</div>
+      <p class="footer-desc">منصة هندسية تفاعلية تدرس دمج مفاعل SMART100 النووي الصغير مع منظومة تحلية المياه في محطة رأس الخير — مشروع بحثي/هندسي.</p>
+    </div>
+    <div class="footer-cols">
+      <div class="footer-col">
+        <h5>المنصة</h5>
+        <a href="index.html">الرئيسية</a>
+        <a href="dashboard.html">لوحة التحكم</a>
+        <a href="reactor.html">مفاعل SMART100</a>
+        <a href="integration.html">التكامل</a>
+      </div>
+      <div class="footer-col">
+        <h5>المصادر</h5>
+        <a href="glossary.html">المسرد</a>
+        <a href="references.html">المراجع</a>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom">مشروع بحثي · مبني على نموذج محاكاة Python (<a href="https://github.com/Ahmedhala/smart100-ras-al-khair/tree/master/model" target="_blank" rel="noopener" style="color:inherit; text-decoration:underline;">model.py / simulation.py / comparison.py ↗</a>)</div>
+</footer>
+
+<script src="js/nav.js"></script>
+<script src="js/acp100-benchmark.js"></script>
+</body>
+</html>

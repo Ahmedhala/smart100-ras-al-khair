@@ -1,5 +1,5 @@
 // ==========================================================================
-// Digital Twin 3D model component data — the full SMART100 → Ras Al-Khair
+// Digital Twin-Inspired Simulation 3D model component data — the full SMART100 → Ras Al-Khair
 // journey, shared by the Three.js viewer, the side panel, the
 // component-select list, and the reference grid on integration.html.
 // ==========================================================================

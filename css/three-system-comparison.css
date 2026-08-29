@@ -1,0 +1,18 @@
+/* ==========================================================================
+   three-system-comparison.html — page-specific pieces
+   ========================================================================== */
+.tsc-criterion{ margin-bottom: 40px; }
+.tsc-criterion:last-child{ margin-bottom: 0; }
+.tsc-criterion-head{ display:flex; align-items:baseline; gap:10px; margin-bottom: 16px; flex-wrap:wrap; }
+.tsc-criterion-num{ font-family:'IBM Plex Mono',monospace; color: var(--ink-muted); font-size: 0.8rem; }
+.tsc-criterion-head h3{ font-size: 1.05rem; }
+.tsc-grid{ display:grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+.tsc-cell{ padding: 20px; }
+.tsc-cell.is-pending{ opacity: 0.7; border-style: dashed; }
+.tsc-flag{ font-size: 1.3rem; display:block; margin-bottom: 8px; }
+.tsc-cell h4{ font-size: 0.92rem; margin-bottom: 8px; }
+.tsc-cell p{ font-size: 0.86rem; }
+
+@media (max-width: 900px){
+  .tsc-grid{ grid-template-columns: 1fr; }
+}

@@ -13,7 +13,6 @@ document.addEventListener('DOMContentLoaded', () => {
   initLcowChart();
   initDaySlider();
   initHeatmap();
-  initCo2Bars();
 });
 
 function cssVar(name){ return getComputedStyle(document.documentElement).getPropertyValue(name).trim(); }
@@ -313,18 +312,4 @@ function lerpColor3(hexA, hexB, hexC, t){
   return `rgb(${r},${g},${bl})`;
 }
 
-/* ================================================================ CO2 bars === */
-function initCo2Bars(){
-  const gasVal = 8.54, smrVal = 0.28, maxVal = gasVal;
-  const bars = document.querySelectorAll('.co2-bar');
-  if (!bars.length) return;
-  const io = new IntersectionObserver((entries) => {
-    entries.forEach(e => {
-      if (e.isIntersecting){
-        bars.forEach(bar => { bar.style.width = (parseFloat(bar.dataset.value) / maxVal * 100) + '%'; });
-        io.disconnect();
-      }
-    });
-  }, { threshold: 0.4 });
-  io.observe(bars[0].closest('.co2-bar-group'));
-}
+/* CO2 bars are now driven live by js/carbon-calculator.js (interactive engine). */
