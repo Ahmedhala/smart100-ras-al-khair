@@ -4,7 +4,52 @@
    ========================================================================== */
 
 @import url('https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;900&family=IBM+Plex+Mono:wght@400;500;600;700&display=swap');
-@import url('tokens.css');
+
+:root{
+  color-scheme: dark;
+
+  /* ---- surfaces ---- */
+  --bg:            #070b11;
+  --bg-2:          #0a1017;
+  --panel:         #0e161f;
+  --panel-2:       #131e2a;
+  --panel-raised:  #16222f;
+  --border:        rgba(255,255,255,0.08);
+  --border-strong: rgba(255,255,255,0.16);
+
+  /* ---- ink ---- */
+  --ink:           #eef3f7;
+  --ink-secondary: #a7b6c4;
+  --ink-muted:     #7a8b99;   /* lightened from #6c7d8c — WCAG AA contrast fix (was 3.97-4.29:1 on panel surfaces, below the 4.5:1 required for small text) */
+
+  /* ---- brand / accents (fixed roles, never cycled) ---- */
+  --nuclear:       #3f8fd6;   /* reactor / core / brand — for text/icons/borders on dark surfaces, NOT for solid fills under white text (3.44:1, fails AA) */
+  --nuclear-deep:  #2c689f;   /* darker nuclear for solid-fill buttons/badges with white text (5.85:1, passes AA) */
+  --nuclear-glow:  #6fb6ff;
+  --thermal:       #ff7a45;   /* heat / steam / MSF */
+  --electric:      #ffc23c;   /* electricity / RO */
+  --water:         #2dd9c3;   /* fresh water / desalination output */
+  --water-dim:     #1a8f80;
+
+  --good:          #33c46a;
+  --warn:          #f0a736;
+  --critical:      #ef5757;
+
+  --nuclear-tint:  rgba(63,143,214,0.12);
+  --thermal-tint:  rgba(255,122,69,0.12);
+  --electric-tint: rgba(255,194,60,0.12);
+  --water-tint:    rgba(45,217,195,0.12);
+  --critical-tint: rgba(239,87,87,0.12);
+
+  --radius-sm: 8px;
+  --radius-md: 14px;
+  --radius-lg: 22px;
+  --shadow-1: 0 1px 2px rgba(0,0,0,0.4);
+  --shadow-2: 0 16px 40px rgba(0,0,0,0.45), 0 4px 12px rgba(0,0,0,0.3);
+  --shadow-glow: 0 0 40px rgba(63,143,214,0.25);
+
+  --nav-h: 68px;
+}
 
 *, *::before, *::after{ box-sizing: border-box; }
 html{ scroll-behavior: smooth; scroll-padding-top: calc(var(--nav-h) + 16px); }
