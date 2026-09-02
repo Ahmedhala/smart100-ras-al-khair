@@ -1,0 +1,155 @@
+/* ==========================================================================
+   SMART100 × رأس الخير — Design Tokens
+   Primitive layer (raw scales) → Semantic layer (role-based names).
+   Components consume the semantic layer only. Values in the primitive
+   layer that mirror an existing token are unchanged from the pre-Phase-1
+   design-system.css — the only intentional value change in this file is
+   the water family (was teal #2dd9c3, now a real blue #22b8d6), per
+   explicit user sign-off during Phase 1 planning.
+   ========================================================================== */
+
+:root{
+  color-scheme: dark;
+
+  /* ============================= PRIMITIVE ============================= */
+
+  /* -- navy surface ramp (= today's --bg/--panel family, unchanged) -- */
+  --p-navy-950: #070b11;
+  --p-navy-900: #0a1017;
+  --p-navy-850: #0e161f;
+  --p-navy-800: #131e2a;
+  --p-navy-750: #16222f;
+
+  /* -- slate ink ramp (= today's --ink family, unchanged) -- */
+  --p-slate-100: #eef3f7;
+  --p-slate-300: #a7b6c4;
+  --p-slate-500: #7a8b99;
+  --p-slate-600: #5c6b78;
+  --p-slate-700: #3f4b56;
+
+  /* -- blue (= today's --nuclear family, unchanged — load-bearing:
+        Evidence Badge "Official" is hard-wired to --nuclear-glow) -- */
+  --p-blue-400: #6fb6ff;
+  --p-blue-500: #3f8fd6;
+  --p-blue-700: #2c689f;
+
+  /* -- orange (= today's --thermal family, unchanged) -- */
+  --p-orange-400: #ff9466;
+  --p-orange-500: #ff7a45;
+  --p-orange-700: #c95a2c;
+
+  /* -- amber (= today's --electric family, unchanged) -- */
+  --p-amber-400: #ffd166;
+  --p-amber-500: #ffc23c;
+  --p-amber-700: #c98f1c;
+
+  /* -- cyan (NEW — replaces the old teal water family #2dd9c3) -- */
+  --p-cyan-400: #6fe0f2;
+  --p-cyan-500: #22b8d6;
+  --p-cyan-700: #158aa3;
+
+  /* -- violet (= today's ev-calculated purple, unchanged) -- */
+  --p-violet-400: #c4b5fd;
+  --p-violet-500: #a78bfa;
+
+  /* -- status (unchanged) -- */
+  --p-green-500: #33c46a;
+  --p-amber-warn: #f0a736;
+  --p-red-500: #ef5757;
+
+  /* -- spacing (4px base) -- */
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 20px;
+  --space-6: 24px;
+  --space-8: 32px;
+  --space-10: 40px;
+  --space-12: 48px;
+  --space-16: 64px;
+  --space-20: 80px;
+  --space-24: 96px;
+
+  /* -- radius -- */
+  --radius-xs: 6px;
+  --radius-sm: 8px;
+  --radius-md: 14px;
+  --radius-lg: 22px;
+  --radius-full: 999px;
+
+  /* -- elevation -- */
+  --shadow-1: 0 1px 2px rgba(0,0,0,0.4);
+  --shadow-2: 0 16px 40px rgba(0,0,0,0.45), 0 4px 12px rgba(0,0,0,0.3);
+
+  /* -- motion -- */
+  --ease-out: cubic-bezier(.16,1,.3,1);
+  --dur-fast: 120ms;
+  --dur-base: 200ms;
+  --dur-slow: 400ms;
+
+  /* -- type scale -- */
+  --fs-xs: 0.72rem;
+  --fs-sm: 0.82rem;
+  --fs-base: 1rem;
+  --fs-md: 1.1rem;
+  --fs-lg: 1.4rem;
+  --fs-xl: 1.8rem;
+  --fs-2xl: 2.3rem;
+
+  /* -- z-index -- */
+  --z-nav: 500;
+  --z-nav-mobile: 490;
+  --z-tooltip: 900;
+  --z-modal: 800;
+  --z-toast: 950;
+
+  /* ============================= SEMANTIC =============================== */
+
+  /* -- surfaces (unchanged) -- */
+  --bg:            var(--p-navy-950);
+  --bg-2:          var(--p-navy-900);
+  --panel:         var(--p-navy-850);
+  --panel-2:       var(--p-navy-800);
+  --panel-raised:  var(--p-navy-750);
+  --border:        rgba(255,255,255,0.08);
+  --border-strong: rgba(255,255,255,0.16);
+
+  /* -- ink (unchanged) -- */
+  --ink:           var(--p-slate-100);
+  --ink-secondary: var(--p-slate-300);
+  --ink-muted:     var(--p-slate-500);   /* WCAG AA fix carried forward from design-system.css */
+
+  /* -- brand / accents (fixed roles, never cycled — unchanged) -- */
+  --nuclear:       var(--p-blue-500);   /* reactor / core / brand — text/icons/borders on dark surfaces */
+  --nuclear-deep:  var(--p-blue-700);   /* solid-fill buttons/badges with white text (AA-passing) */
+  --nuclear-glow:  var(--p-blue-400);
+  --thermal:       var(--p-orange-500); /* heat / steam / MSF */
+  --electric:      var(--p-amber-500);  /* electricity / RO */
+
+  /* -- water (CHANGED: teal → real blue, ~35° hue separation from --nuclear) -- */
+  --water:         var(--p-cyan-500);
+  --water-glow:    var(--p-cyan-400);
+  --water-dim:     var(--p-cyan-700);
+
+  /* -- structure (NEW: neutral accent for generic system/process-diagram
+        elements that want a true neutral rather than a brand color) -- */
+  --structure:      var(--p-slate-600);
+  --structure-glow: var(--p-slate-500);
+
+  /* -- status (unchanged) -- */
+  --good:     var(--p-green-500);
+  --warn:     var(--p-amber-warn);
+  --critical: var(--p-red-500);
+
+  /* -- tints (water tint recomputed from the new cyan; rest unchanged) -- */
+  --nuclear-tint:  rgba(63,143,214,0.12);
+  --thermal-tint:  rgba(255,122,69,0.12);
+  --electric-tint: rgba(255,194,60,0.12);
+  --water-tint:    rgba(34,184,214,0.12);
+  --critical-tint: rgba(239,87,87,0.12);
+
+  --shadow-glow: 0 0 40px rgba(63,143,214,0.25);
+
+  --nav-h: 68px;
+}
