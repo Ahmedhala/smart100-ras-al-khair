@@ -176,7 +176,7 @@
               <td>1,900.0 MWth</td>
               <td>142.4 MWe</td>
               <td>2,369.8 MWth-eq</td>
-              <td><strong style="color:var(--nuclear-glow)">$5.67</strong></td>
+              <td><strong style="color:var(--good)">$2.22</strong></td>
             </tr>
             <tr>
               <th>طلب مرتفع (مياه)</th>
@@ -185,7 +185,7 @@
               <td>2,280.0 MWth</td>
               <td>179.4 MWe</td>
               <td>2,872.0 MWth-eq</td>
-              <td><strong style="color:var(--good)">$5.40</strong></td>
+              <td><strong>$2.43</strong></td>
             </tr>
             <tr>
               <th>طلب مرتفع (كهرباء)</th>
@@ -194,7 +194,7 @@
               <td>1,900.0 MWth</td>
               <td>170.8 MWe</td>
               <td>2,463.8 MWth-eq</td>
-              <td><strong style="color:var(--critical)">$5.82</strong></td>
+              <td><strong>$2.40</strong></td>
             </tr>
             <tr>
               <th>ذروة الطلب</th>
@@ -203,7 +203,7 @@
               <td>2,470.0 MWth</td>
               <td>240.6 MWe</td>
               <td><strong style="color:var(--critical)">3,264.0 MWth-eq</strong></td>
-              <td><strong style="color:var(--nuclear-glow)">$5.46</strong></td>
+              <td><strong style="color:var(--critical)">$2.76</strong></td>
             </tr>
           </tbody>
         </table>
@@ -224,11 +224,12 @@
     <div class="why-callout card reveal" style="margin-top:16px; border-inline-start: 3px solid var(--electric);">
       <span class="why-callout-icon">⚡</span>
       <p>
-        <strong>أعلى LCOW في الجدول ليس سيناريو الذروة.</strong> لاحظ أن "طلب مرتفع (كهرباء)" ($5.82) هو
-        الأعلى تكلفة، وليس "ذروة الطلب" ($5.46) رغم أن الأخير يحمل أعلى حمل حراري مكافئ في الجدول كله. السبب:
-        "طلب مرتفع (كهرباء)" يرفع الحمل الكهربائي 20% دون أي زيادة مقابلة في حجم الإنتاج المائي تُوزَّع
-        عليها التكلفة الإضافية — بعكس "ذروة الطلب" الذي يرفع الإنتاج والكهرباء معًا فيستفيد من تخفيف التكلفة
-        الرأسمالية الثابتة. راجع صفحة الأداء لتفصيل هذا التوازن.
+        <strong>بعد تخصيص التكلفة، أعلى LCOW هو سيناريو الذروة فعلًا — لكن ليس للسبب البديهي.</strong>
+        "ذروة الطلب" ($2.76) هو الأعلى تكلفة بعد التخصيص (Exergy-based)، ليس فقط لأنه يحمل أعلى حمل حراري
+        مكافئ خام، بل لأنه يحمل أيضًا أعلى حصة تكلفة مخصَّصة للمياه (50.5%) بين السيناريوهات الأربعة —
+        فيتضاعف أثر ارتفاع الحمل على LCOW المخصَّص. أما "طلب مرتفع (كهرباء)" فرغم أنه الأعلى تكلفةً خامًا
+        غير مخصَّصة ($5.82 مقابل $5.46 لذروة الطلب)، حصته المخصَّصة للمياه أقل (41.2%)، فينتهي به المطاف
+        بـLCOW مخصَّص أقل ($2.40). راجع صفحة الأداء لتفصيل هذا التوازن.
       </p>
     </div>
   </div>
@@ -297,31 +298,31 @@
           <tbody>
             <tr>
               <th>عادي</th>
-              <td>0% MSF / 100% RO</td>
-              <td><strong style="color:var(--good)">$1.288</strong></td>
-              <td>$5.287</td>
-              <td><strong style="color:var(--critical)">+310.5%</strong></td>
+              <td>5% MSF / 95% RO</td>
+              <td><strong style="color:var(--good)">$1.020</strong></td>
+              <td>$2.413</td>
+              <td><strong style="color:var(--critical)">+136.6%</strong></td>
             </tr>
             <tr>
               <th>طلب مرتفع (مياه)</th>
               <td>0% MSF / 100% RO</td>
-              <td><strong style="color:var(--good)">$1.427</strong></td>
-              <td>$5.230</td>
-              <td><strong style="color:var(--critical)">+266.5%</strong></td>
+              <td><strong style="color:var(--good)">$1.035</strong></td>
+              <td>$2.522</td>
+              <td><strong style="color:var(--critical)">+143.7%</strong></td>
             </tr>
             <tr>
               <th>طلب مرتفع (كهرباء)</th>
               <td>0% MSF / 100% RO</td>
-              <td><strong style="color:var(--good)">$1.658</strong></td>
-              <td>$5.437</td>
-              <td><strong style="color:var(--critical)">+227.9%</strong></td>
+              <td><strong style="color:var(--good)">$1.145</strong></td>
+              <td>$2.610</td>
+              <td><strong style="color:var(--critical)">+127.9%</strong></td>
             </tr>
             <tr>
               <th>ذروة الطلب</th>
-              <td>0% MSF / 100% RO</td>
-              <td><strong style="color:var(--good)">$1.619</strong></td>
-              <td>$5.454</td>
-              <td><strong style="color:var(--critical)">+236.9%</strong></td>
+              <td>5% MSF / 95% RO</td>
+              <td><strong style="color:var(--good)">$1.463</strong></td>
+              <td>$2.752</td>
+              <td><strong style="color:var(--critical)">+88.1%</strong></td>
             </tr>
           </tbody>
         </table>
@@ -331,11 +332,18 @@
     <div class="why-callout card reveal" style="margin-top:22px; border-inline-start: 3px solid var(--nuclear);">
       <span class="why-callout-icon">📐</span>
       <p>
-        <strong>شكل العلاقة: خطية، وليست U-shaped.</strong> النسبة المثلى نظريًا تقع عند الطرف الأقصى
-        (0% MSF / 100% RO) في كل السيناريوهات الأربعة — لا عند نقطة داخلية وسطى. السبب: MSF يستهلك
-        62.7 kWh حراري مباشرة لكل م³ (بمعامل GOR=10 بهذا النموذج)، بينما كهرباء RO (4.0 kWh/م³) تعادل
-        حراريًا 4.0÷0.303 ≈ 13.2 kWh-مكافئ لكل م³ فقط — أقل بكثير حتى بعد احتساب خسارة كفاءة تحويل
-        التوربين (30.3%). كل م³ يُنتَج عبر MSF بدل RO يكلّف حراريًا أكثر بنحو 4.7 أضعاف في سياق SMR تحديدًا.
+        <strong>الاتجاه العام قاطع، مع قاع موضعي ضحل ناتج عن تحجيم الأسطول المتقطّع.</strong> تكلفة
+        الطاقة النووية لكل م³ ترتفع رتابةً مع زيادة حصة MSF — LCOW غير المخصَّص يرتفع في كل نقطة بلا
+        استثناء بالسيناريوهات الأربعة (عمود "LCOW عند المثالي" بجدول <code>optimal_ratio.csv</code>
+        الكامل). السبب الفيزيائي: MSF يستهلك 62.7 kWh حراري مباشرة لكل م³ (GOR=10)، بينما كهرباء RO
+        (4.0 kWh/م³) تعادل حراريًا 4.0÷0.303 ≈ 13.2 kWh-مكافئ لكل م³ فقط.
+        <br><br>
+        أما بعد تخصيص التكلفة بين الماء والكهرباء (Exergy-based)، فيظهر قاع موضعي ضحل (~8%) عند 5% MSF
+        بسيناريوهين من أربعة ("عادي" و"ذروة الطلب" — لاحظ نقاط الرسم أعلاه). السبب معروف ومُوثَّق: تقطُّع
+        حجم الأسطول (<code>units_f = ⌈...⌉</code>) عند قفزة 2→3 وحدات تحديدًا (مرّر المؤشر على نقاط
+        الرسم البياني لرؤية عدد الوحدات ونسبة الاستغلال بكل نقطة) — كل قفزة تكبّر القدرة الكهربائية
+        المُنتَجة فجأة، فيرتفع الفائض المُدرَك وتنخفض حصة الماء موضعيًا. هذه خاصية أصيلة للتحجيم المعياري
+        (الأسطول يأتي بكتل 100 MWe فقط، لا بالكسر) وليست ميزة تشغيلية حقيقية لـMSF.
       </p>
     </div>
 
@@ -419,14 +427,14 @@
               <td><strong style="color:var(--critical)">33</strong></td>
             </tr>
             <tr>
-              <th>متوسط LCOW السنوي</th>
-              <td>$5.588/م³</td>
-              <td><strong style="color:var(--critical)">$18.911/م³</strong></td>
+              <th>متوسط LCOW السنوي (مخصَّص)</th>
+              <td>$2.381/م³</td>
+              <td><strong style="color:var(--critical)">$3.048/م³</strong></td>
             </tr>
             <tr>
               <th>توفير CO₂ السنوي مقابل الغاز</th>
-              <td>8.27 مليون طن</td>
-              <td>28.19 مليون طن (لحمل أكبر بكثير — وليس لكفاءة أعلى)</td>
+              <td>4.38 مليون طن</td>
+              <td>3.66 مليون طن (فليت أكبر بكثير لكن كفاءة تحويل غاز مماثلة تقريبًا — الفرق ليس تناسبيًا)</td>
             </tr>
           </tbody>
         </table>
@@ -490,7 +498,7 @@
     <div class="chart-card card reveal">
       <div class="chart-head">
         <h3>تأثير كل متغير على LCOW ($/م³)</h3>
-        <p>الخط الرأسي المتقطع = القيمة الأساسية (Baseline) <span id="tornadoBaselineLabel">$5.67</span></p>
+        <p>الخط الرأسي المتقطع = القيمة الأساسية (Baseline) <span id="tornadoBaselineLabel">$2.22</span></p>
       </div>
       <div class="chart-wrap" style="height:420px;"><canvas id="tornadoChart" role="img" aria-label="رسم Tornado يوضح تأثير ثمانية متغيرات على تكلفة المياه المكافئة، مرتبة من الأكبر تأثيرًا للأصغر"></canvas></div>
     </div>
@@ -685,8 +693,10 @@ function buildOptimalRatioChart(){
   const ratios = [...new Set(OPTIMAL_RATIO_DATA.map(r => r.msf_ratio))].sort((a,b) => a-b);
   const labels = ratios.map(r => Math.round(r*100) + '%');
 
+  const rowsByName = {};
   const datasets = scenarioNames.map((name, i) => {
     const rows = OPTIMAL_RATIO_DATA.filter(r => r.scenario === name).sort((a,b) => a.msf_ratio - b.msf_ratio);
+    rowsByName[name] = rows;
     const data = rows.map(r => r.LCOW_usd_m3);
     const minIdx = data.indexOf(Math.min(...data));
     let nearestIdx = 0, nearestDist = Infinity;
@@ -722,7 +732,12 @@ function buildOptimalRatioChart(){
           titleFont: { family: 'Tajawal', weight: '700' }, bodyFont: { family: 'Tajawal' },
           callbacks: {
             title: (items) => `نسبة MSF: ${items[0].label}`,
-            label: (item) => `${item.dataset.label}: $${item.formattedValue}/م³`,
+            label: (item) => {
+              const rows = rowsByName[item.dataset.label];
+              const r = rows && rows[item.dataIndex];
+              const extra = r ? ` (${r.units} وحدة، استغلال ${Math.round(r.utilization*100)}%)` : '';
+              return `${item.dataset.label}: $${item.formattedValue}/م³${extra}`;
+            },
           },
         },
       },

@@ -78,12 +78,14 @@ function runScenario(reactorKey, techKey){
     ? 'مطابق للرقم المعتمد بالنموذج (80.5% من محاكاة سنة كاملة).'
     : 'مشتق بنفس منهجية النموذج لهذا الاختيار تحديدًا — وليس رقم المحاكاة السنوية الكامل (المتاح فقط لسيناريو SMART100 + Hybrid المعتمد).';
 
-  // Scenario ranking against the established reference set
+  // Scenario ranking against the established reference set — allocated LCOW
+  // (exergy-based water/electricity cost split, see model.py / sensitivity-
+  // engine.js). Unallocated equivalents: $5.40 / $5.46 / $5.67 / $5.82.
   const reference = [
-    { label: 'طلب مرتفع (مياه) — SMART100', lcow: 5.40 },
-    { label: 'ذروة الطلب — SMART100', lcow: 5.46 },
-    { label: 'عادي — SMART100', lcow: 5.67 },
-    { label: 'طلب مرتفع (كهرباء) — SMART100', lcow: 5.82 },
+    { label: 'طلب مرتفع (مياه) — SMART100', lcow: 2.43 },
+    { label: 'ذروة الطلب — SMART100', lcow: 2.76 },
+    { label: 'عادي — SMART100', lcow: 2.22 },
+    { label: 'طلب مرتفع (كهرباء) — SMART100', lcow: 2.40 },
   ];
   const current = { label: `${reactor.label} + ${tech.label} (هذا التشغيل)`, lcow, isCurrent: true };
   const ranked = [...reference, current].sort((a, b) => a.lcow - b.lcow);

@@ -9,15 +9,26 @@ import matplotlib.pyplot as plt
 df = pd.read_csv("year_simulation.csv")
 
 # --- مدخلات خط الأساس الغازي ---
-ccgt_eff = 0.55           # كفاءة الدورة المركبة
+ccgt_eff = 0.55           # كفاءة الدورة المركبة (للمسار الكهربائي فقط)
+boiler_eff = 0.90         # كفاءة مرجل غاز تقليدي (للمسار الحراري المباشر لـMSF)
 gas_lhv = 13.9            # kWh/kg قيمة حرارية للغاز
 co2_factor = 56.1         # kg CO2/GJ
 smr_eff = 0.303
 
-# نعيد حساب الحمل الكهربائي المكافئ لكل يوم (من نسبة الاستغلال)
+# نعيد حساب الحمل الكهربائي المكافئ لكل يوم (من نسبة الاستغلال) — يُستخدم
+# فقط لحساب انبعاثات SMR أدناه (دورة حياة)، وليس لخط أساس الغاز بعد الإصلاح
 units = 10
 cap_per_unit = 100 / smr_eff
 installed = units * cap_per_unit   # MWth-eq
+
+# --- ثوابت فصل المسارين الحراري/الكهربائي لإعادة اشتقاق Q_th وP_el اليوميين ---
+# year_simulation.csv لا يحفظ عمودي Q_th/P_el منفصلين، فقط "utilization"
+# المُجمَّع. نشتقهما هنا من "water_mult" باستخدام نفس فيزياء model.py/
+# simulation.py بالضبط: elec_mult = water_mult × 0.98 (نفس العلاقة الحرفية
+# المستخدمة بـsimulation.py سطر 68 لتوليد year_simulation.csv أصلًا).
+production_total = 1_036_000
+msf_share, ro_share = 0.702, 0.298
+ro_kwh, msf_aux_kwh, gor, steam_enthalpy = 4.0, 3.0, 10.0, 0.627
 
 total_gas_kg = 0
 total_co2_smr = 0
@@ -26,15 +37,33 @@ total_co2_gas = 0
 daily_co2_saved = []
 
 for _, row in df.iterrows():
-    total_load = row["utilization"] * installed   # MWth-eq لهذا اليوم
-    # استهلاك الغاز اليومي (كغم) لتغطية نفس الحمل بالغاز
-    gas_kg_day = (total_load * 1000 / ccgt_eff) / gas_lhv * 24
+    water_mult = row["water_mult"]
+    elec_mult = round(water_mult * 0.98, 3)
+
+    prod = production_total * water_mult
+    msf_prod = prod * msf_share
+    ro_prod = prod * ro_share
+
+    q_th_mw = (msf_prod * (1000 / gor) * steam_enthalpy) / 24 / 1000          # MWth — حمل MSF الحراري
+    p_el_mw = (ro_prod * ro_kwh + msf_prod * msf_aux_kwh) * elec_mult / 24 / 1000  # MWe — حمل RO+مساعد MSF
+
+    # مسارا الغاز منفصلان: الحراري عبر مرجل (boiler_eff)، الكهربائي عبر
+    # دورة مركبة (ccgt_eff) — بدل قسمة الحمل المُجمَّع (Q_th+كهرباء/smr_eff)
+    # على ccgt_eff مرة ثانية، وهو ما كان يضخّم استهلاك الغاز بازدواج الكفاءة.
+    gas_thermal_kwh = q_th_mw * 1000 * 24 / boiler_eff
+    gas_electric_kwh = p_el_mw * 1000 * 24 / ccgt_eff
+    gas_kg_day = (gas_thermal_kwh + gas_electric_kwh) / gas_lhv
     total_gas_kg += gas_kg_day
+
     # انبعاثات الغاز (طن CO2/يوم)
     gj_day = gas_kg_day * (gas_lhv * 3.6 / 1000)
     co2_gas_day = gj_day * co2_factor / 1000
     total_co2_gas += co2_gas_day
-    # انبعاثات SMR (شبه صفر تشغيليًا، ناخذ 12 gCO2/kWh دورة حياة)
+
+    # انبعاثات SMR (شبه صفر تشغيليًا، ناخذ 12 gCO2/kWh دورة حياة) — غير
+    # متأثرة بإصلاح مساري الغاز، تبقى على أساس الحمل الحراري-المكافئ الكلي
+    # المُسلَّم فعليًا من المفاعل (لا يوجد له مساران منفصلان بالكفاءة)
+    total_load = row["utilization"] * installed   # MWth-eq لهذا اليوم
     co2_smr_day = (total_load * 24 * 1000) * 0.012 / 1000
     total_co2_smr += co2_smr_day
     daily_co2_saved.append(co2_gas_day - co2_smr_day)
@@ -84,12 +113,29 @@ total_co2_smr_D = 0
 total_co2_gas_D = 0
 
 for _, row in df_D.iterrows():
-    total_load_D = row["utilization"] * installed_D
-    gas_kg_day_D = (total_load_D * 1000 / ccgt_eff) / gas_lhv * 24
+    # نفس تصحيح مسارَي الغاز المطبَّق بالحلقة الرئيسية أعلاه. year_simulation_
+    # scenario_D.csv يحفظ "ro_demand_MWe" (P_el_desal الفعلي) لكن ليس Q_th
+    # منفصلًا، فنشتقه هنا من water_mult بنفس فيزياء calc_D بـsimulation.py
+    # (الحمل الحراري لـMSF لا يعتمد على مسار توليد الكهرباء الخاص بالسيناريو
+    # الخامس — نفس صيغة GOR المستخدمة بكل السيناريوهات).
+    water_mult_D = row["water_mult"]
+    prod_D_row = production_total * water_mult_D
+    msf_prod_D = prod_D_row * msf_share
+    q_th_mw_D = (msf_prod_D * (1000 / gor) * steam_enthalpy) / 24 / 1000   # MWth
+    p_el_mw_D = row["ro_demand_MWe"]   # P_el_desal الفعلي، وليس الكهرباء المولَّدة (الفائض غير موجَّه للتحلية)
+
+    gas_thermal_kwh_D = q_th_mw_D * 1000 * 24 / boiler_eff
+    gas_electric_kwh_D = p_el_mw_D * 1000 * 24 / ccgt_eff
+    gas_kg_day_D = (gas_thermal_kwh_D + gas_electric_kwh_D) / gas_lhv
     total_gas_kg_D += gas_kg_day_D
+
     gj_day_D = gas_kg_day_D * (gas_lhv * 3.6 / 1000)
     co2_gas_day_D = gj_day_D * co2_factor / 1000
     total_co2_gas_D += co2_gas_day_D
+
+    # انبعاثات SMR غير متأثرة بالإصلاح — تبقى على أساس الحمل الحراري-
+    # المكافئ الكلي المُسلَّم فعليًا (يشمل توليد الفائض الكهربائي كامل)
+    total_load_D = row["utilization"] * installed_D
     co2_smr_day_D = (total_load_D * 24 * 1000) * 0.012 / 1000
     total_co2_smr_D += co2_smr_day_D
 

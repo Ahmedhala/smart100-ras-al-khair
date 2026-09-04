@@ -141,17 +141,17 @@
         <span class="ev-badge ev-calculated" style="margin-top:8px;">🧮 Calculated</span>
       </div>
       <div class="integ-stat card reveal">
-        <div class="integ-stat-value">$5.40–5.82</div>
-        <div class="integ-stat-label">LCOW حسب السيناريو ($/م³)</div>
+        <div class="integ-stat-value">$2.22–2.76</div>
+        <div class="integ-stat-label">LCOW حسب السيناريو ($/م³، مخصَّص)</div>
         <span class="ev-badge ev-calculated" style="margin-top:8px;">🧮 Calculated</span>
       </div>
       <div class="integ-stat card reveal">
-        <div class="integ-stat-value" data-count="8.27" data-decimals="2">8.27</div>
+        <div class="integ-stat-value" data-count="4.38" data-decimals="2">4.38</div>
         <div class="integ-stat-label">مليون طن CO₂ توفير سنوي</div>
         <span class="ev-badge ev-calculated" style="margin-top:8px;">🧮 Calculated</span>
       </div>
       <div class="integ-stat card reveal">
-        <div class="integ-stat-value" data-count="96.7" data-decimals="1">96.7</div>
+        <div class="integ-stat-value" data-count="94.0" data-decimals="1">94.0</div>
         <div class="integ-stat-label">% تخفيض انبعاثات مقابل الغاز</div>
         <span class="ev-badge ev-calculated" style="margin-top:8px;">🧮 Calculated</span>
       </div>
@@ -302,7 +302,7 @@
         <div class="scenario-meta">
           <div class="scenario-meta-row"><span>الوحدات المستفيدة</span><span>MSF + RO معًا</span></div>
           <div class="scenario-meta-row"><span>نوع الطاقة المرسلة</span><span>بخار + كهرباء متزامنين</span></div>
-          <div class="scenario-meta-row"><span>متوسط LCOW السنوي</span><span>$5.588/م³</span></div>
+          <div class="scenario-meta-row"><span>متوسط LCOW السنوي</span><span>$2.381/م³</span></div>
         </div>
       </div>
       <div class="scenario-diagram card"><svg viewBox="0 0 460 260" class="scn-svg" data-scenario-svg="C" role="img" aria-label="مخطط السيناريو ج: SMART100 يغذّي المسارين الحراري والكهربائي معًا نحو MSF وRO"></svg></div>
@@ -342,18 +342,18 @@
     <div class="chart-card card">
       <div class="chart-head">
         <h3>تكلفة المياه المكافئة (LCOW) عبر السنة</h3>
-        <p>تذبذب موسمي طفيف مرتبط بالطلب الصيفي والشتوي على المياه — المتوسط السنوي $5.588/م³</p>
+        <p>تذبذب موسمي طفيف مرتبط بالطلب الصيفي والشتوي على المياه — المتوسط السنوي $2.381/م³</p>
       </div>
-      <div class="chart-wrap"><canvas id="lcowChart" role="img" aria-label="رسم بياني يوضح تكلفة المياه المكافئة LCOW يوميًا عبر 365 يومًا، بمتوسط سنوي 5.588 دولار للمتر المكعب"></canvas></div>
+      <div class="chart-wrap"><canvas id="lcowChart" role="img" aria-label="رسم بياني يوضح تكلفة المياه المكافئة LCOW يوميًا عبر 365 يومًا، بمتوسط سنوي 2.381 دولار للمتر المكعب (مخصَّص)"></canvas></div>
     </div>
 
     <div class="why-callout card reveal" style="margin-bottom:26px; border-inline-start: 3px solid var(--nuclear);">
       <span class="why-callout-icon">📊</span>
       <p>
-        <strong>الأرخص ليس دائمًا الأقل حملًا.</strong> بين السيناريوهات التصميمية الأربعة الثابتة،
-        "طلب مرتفع (مياه)" يسجّل أدنى LCOW ($5.40/م³) لأن الإنتاج الإضافي يوزّع التكلفة الرأسمالية
-        الثابتة على كمية أكبر من المياه، بينما "طلب مرتفع (كهرباء)" يسجّل أعلى LCOW ($5.82/م³) لأنه
-        يرفع التكلفة التشغيلية دون أي إنتاج مائي إضافي يقابلها.
+        <strong>الأرخص ليس دائمًا الأقل حملًا.</strong> بعد تخصيص التكلفة بين الماء والكهرباء
+        (Exergy-based)، سيناريو "عادي" يسجّل أدنى LCOW ($2.22/م³) رغم عدم كونه الأقل حملًا خامًا،
+        بينما "ذروة الطلب" يسجّل أعلى LCOW ($2.76/م³) لأنه يحمل أعلى حصة تكلفة مخصَّصة للمياه (50.5%)
+        بين السيناريوهات الأربعة.
         <a href="scenarios.html" style="color:var(--nuclear-glow); font-weight:700;">جدول السيناريوهات الكامل ↗</a>
       </p>
     </div>
@@ -420,18 +420,18 @@
           <input type="number" id="ccWaterProd" min="1000" step="1000" value="1036000">
         </div>
         <div class="calc-field">
-          <label for="ccSpecificEnergy">الاستهلاك النوعي المدمج (kWh-eq/م³) <span class="ev-badge ev-calculated" id="ccBadge_specificEnergy" data-default-class="ev-calculated" data-default-label="🧮 Calculated">🧮 Calculated</span></label>
-          <input type="number" id="ccSpecificEnergy" min="1" step="0.01" value="47.95">
-          <p class="calc-hint">مزيج 70.2% MSF (62.7 kWh_th/م³) + 29.8% RO (4.0 kWh_e/م³ ÷ كفاءة 0.303) — نفس ثوابت model.py.</p>
+          <label for="ccSpecificEnergy">كفاءة مرجل الغاز — مسار MSF الحراري <span class="ev-badge ev-official" id="ccBadge_specificEnergy" data-default-class="ev-official" data-default-label="✓ Official">✓ Official</span></label>
+          <input type="number" id="ccSpecificEnergy" min="0.5" max="1" step="0.01" value="0.90">
+          <p class="calc-hint">الافتراضي 0.90 — كفاءة مرجل غاز تقليدي يغذّي حمل MSF الحراري مباشرة (لا عبر دورة مركبة). رأس الخير منشأة إنتاج مزدوج بمرجل بخار مخصَّص، لا حمل موصول بشبكة عامة — نفس ثوابت comparison.py.</p>
         </div>
         <div class="calc-field">
           <label for="ccCapacityFactor">معامل قدرة المحطة (%) <span class="ev-badge ev-estimated" id="ccBadge_capacityFactor" data-default-class="ev-estimated" data-default-label="≈ Estimated">≈ Estimated</span></label>
           <input type="range" id="ccCapacityFactor" class="calc-slider" min="50" max="100" step="1" value="92">
         </div>
         <div class="calc-field">
-          <label for="ccGridIntensity">كثافة كربون الشبكة/الغاز CCGT (g CO₂/kWh) <span class="ev-badge ev-official" id="ccBadge_gridIntensity" data-default-class="ev-official" data-default-label="✓ Official">✓ Official</span></label>
-          <input type="range" id="ccGridIntensity" class="calc-slider" min="300" max="900" step="5" value="490">
-          <p class="calc-hint">الافتراضي 490 — الوسيط المرجعي لدورة حياة الغاز الطبيعي CCGT حسب IPCC AR5، Annex III.</p>
+          <label for="ccGridIntensity">كفاءة الدورة المركبة — مسار RO الكهربائي <span class="ev-badge ev-official" id="ccBadge_gridIntensity" data-default-class="ev-official" data-default-label="✓ Official">✓ Official</span></label>
+          <input type="range" id="ccGridIntensity" class="calc-slider" min="30" max="70" step="1" value="55">
+          <p class="calc-hint">الافتراضي 55% — كفاءة دورة مركبة (CCGT) تولّد الكهرباء لحمل RO ومساعد MSF. مسار مستقل عن كفاءة المرجل أعلاه — الازدواج بينهما هو الخطأ المُصحَّح بخط الأساس السابق.</p>
         </div>
         <div class="calc-field">
           <label for="ccFossilFactor">معامل انبعاث الغاز الطبيعي (kg CO₂/GJ) <span class="ev-badge ev-official" id="ccBadge_fossilFactor" data-default-class="ev-official" data-default-label="✓ Official">✓ Official</span></label>
@@ -463,16 +463,15 @@
       </div>
     </div>
 
-    <div class="why-callout card reveal" style="margin-top:22px; border-inline-start: 3px solid var(--nuclear);">
-      <span class="why-callout-icon">📐</span>
+    <div class="why-callout card reveal" style="margin-top:22px; border-inline-start: 3px solid var(--good);">
+      <span class="why-callout-icon">✅</span>
       <p>
-        <strong>لماذا القيمة الافتراضية هنا (≈8.7 مليون طن) تختلف قليلًا عن الرقم المعتمد
-        <a href="index.html" style="color:var(--nuclear-glow);">بالصفحة الرئيسية وبقية صفحات الموقع ↗</a> (8.27 مليون طن)؟</strong>
-        هذا المحرك يحسب "من الإنتاج تصاعديًا" (إنتاج المياه × استهلاك نوعي مدمج × كثافة كربون IPCC العامة)،
-        بينما الرقم المعتمد بباقي الموقع محسوب عبر <code>comparison.py</code> من محاكاة يومية فعلية (365 يومًا)
-        لسعة الأسطول الفعلية المركَّبة (10 وحدات، بما فيها هامش تغطية سيناريو الذروة) مضروبة في نسبة الاستغلال
-        اليومية الحقيقية، بمعامل انبعاث غاز محدَّد بالاحتراق المباشر لا بكثافة الشبكة العامة. كلا المنهجين
-        سليم؛ الفرق (~5%) يعكس اختلاف المنهجية لا خطأ حسابيًا — وهذا بالضبط سبب وجود شارات الأدلة على هذه الصفحة.
+        <strong>مطابقة كاملة بين المحرك التفاعلي والرقم المعتمد.</strong> يستخدم هذا المحرك الآن نفس منهجية
+        <code>comparison.py</code> بالضبط — محاكاة يومية كاملة (365 يومًا) بمسارَي احتراق منفصلين (مرجل غاز
+        لحمل MSF الحراري المباشر بكفاءة 90%، ودورة مركبة لحمل RO/الكهرباء بكفاءة 55%) — بدل كثافة شبكة
+        كهربائية عامة، غير المناسبة لمنشأة إنتاج مزدوج بمرجل بخار مخصَّص كرأس الخير. القيمة الافتراضية هنا
+        تطابق <a href="index.html" style="color:var(--nuclear-glow);">الرقم المعتمد بالصفحة الرئيسية وبقية صفحات الموقع ↗</a>
+        (4.38 مليون طن، 94.0%) تمامًا.
       </p>
     </div>
   </div>
@@ -483,7 +482,7 @@
   <div class="section-inner">
     <div class="home-cta-band reveal">
       <h2>منظومة متكاملة، جاهزة لدراسة أعمق</h2>
-      <p>10 وحدات SMART100 قادرة على تغطية حمل رأس الخير الحراري والكهربائي على مدار 365 يومًا دون استثناء، بمتوسط LCOW يبلغ $5.588/م³ وتخفيض شبه كامل للانبعاثات — نقلة مباشرة تخدم مستهدفات رؤية 2030.</p>
+      <p>10 وحدات SMART100 قادرة على تغطية حمل رأس الخير الحراري والكهربائي على مدار 365 يومًا دون استثناء، بمتوسط LCOW يبلغ $2.381/م³ وتخفيض شبه كامل للانبعاثات — نقلة مباشرة تخدم مستهدفات رؤية 2030.</p>
       <div class="home-cta-links">
         <a href="reactor.html" class="btn btn-primary">استكشف مفاعل SMART100 ⚛</a>
         <a href="index.html" class="btn btn-ghost">العودة للرئيسية</a>

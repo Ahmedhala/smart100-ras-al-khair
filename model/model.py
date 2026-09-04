@@ -135,15 +135,43 @@ crf = (discount_rate * (1 + discount_rate)**project_life) / ((1 + discount_rate)
 total_capex = units_needed * capex_per_unit          # مليون $
 annual_capex = total_capex * crf                     # مليون $/سنة
 
+# --- تخصيص التكلفة بين الماء والكهرباء (Exergy-based Cost Allocation) ---
+# نفس منهجية ورقة الفريق بالضبط، للاتساق المنهجي بين المشروعين.
+# معامل كارنو: φ = 1 - (T_ambient/T_steam)، T بالكلفن.
+CARNOT_PHI = 1 - (308.15 / 393.15)   # ≈ 0.2163
+
+def _cost_share_water(thermal_mw, electric_mw, p_total_mwe):
+    """Share_water = (Q_th_exergy + P_el_desal) / (Q_th_exergy + P_total)
+    Q_th_exergy = Q_th × φ (المكافئ الإكسيرجي للحرارة).
+    P_total = إجمالي الكهرباء المُنتَجة فعلياً من الأسطول (units × smr_elec)
+    — ثابت لكل دالة (لا يتغيّر مع f بجدول النسبة المثلى)، يمثّل سعة
+    التوليد الحقيقية، لا الحمل المُستهلَك فقط.
+
+    لماذا هذه الصيغة (المحاولة الثالثة) وليست السابقتين:
+    - المحاولة الأولى: P_total = units×smr_elec لكن حُسِب units_f *لكل
+      نقطة* بجدول النسبة المثلى → قفزات مع تقطُّع math.ceil.
+    - المحاولة الثانية: P_total = P_el_desal + Q_th×η_conv → عند f=0%
+      (RO خالص) يصبح P_total محصوراً بالتعريف = P_el_desal بالضبط
+      (لأن Q_th=0)، فتكون الحصة = 1.000 حتماً بالبناء الرياضي — تتجاهل
+      الفائض الكهربائي الحقيقي الذي ينتجه الأسطول فوق حاجة RO، فيصير أي
+      إضافة MSF بعدها "تُخفِّض" الحصة زوراً حتى لو LCOW غير المخصَّص يرتفع.
+    - هذه الصيغة: P_total ثابت = القدرة الحقيقية المُنتَجة (لا تساوي
+      P_el_desal تلقائياً عند f=0%)، فالفائض الفعلي يظهر بالمقام كما يجب،
+      ولا حافز وهمي لإضافة MSF."""
+    return (thermal_mw * CARNOT_PHI + electric_mw) / (thermal_mw * CARNOT_PHI + p_total_mwe)
+
 # --- دالة تحسب LCOW لأي سيناريو ---
-def calculate_lcow(production, total_thermal_eq):
+def calculate_lcow(production, thermal_mw, electric_mw, total_thermal_eq):
     # التكلفة التشغيلية السنوية (مليون $) = الطاقة السنوية × LCOE
     annual_opex = (total_thermal_eq * 8760 * smr_cf) * smr_lcoe / 1_000_000
     # إجمالي التكلفة السنوية
     total_annual_cost = annual_capex + annual_opex
-    # LCOW = التكلفة الكلية ÷ الإنتاج السنوي
-    lcow = total_annual_cost * 1_000_000 / (production * 365)
-    return lcow
+    # LCOW غير المخصَّص (كامل التكلفة على الماء فقط) — يُحتفَظ به للشفافية
+    lcow_unallocated = total_annual_cost * 1_000_000 / (production * 365)
+    # حصة الماء من التكلفة (Exergy-based)، ثم LCOW المخصَّص = الرقم الرئيسي
+    share_water = _cost_share_water(thermal_mw, electric_mw, units_needed * smr_elec)
+    lcow = lcow_unallocated * share_water
+    return lcow, lcow_unallocated, share_water
 
 print("\n" + "=" * 60)
 print(f"الحسابات الاقتصادية (سيناريو التكلفة: {capex_scenario})")
@@ -154,8 +182,9 @@ print()
 
 for name, (wm, em) in scenarios.items():
     prod, th, el, total = calculate_scenario(wm, em)
-    lcow = calculate_lcow(prod, total)
-    print(f"▶ {name}: LCOW = {lcow:.2f} $/م³")
+    lcow, lcow_unalloc, share_w = calculate_lcow(prod, th, el, total)
+    print(f"▶ {name}: LCOW = {lcow:.2f} $/م³  "
+          f"(غير مخصَّص: {lcow_unalloc:.2f} $/م³ | حصة الماء من التكلفة: {share_w*100:.1f}%)")
 # ================================================
 # 6) توليد Dataset للـ AI
 # ================================================
@@ -173,7 +202,7 @@ elec_factors  = [round(0.8 + i*0.05, 2) for i in range(13)]   # 0.80 .. 1.40
 for wf in water_factors:
     for ef in elec_factors:
         prod, th, el, total = calculate_scenario(wf, ef)
-        lcow = calculate_lcow(prod, total)
+        lcow, lcow_unalloc, share_w = calculate_lcow(prod, th, el, total)
         utilization = total / (units_needed * cap_per_unit)
         rows.append({
             "water_factor": wf,
@@ -184,6 +213,8 @@ for wf in water_factors:
             "total_thermal_eq_MWth": round(total, 1),
             "utilization": round(utilization, 4),
             "LCOW_usd_m3": round(lcow, 3),
+            "LCOW_unallocated_usd_m3": round(lcow_unalloc, 3),
+            "cost_share_water": round(share_w, 4),
         })
 
 # حفظ الملف
@@ -222,10 +253,17 @@ units_needed_D = math.ceil(peak_load_D / cap_per_unit)
 total_capex_D = units_needed_D * capex_per_unit
 annual_capex_D = total_capex_D * crf
 
-def calculate_lcow_D(production, total_thermal_eq):
+def calculate_lcow_D(production, thermal_mw, ro_demand_mw, total_thermal_eq):
+    # نفس منهجية calculate_lcow بالضبط — P_el_desal هنا هو احتياج RO
+    # الفعلي (ro_demand_mw)، وليس الكهرباء "المنتج الثانوي" من التوربين
+    # (تلك كمية توليد، لا حِمل تحلية — الفرق بينهما هو الفائض/العجز
+    # المحسوب أصلًا بـcalculate_scenario_D).
     annual_opex = (total_thermal_eq * 8760 * smr_cf) * smr_lcoe / 1_000_000
     total_annual_cost = annual_capex_D + annual_opex
-    return total_annual_cost * 1_000_000 / (production * 365)
+    lcow_unallocated = total_annual_cost * 1_000_000 / (production * 365)
+    share_water = _cost_share_water(thermal_mw, ro_demand_mw, units_needed_D * smr_elec)
+    lcow = lcow_unallocated * share_water
+    return lcow, lcow_unallocated, share_water
 
 print("\n" + "-" * 60)
 print(f"حمل الذروة (السيناريو الخامس): {peak_load_D:.1f} MWth-eq")
@@ -234,8 +272,9 @@ print(f"   (مقابل {units_needed} وحدة بالتصميم المتوازي
 print("-" * 60)
 for name, (wm, em) in scenarios.items():
     prod_D, th_D, el_D, total_D, ro_demand_D, diff_D = scenario_D_results[name]
-    lcow_D = calculate_lcow_D(prod_D, total_D)
-    print(f"▶ {name}: LCOW (السيناريو الخامس) = {lcow_D:.2f} $/م³")
+    lcow_D, lcow_D_unalloc, share_w_D = calculate_lcow_D(prod_D, th_D, ro_demand_D, total_D)
+    print(f"▶ {name}: LCOW (السيناريو الخامس) = {lcow_D:.2f} $/م³  "
+          f"(غير مخصَّص: {lcow_D_unalloc:.2f} $/م³ | حصة الماء: {share_w_D*100:.1f}%)")
 
 # --- تحليل حساسية على طرفي نطاق نسبة الطاقة-إلى-الماء الموثق (سيناريو "عادي") ---
 print("\n" + "-" * 60)
@@ -301,18 +340,21 @@ maintenance_results, units_n1, capacity_9units = calculate_maintenance_scenario(
 total_capex_n1 = units_n1 * capex_per_unit
 annual_capex_n1 = total_capex_n1 * crf
 
-def calculate_lcow_n1(production, total_thermal_eq):
+def calculate_lcow_n1(production, thermal_mw, electric_mw, total_thermal_eq):
     annual_opex = (total_thermal_eq * 8760 * smr_cf) * smr_lcoe / 1_000_000
     total_annual_cost = annual_capex_n1 + annual_opex
-    return total_annual_cost * 1_000_000 / (production * 365)
+    lcow_unallocated = total_annual_cost * 1_000_000 / (production * 365)
+    share_water = _cost_share_water(thermal_mw, electric_mw, units_n1 * smr_elec)
+    lcow = lcow_unallocated * share_water
+    return lcow, lcow_unallocated, share_water
 
 print("\n" + "-" * 60)
 print(f"تأثير الانتقال لتصميم N+1 ({units_n1} وحدة) على LCOW:")
 print("-" * 60)
 for name, (wm, em) in scenarios.items():
     prod, th, el, total = calculate_scenario(wm, em)
-    lcow_10 = calculate_lcow(prod, total)
-    lcow_11 = calculate_lcow_n1(prod, total)
+    lcow_10, lcow_10_unalloc, _ = calculate_lcow(prod, th, el, total)
+    lcow_11, lcow_11_unalloc, _ = calculate_lcow_n1(prod, th, el, total)
     print(f"▶ {name}: LCOW بـ{units_needed} وحدة = ${lcow_10:.2f} → بـ{units_n1} وحدة = ${lcow_11:.2f} (+${lcow_11-lcow_10:.2f})")
 
 # --- هل تكفي جدولة الصيانة بفترة انخفاض الطلب الموسمي (الشتاء) بدل وحدة احتياطية؟ ---
@@ -371,12 +413,38 @@ def calculate_optimal_ratio():
             units_f = math.ceil(total_eq / cap_per_unit)
             annual_capex_f = units_f * capex_per_unit * crf
             annual_opex_f = (total_eq * 8760 * smr_cf) * smr_lcoe / 1_000_000
-            lcow_f = (annual_capex_f + annual_opex_f) * 1_000_000 / (production * 365)
+            lcow_f_unalloc = (annual_capex_f + annual_opex_f) * 1_000_000 / (production * 365)
+            # تصحيح: P_total يجب أن يطابق نفس الأسطول المستخدم بـ
+            # annual_capex_f (أي units_f، المُعاد تحجيمه لكل نقطة) — لا
+            # units_needed (أسطول سيناريو آخر، 10 وحدات، لم يُبنَ فعلياً
+            # بهذه النقطة). الاستخدام السابق كان يخلط بسطًا مبنيًا على
+            # أسطول صحيح الحجم (units_f) بمقام فائضه محسوب من أسطول
+            # مختلف تمامًا — ينتج فائضًا كهربائيًا وهميًا وحصة ماء منهارة
+            # زوراً (مثال: $0.222/م³ عند f=0% بدل الرقم الصحيح). الفائض
+            # الآن يُحسَب من نفس الأسطول المبني فعليًا بهذه النقطة تحديدًا.
+            # ملاحظة منهجية مهمة (تفسّر أي قاع ضحل بمنحنى LCOW المخصَّص):
+            # units_f = ceil(...) دالة متقطّعة بطبيعة التحجيم المعياري
+            # (الأسطول يأتي بكتل 100 MWe فقط، لا بالكسر). عند أي قفزة
+            # units_f (مثلًا 2→3 وحدة)، تقفز معها P_total = units_f×smr_elec
+            # المستخدمة بحصة الماء (Exergy-based)، فيرتفع الفائض الكهربائي
+            # المُدرَك فجأة، فتنخفض حصة الماء موضعيًا حتى لو LCOW غير
+            # المخصَّص يرتفع بانتظام تام بلا استثناء (تحقَّق: راجع عمود
+            # LCOW_unallocated_usd_m3 أدناه). هذا أُثبِت تجريبيًا كخاصية
+            # أصيلة للتحجيم المتقطّع — وليس خطأ حسابيًا — عبر تجربة ضبط
+            # مقصودة (استخدام نفس units_f بالبسط والمقام معًا، فظهر نفس
+            # النمط مرتين بشكل مستقل). لا تُصلَح هذه القفزة ولا تُنعَّم؛
+            # تُوثَّق صراحة بعمودي "units" و"utilization" أدناه بدل إخفائها.
+            utilization_f = total_eq / (units_f * cap_per_unit)
+            share_water_f = _cost_share_water(thermal_mw, electric_mw, units_f * smr_elec)
+            lcow_f = lcow_f_unalloc * share_water_f
             rows.append({
                 "scenario": name, "msf_ratio": f, "ro_ratio": round(1 - f, 2),
                 "thermal_MWth": round(thermal_mw, 1), "electric_MWe": round(electric_mw, 1),
                 "total_thermal_eq_MWth": round(total_eq, 1), "units": units_f,
+                "utilization": round(utilization_f, 4),
                 "LCOW_usd_m3": round(lcow_f, 3),
+                "LCOW_unallocated_usd_m3": round(lcow_f_unalloc, 3),
+                "cost_share_water": round(share_water_f, 4),
             })
         results[name] = rows
     return results, msf_ratios
@@ -406,13 +474,17 @@ for name, rows in optimal_ratio_results.items():
           f"(أعلى بـ{gap_pct:.1f}% من المثالي)")
 
 print("\n" + "-" * 60)
-print("شكل العلاقة: خطية تمامًا (وليست U-shaped) عبر كل السيناريوهات الأربعة.")
-print("السبب: MSF يستهلك 62.7 kWh_th مباشرة لكل م³ (GOR=10)، بينما")
-print("كهرباء RO (4.0 kWh_e/م³) تعادل حراريًا 4.0/0.303≈13.2 kWh_th-eq")
-print("لكل م³ فقط — أقل بكثير حتى بعد احتساب خسارة كفاءة التحويل.")
-print("النسبة المثلى نظريًا تقع عند الطرف الأقصى (0% MSF / 100% RO)،")
-print("لا عند نقطة داخلية وسطى.")
-print("\nلماذا نسبة رأس الخير الفعلية (70.2% MSF) بعيدة عن هذا المثالي؟")
+print("الاتجاه العام قاطع: تكلفة الطاقة النووية لكل م³ ترتفع رتابةً مع")
+print("زيادة حصة MSF (LCOW غير المخصَّص يرتفع في كل نقطة بلا استثناء")
+print("بالسيناريوهات الأربعة — راجع عمود LCOW_unallocated_usd_m3).")
+print("أما بعد تخصيص التكلفة بين الماء والكهرباء، فيظهر قاع موضعي ضحل")
+print("(~8%) عند 5% MSF بسيناريوهين من أربعة، وسببه معروف: تقطُّع حجم")
+print("الأسطول (math.ceil) عند قفزة 2→3 وحدات، حيث يرفع الفائض الكهربائي")
+print("الناتج حصة الكهرباء من التكلفة. هذه خاصية أصيلة للتحجيم المعياري")
+print("(الأسطول يأتي بكتل 100 MWe فقط) وليست ميزة تشغيلية حقيقية لـMSF —")
+print("راجع عمودي units وutilization بجدول optimal_ratio.csv لرؤية سبب")
+print("القفزة مباشرة.")
+print("\nلماذا نسبة رأس الخير الفعلية (70.2% MSF) بعيدة عن هذا الاتجاه؟")
 print("رأس الخير صُمِّمت أصلًا حول توربينات غازية تقليدية توفر حرارة")
 print("نفايات (Waste Heat) شبه مجانية لـMSF — لا حول تكلفة كل وحدة")
 print("طاقة حرارية كما بسياق مفاعل SMR مخصَّص. النسبة الفعلية عكست")

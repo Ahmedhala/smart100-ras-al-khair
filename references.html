@@ -255,6 +255,67 @@
   </div>
 </section>
 
+<!-- ===== Methodological Corrections ===== -->
+<section class="section section-alt" id="corrections">
+  <div class="section-inner">
+    <span class="section-tag">Scientific Transparency</span>
+    <h2 class="section-title">التصحيحات المنهجية</h2>
+    <p class="section-lead">
+      كجزء من مراجعة داخلية دقيقة لنموذج المشروع، اكتُشفت مشكلتان منهجيتان بالحسابات الأصلية وصُحِّحتا.
+      نوثّقهما هنا صراحة بدل إخفائهما — لأن هذا بالضبط ما يقوّي مصداقية عمل بحثي مفتوح، لا يُضعفها.
+    </p>
+
+    <div class="ref-list" style="margin-top:24px;">
+      <div class="ref-item card reveal">
+        <span class="ref-num">١</span>
+        <div>
+          <h4>غياب تخصيص التكلفة بين الماء والكهرباء</h4>
+          <span class="ref-meta">Exergy-based Cost Allocation — φ = 1 − (308.15/393.15) ≈ 0.216</span>
+          <p>
+            كانت معادلة LCOW الأصلية تُحمِّل <strong style="color:var(--ink)">100% من التكلفة السنوية</strong>
+            للأسطول (رأسمالية وتشغيلية) على إنتاج المياه فقط — رغم أن جزءًا من طاقة الأسطول يُنتج كهرباء
+            تُستهلك مباشرة بمضخات RO، دون أي تخصيص أو خصم لقيمتها. صُحِّح هذا باعتماد تخصيص قائم على
+            الإكسيرجي (Exergy-based)، يفصل حصة تكلفة الماء عن حصة الكهرباء بناءً على الجودة الحرارية
+            النسبية لكل حِمل (معامل كارنو) والقدرة الكهربائية الفعلية المُنتَجة من الأسطول.
+            <a href="https://github.com/Ahmedhala/smart100-ras-al-khair/tree/master/model" target="_blank" rel="noopener" style="color:var(--nuclear-glow); font-weight:700;">راجع <code>_cost_share_water()</code> بـmodel.py ↗</a>
+          </p>
+        </div>
+      </div>
+
+      <div class="ref-item card reveal">
+        <span class="ref-num">٢</span>
+        <div>
+          <h4>خطأ ازدواج الكفاءة بخط الأساس الكربوني</h4>
+          <span class="ref-meta">Gas Baseline Unit Error — comparison.py</span>
+          <p>
+            كان حساب استهلاك الغاز البديل (لو استُخدم بدل SMART100) يقسّم الحمل الحراري-الكهربائي
+            المُجمَّع (الذي يشمل أصلًا خسارة كفاءة تحويل المفاعل 30.3%) على كفاءة الدورة المركبة (55%)
+            مرة ثانية — ازدواج غير صحيح ضخّم استهلاك الغاز المُقدَّر. صُحِّح بفصل المسارين: الحمل الحراري
+            المباشر لـMSF عبر كفاءة مرجل غاز تقليدي (90%)، والحمل الكهربائي لـRO عبر كفاءة الدورة المركبة
+            (55%) كلٌّ على حدة.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <div class="why-callout card reveal" style="margin-top:26px; border-inline-start: 3px solid var(--good);">
+      <span class="why-callout-icon">📊</span>
+      <p>
+        <strong>أثر التصحيحين على النتائج الرئيسية:</strong><br>
+        متوسط LCOW السنوي: <s style="color:var(--ink-muted);">$5.588/م³</s> ← <strong style="color:var(--good);">$2.381/م³</strong> (تخصيص التكلفة)<br>
+        توفير CO₂ السنوي: <s style="color:var(--ink-muted);">8.27 مليون طن (96.7%)</s> ← <strong style="color:var(--good);">4.38 مليون طن (94.0%)</strong> (تصحيح خط الأساس الغازي)<br>
+        عدد وحدات SMR المطلوبة: <strong style="color:var(--ink);">10 — بلا تغيير</strong> (التصحيحان لا يمسّان تحجيم الأسطول، فقط توزيع تكلفته وخط أساس انبعاثاته)
+      </p>
+    </div>
+
+    <p style="margin-top:18px; font-size:0.85rem; color:var(--ink-muted);">
+      كلا التصحيحين مُطبَّق بالكامل عبر <code>model.py</code> و<code>simulation.py</code> و<code>comparison.py</code>
+      وكل صفحات هذا الموقع ومحرك الحساسية التفاعلي (Tornado/Monte Carlo). القيم غير المخصَّصة (اللي تحمّل
+      كامل التكلفة على الماء) لا تزال متاحة بجانب كل رقم مخصَّص للمقارنة والشفافية.
+    </p>
+  </div>
+</section>
+
 </main>
 
 <footer class="site-footer">

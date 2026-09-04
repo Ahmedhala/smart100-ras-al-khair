@@ -1,8 +1,9 @@
 // ==========================================================================
 // Sensitivity / Uncertainty engine — scenarios.html
-// Reproduces model.py's calculate_scenario() + calculate_lcow() exactly
-// (verified offline to return $5.672/m3 at 10 units for the unmodified
-// baseline — matches the site's established normal-scenario LCOW of $5.67).
+// Reproduces model.py's calculate_scenario() + calculate_lcow() exactly,
+// INCLUDING the exergy-based water/electricity cost allocation and the
+// boiler/CCGT gas-baseline split added after methodology review (see
+// model.py / comparison.py comments for the full derivation history).
 // Used by both the Tornado chart (one-variable-at-a-time, deterministic)
 // and the Monte Carlo panel (all uncertain variables sampled together).
 // ==========================================================================
@@ -17,6 +18,18 @@ const BASE = {
 const SCENARIOS = {
   normal: [1.00, 1.00], high_water: [1.20, 1.05], high_elec: [1.00, 1.20], peak: [1.30, 1.30],
 };
+
+// Exergy-based cost allocation between water and electricity (Carnot factor,
+// T_ambient=308.15K, T_steam=393.15K). P_total = fleet's actually-installed
+// electrical capacity (unitsNeeded × smrElec) — fixed per call, NOT re-sized
+// per data point, so it never jumps with fleet-size rounding. See model.py's
+// `_cost_share_water` docstring for the two rejected earlier formulations
+// and why this one is correct (surplus electricity beyond desal's own draw
+// shows up in the denominator, not silently assumed away).
+const CARNOT_PHI = 1 - (308.15 / 393.15);
+function costShareWater(thermalMw, electricMw, pTotalMwe){
+  return (thermalMw * CARNOT_PHI + electricMw) / (thermalMw * CARNOT_PHI + pTotalMwe);
+}
 
 function scenarioLoad(p, wm, em){
   const production = p.productionTotal * wm;
@@ -49,17 +62,29 @@ function calcLCOWFull(overrides, unitsOverride){
   const normal = scenarioLoad(p, 1.0, 1.0);
   const annualOpex = (normal.totalEq * 8760 * p.smrCf) * p.smrLcoe / 1_000_000;
   const totalAnnualCost = annualCapex + annualOpex;
-  const lcow = (totalAnnualCost * 1_000_000) / (normal.production * 365);
+  const lcowUnallocated = (totalAnnualCost * 1_000_000) / (normal.production * 365);
 
-  return { lcow, unitsNeeded, peakLoad, normal, capPerUnit };
+  const pTotal = unitsNeeded * p.smrElec;
+  const shareWater = costShareWater(normal.thermalMw, normal.electricMw, pTotal);
+  const lcow = lcowUnallocated * shareWater;
+
+  return { lcow, lcowUnallocated, shareWater, unitsNeeded, peakLoad, normal, capPerUnit };
 }
 
 // CO2 avoided per m3 at the normal-scenario operating point (combustion-based,
 // same method as comparison.py) — used only for the illustrative carbon-price
 // tornado variable and its "carbon-adjusted LCOW" derived metric.
+// Gas baseline uses two separate combustion paths (boiler for MSF's direct
+// thermal load, CCGT for RO+aux's electric load) instead of dividing the
+// combined thermal-equivalent load by ccgtEff alone — that double-counted
+// the reactor's own thermal->electric efficiency loss on top of CCGT's,
+// inflating the gas reference (see comparison.py for the full derivation).
+const BOILER_EFF = 0.90;
 function co2AvoidedPerM3(p){
   const normal = scenarioLoad(p, 1.0, 1.0);
-  const gasKgDay = (normal.totalEq * 1000 / p.ccgtEff) / p.gasLhv * 24;
+  const gasThermalKwh = normal.thermalMw * 1000 * 24 / BOILER_EFF;
+  const gasElectricKwh = normal.electricMw * 1000 * 24 / p.ccgtEff;
+  const gasKgDay = (gasThermalKwh + gasElectricKwh) / p.gasLhv;
   const gjDay = gasKgDay * (p.gasLhv * 3.6 / 1000);
   const co2GasDay = gjDay * p.co2FactorGas / 1000; // tons/day
   const co2SmrDay = (normal.totalEq * 24 * 1000) * 0.012 / 1000; // tons/day, 12 gCO2/kWh
@@ -140,7 +165,9 @@ function runMonteCarlo(n, sigmaFraction){
     lcowSamples.push(calcLCOWFull(p).lcow);
 
     const normal = scenarioLoad(p, 1.0, 1.0);
-    const gasKgDay = (normal.totalEq * 1000 / p.ccgtEff) / p.gasLhv * 24;
+    const gasThermalKwh = normal.thermalMw * 1000 * 24 / BOILER_EFF;
+    const gasElectricKwh = normal.electricMw * 1000 * 24 / p.ccgtEff;
+    const gasKgDay = (gasThermalKwh + gasElectricKwh) / p.gasLhv;
     const gjDay = gasKgDay * (p.gasLhv * 3.6 / 1000);
     const co2GasDay = gjDay * p.co2FactorGas / 1000;
     const co2SmrDay = (normal.totalEq * 24 * 1000) * 0.012 / 1000;

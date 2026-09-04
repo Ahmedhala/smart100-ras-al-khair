@@ -14,6 +14,19 @@ discount_rate, project_life = 0.07, 60
 
 crf = (discount_rate*(1+discount_rate)**project_life)/((1+discount_rate)**project_life-1)
 
+# --- تخصيص التكلفة بين الماء والكهرباء (Exergy-based) — نفس منهجية
+# model.py بالضبط، مطبَّقة هنا كمان لأن "LCOW المتوسط السنوي" مطلوب من
+# نفس المحاكاة اليومية بهذا الملف، ولازم يبقى متسقًا مع أرقام model.py
+# المخصَّصة الجديدة بدل ما يبقى بالمنهجية القديمة غير المخصَّصة وحده.
+CARNOT_PHI = 1 - (308.15 / 393.15)
+
+def cost_share_water(thermal_mw, electric_mw, p_total_mwe):
+    # P_total = القدرة الكهربائية المُنتَجة فعلياً من الأسطول (units×
+    # smr_elec)، ثابت لكل استدعاء — لا P_el_desal+Q_th×η (كانت تجعل
+    # الحصة =1.000 حتماً عند Q_th=0، متجاهلة الفائض الكهربائي الحقيقي).
+    # راجع التعليق المطابق بـmodel.py للتفاصيل الكاملة والمحاولات السابقة.
+    return (thermal_mw * CARNOT_PHI + electric_mw) / (thermal_mw * CARNOT_PHI + p_total_mwe)
+
 def calc(water_mult, elec_mult):
     prod = production_total * water_mult
     msf_prod = prod * msf_share
@@ -69,10 +82,12 @@ for day in range(1, 366):
     prod, th, el, total = calc(water_mult, elec_mult)
     utilization = total / (units * cap_per_unit)
 
-    # LCOW اليومي
+    # LCOW اليومي — مخصَّص بين الماء والكهرباء (نفس منهجية model.py)
     annual_opex = (total*8760*smr_cf)*smr_lcoe/1_000_000
     total_annual_cost = annual_capex + annual_opex
-    lcow = total_annual_cost*1_000_000/(prod*365)
+    lcow_unalloc = total_annual_cost*1_000_000/(prod*365)
+    share_w = cost_share_water(th, el, units * smr_elec)
+    lcow = lcow_unalloc * share_w
 
     daily_rows.append({
         "day": day,
@@ -80,15 +95,21 @@ for day in range(1, 366):
         "production_m3": round(prod, 0),
         "utilization": round(utilization, 4),
         "LCOW": round(lcow, 3),
+        "LCOW_unallocated": round(lcow_unalloc, 3),
+        "cost_share_water": round(share_w, 4),
         "suitable": "نعم" if utilization <= 1.0 else "لا",
     })
 
     # --- السيناريو الخامس (نفس اليوم، نفس عامل الماء) ---
+    # P_el_desal هنا = ro_demand_D (احتياج RO الفعلي)، وليس el_D (الكهرباء
+    # "المنتج الثانوي" المولَّدة) — نفس تصحيح model.py's calculate_lcow_D
     prod_D, th_D, el_D, total_D, ro_demand_D, diff_D = calc_D(water_mult)
     utilization_D = total_D / (units_D * cap_per_unit)
     annual_opex_D = (total_D*8760*smr_cf)*smr_lcoe/1_000_000
     total_annual_cost_D = annual_capex_D + annual_opex_D
-    lcow_D = total_annual_cost_D*1_000_000/(prod_D*365)
+    lcow_D_unalloc = total_annual_cost_D*1_000_000/(prod_D*365)
+    share_w_D = cost_share_water(th_D, ro_demand_D, units_D * smr_elec)
+    lcow_D = lcow_D_unalloc * share_w_D
 
     daily_rows_D.append({
         "day": day,
@@ -99,6 +120,8 @@ for day in range(1, 366):
         "surplus_deficit_MWe": round(diff_D, 1),
         "utilization": round(utilization_D, 4),
         "LCOW": round(lcow_D, 3),
+        "LCOW_unallocated": round(lcow_D_unalloc, 3),
+        "cost_share_water": round(share_w_D, 4),
         "suitable": "نعم" if utilization_D <= 1.0 else "لا",
     })
 
@@ -174,10 +197,14 @@ for day in range(1, 366):
     utilization_M = total / (units_available_M * cap_per_unit)
 
     # annual_capex الأصلي (10 وحدات) بلا تغيير — نختبر جدولة الصيانة
-    # الذكية كبديل لشراء وحدة إضافية، لا كإضافة لها
+    # الذكية كبديل لشراء وحدة إضافية، لا كإضافة لها. P_total يبقى مبنيًا
+    # على الـ10 وحدات المدفوعة فعليًا (units)، وليس units_available_M
+    # المؤقتة، لأن التخصيص يعكس رأس المال المملوك لا التوافر اليومي.
     annual_opex_M = (total*8760*smr_cf)*smr_lcoe/1_000_000
     total_annual_cost_M = annual_capex + annual_opex_M
-    lcow_M = total_annual_cost_M*1_000_000/(prod*365)
+    lcow_M_unalloc = total_annual_cost_M*1_000_000/(prod*365)
+    share_w_M = cost_share_water(th, el, units * smr_elec)
+    lcow_M = lcow_M_unalloc * share_w_M
 
     daily_rows_M.append({
         "day": day,
@@ -187,6 +214,8 @@ for day in range(1, 366):
         "units_available": units_available_M,
         "utilization": round(utilization_M, 4),
         "LCOW": round(lcow_M, 3),
+        "LCOW_unallocated": round(lcow_M_unalloc, 3),
+        "cost_share_water": round(share_w_M, 4),
         "suitable": "نعم" if utilization_M <= 1.0 else "لا",
     })
 
@@ -301,7 +330,9 @@ for storage_days, r in storage_results.items():
     units_c = math.ceil(total_c / cap_per_unit)
     annual_capex_c = units_c * capex_per_unit * crf
     annual_opex_c = (total_c * 8760 * smr_cf) * smr_lcoe / 1_000_000
-    lcow_c = (annual_capex_c + annual_opex_c) * 1_000_000 / (avg_demand * 365)
+    lcow_c_unalloc = (annual_capex_c + annual_opex_c) * 1_000_000 / (avg_demand * 365)
+    share_w_c = cost_share_water(th_c, el_c, units_c * smr_elec)
+    lcow_c = lcow_c_unalloc * share_w_c
     units_saved = units - units_c
 
     print(f"▶ خزان {storage_days} يوم (سعة {r['storage_capacity_m3']:,.0f} م³):")
