@@ -93,10 +93,22 @@ function drawScenario(svg, scenario){
     p.appendChild(el('animate', { attributeName: 'stroke-dashoffset', from: 72, to: 0, dur: '1.4s', repeatCount: 'indefinite' }));
     svg.appendChild(p);
   };
+  // Tiny marker on the thermal path standing in for the intermediate loop —
+  // these compact scenario icons have no room for the full node the main
+  // system diagram shows, so this is a deliberate, hoverable simplification,
+  // not an omission of the mandatory safety barrier.
+  const loopDot = (cx, cy) => {
+    const c = el('circle', { cx, cy, r: 4.5, fill: '#e8b64f', stroke: panel2, 'stroke-width': 1.3, style: 'cursor:help' });
+    const t = el('title', {});
+    t.textContent = 'الحلقة الوسيطة (حاجز سلامة إلزامي) — مبسّطة هنا، انظر المخطط الرئيسي أعلاه للتفصيل الكامل';
+    c.appendChild(t);
+    svg.appendChild(c);
+  };
 
   if (scenario === 'A'){
     node(380, 130, 42, nuclear, '⚛', 'SMART100');
     flow('M338,130 L262,130', thermal);
+    loopDot(300, 130);
     node(230, 130, 38, thermal, '🔥', 'MSF');
     flow('M192,130 L116,130', water);
     node(80, 130, 38, water, '💧', 'مياه عذبة');
@@ -111,6 +123,7 @@ function drawScenario(svg, scenario){
   } else {
     node(390, 60, 34, nuclear, '⚛', 'SMART100');
     flow('M362,45 C310,25 260,25 220,40', thermal);
+    loopDot(287, 29);
     node(190, 45, 30, thermal, '🔥', 'MSF');
     flow('M362,75 C310,110 280,150 250,175', electric);
     node(220, 190, 30, electric, '🌀', 'توربين→RO');
