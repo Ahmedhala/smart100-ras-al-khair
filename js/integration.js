@@ -22,7 +22,7 @@ function buildSystemDiagram(){
   const svg = document.getElementById('systemDiagramSvg');
   if (!svg) return;
   const nuclear = cssVar('--nuclear-glow'), thermal = cssVar('--thermal'), electric = cssVar('--electric'),
-        water = cssVar('--water'), ink = cssVar('--ink'), inkMuted = cssVar('--ink-muted'), panel2 = cssVar('--panel-2');
+        water = cssVar('--water'), loop = '#e8b64f', ink = cssVar('--ink'), inkMuted = cssVar('--ink-muted'), panel2 = cssVar('--panel-2');
   const ns = 'http://www.w3.org/2000/svg';
   const el = (tag, attrs) => { const n = document.createElementNS(ns, tag); Object.entries(attrs).forEach(([k, v]) => n.setAttribute(k, v)); return n; };
 
@@ -46,8 +46,10 @@ function buildSystemDiagram(){
 
   // reactor (right, since RTL reading flows right->left)
   box(830, 130, 140, 80, '10× SMART100', 'Nuclear Reactors', nuclear);
-  // thermal path -> MSF (top)
-  flowPath('M830,150 C700,90 560,90 470,90', thermal);
+  // thermal path -> intermediate loop (mandatory double barrier) -> MSF (top)
+  flowPath('M830,150 C760,105 710,90 680,90', thermal);
+  box(560, 55, 120, 70, 'الحلقة الوسيطة', 'Intermediate Loop — Barrier', loop);
+  flowPath('M560,90 C520,90 500,90 470,90', thermal);
   box(330, 55, 140, 70, 'وحدات MSF', 'Thermal Desalination', thermal);
   // electric path -> turbine -> RO (bottom)
   flowPath('M830,190 C740,240 700,240 660,240', electric);

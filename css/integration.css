@@ -19,6 +19,8 @@
 .diagram-legend{ display:flex; gap: 20px; flex-wrap: wrap; margin-top: 18px; padding-top: 18px; border-top: 1px solid var(--border); }
 .dl-item{ display:flex; align-items:center; gap: 8px; font-size: 0.82rem; color: var(--ink-secondary); }
 .dl-swatch{ width: 18px; height: 3px; border-radius: 2px; }
+.diagram-note{ margin-top: 14px; padding: 14px 16px; border-radius: 10px; background: var(--panel-2); border: 1px solid var(--border); font-size: 0.85rem; line-height: 1.9; color: var(--ink-secondary); }
+.diagram-note strong{ color: var(--ink); }
 
 /* ---- scenario tabs ---- */
 .scenario-tabs{ display:flex; gap: 10px; margin-bottom: 28px; flex-wrap: wrap; }

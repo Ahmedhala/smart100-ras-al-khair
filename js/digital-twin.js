@@ -216,6 +216,7 @@ function initTwinViewer(){
 
   const reactorThermalPt = new THREE.Vector3(-1.2, 0.9, reactorZ);
   const reactorElectricPt = new THREE.Vector3(1.2, 0.9, reactorZ);
+  const loopPt = new THREE.Vector3(-1.2, 1.35, (reactorZ + plantZ) / 2); // intermediate loop, raised so it reads as a distinct node between reactor and plant, not just a pipe waypoint
   const plantThermalPt = new THREE.Vector3(-1.15, 0.66, plantZ);
   const plantElectricPt = new THREE.Vector3(1.15, 0.66, plantZ);
   const seaPt = new THREE.Vector3(-4.0, 0.25, plantZ);
@@ -224,7 +225,32 @@ function initTwinViewer(){
   const freshPt = new THREE.Vector3(-1.2, 0.6, outZ);
   const brinePt = new THREE.Vector3(1.2, 0.2, outZ);
 
-  addPipe('thermal-path', reactorThermalPt, plantThermalPt, 0xff7a45, 6);
+  // ---- Intermediate loop node: a double-shelled heat exchanger, sitting
+  // physically between the reactor's extraction steam and the plant's
+  // brine heater — a mandatory IAEA-required radiological safety barrier,
+  // not a design choice. Rendered as two concentric shells (outer =
+  // secondary-side steam jacket, inner = higher-pressure water side) so
+  // the "double barrier" reads visually, not just in the description text.
+  const loopOuterMat = new THREE.MeshStandardMaterial({ color: colorOf('intermediate-loop'), roughness: 0.35, metalness: 0.4, transparent: true, opacity: 0.55 });
+  const loopOuter = new THREE.Mesh(new THREE.CylinderGeometry(0.42, 0.42, 0.9, 20), loopOuterMat);
+  loopOuter.rotation.z = Math.PI / 2;
+  loopOuter.position.copy(loopPt);
+  register('intermediate-loop', loopOuter);
+  root.add(loopOuter);
+  const loopInnerMat = new THREE.MeshStandardMaterial({ color: colorOf('intermediate-loop'), roughness: 0.25, metalness: 0.5, emissive: colorOf('intermediate-loop'), emissiveIntensity: 0.35 });
+  const loopInner = new THREE.Mesh(new THREE.CylinderGeometry(0.22, 0.22, 1.05, 16), loopInnerMat);
+  loopInner.rotation.z = Math.PI / 2;
+  loopInner.position.copy(loopPt);
+  register('intermediate-loop', loopInner);
+  root.add(loopInner);
+
+  // Two segments either side of the barrier: reactor extraction steam IN,
+  // then a visually distinct (paler) run out to the brine heater — same
+  // "thermal-path" id so both read as one continuous journey step, but the
+  // node in between is its own separately-selectable, separately-lit
+  // component, not just a waypoint on the pipe curve.
+  addPipe('thermal-path', reactorThermalPt, loopPt, 0xff7a45, 4);
+  addPipe('thermal-path', loopPt, plantThermalPt, 0xffb27a, 4);
   addPipe('electric-path', reactorElectricPt, plantElectricPt, 0xffc23c, 6);
   addPipe('seawater-path', seaPt, plantSeaPt, 0x3fb8e0, 4);
   addPipe('fresh-water', plantOutPt, freshPt, 0x33c46a, 5);
@@ -298,7 +324,7 @@ function initTwinViewer(){
 
   // ---- guided "full journey" narration: walks the component list in order,
   // auto-selecting each one (which drives the panel text + 3D highlight). ----
-  const journeyOrder = ['smart100', 'thermal-path', 'electric-path', 'seawater-path', 'plant-block', 'fresh-water', 'brine-path'];
+  const journeyOrder = ['smart100', 'thermal-path', 'intermediate-loop', 'electric-path', 'seawater-path', 'plant-block', 'fresh-water', 'brine-path'];
   let journeyRunning = false, journeyTimer = null;
   const btnJourney = document.getElementById('twinBtnJourney');
   function stopJourney(){

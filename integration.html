@@ -251,10 +251,76 @@
       </div>
       <div class="diagram-legend">
         <span class="dl-item"><span class="dl-swatch" style="background:var(--thermal)"></span> مسار حراري (بخار → MSF)</span>
+        <span class="dl-item"><span class="dl-swatch" style="background:#e8b64f"></span> الحلقة الوسيطة (حاجز سلامة إلزامي)</span>
         <span class="dl-item"><span class="dl-swatch" style="background:var(--electric)"></span> مسار كهربائي (توربين → RO)</span>
         <span class="dl-item"><span class="dl-swatch" style="background:var(--water)"></span> مياه محلاة</span>
       </div>
+      <p class="diagram-note">
+        <strong>الحلقة الوسيطة حاجز مزدوج إلزامي</strong> <span class="ev-badge ev-official" style="margin-inline-start:4px;">✓ Official</span> — الوكالة الدولية للطاقة الذرية توثّق صراحة أن التزويد المباشر للبخار من قلب المفاعل لمحطة التحلية غير مناسب دون حاجز وسيط (IAEA-TECDOC-1444، "Optimization of the Coupling of Nuclear Reactors and Desalination Systems")، وليست خيارًا تصميميًا: بخار الاستخلاص من SMART100 لا يصل مباشرة لمسخّن المحلول الملحي (Brine Heater) بوحدات MSF، بل يمر عبر حلقة تبادل حراري ثالثة منفصلة تمامًا عن الدارتين الأولية والثانوية للمفاعل. يُبقى ضغط جانب المياه بالحلقة الوسيطة أعلى عمدًا من ضغط جانب البخار الثانوي، بحيث لو حدث أي تسرب في مبادل الحرارة يتجه اتجاهه من الحلقة الوسيطة نحو الدارة الثانوية للمفاعل — لا العكس أبدًا — فيمنع أي احتمال انتقال نشاط إشعاعي إلى مياه الشرب. راجع مكوّن "الحلقة الوسيطة" في النموذج ثلاثي الأبعاد أعلاه لمزيد من التفصيل.
+      </p>
     </div>
+  </div>
+</section>
+
+<!-- ===== Thermal consistency proof ===== -->
+<section class="section section-alt" id="thermal-consistency">
+  <div class="section-inner">
+    <span class="section-tag">Thermal Consistency Proof</span>
+    <h2 class="section-title">هل بخار SMART100 كافٍ فعليًا لتشغيل MSF؟</h2>
+    <p class="section-lead">
+      حساب LCOW بالنموذج ينتقل من "قدرة حرارية" (MWth) إلى "إنتاج مياه" عبر معامل الأداء الحراري (GOR) مباشرة —
+      وهذا يفترض ضمنيًا أن بخار SMART100 بدرجة الحرارة والضغط المناسبين لتشغيل مسخّن المحلول الملحي (Brine Heater)
+      بوحدات MSF. هذا الافتراض لم يُثبَت صراحة بأي صفحة سابقة بالموقع — هذا القسم يتحقق منه رقميًا.
+    </p>
+
+    <div class="compare-table-wrap" style="margin-top:20px;">
+      <table class="compare-table">
+        <thead>
+          <tr>
+            <th>الجانب</th>
+            <th>القيمة</th>
+            <th>المصدر</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th>متطلب MSF — درجة حرارة القمة الملحية (TBT)</th>
+            <td><strong>90–120°C</strong> (تصاميم حديثة بمثبّطات تكلّس؛ تصاميم أقدم حتى 150°C)</td>
+            <td><span class="ev-badge ev-peer-reviewed">📄 Peer Reviewed</span> بيانات هندسية منشورة عن تقنية MSF عمومًا</td>
+          </tr>
+          <tr>
+            <th>متطلب MSF — درجة حرارة بخار التغذية بمسخّن المحلول</th>
+            <td><strong>≈97–117°C</strong> (أعلى من TBT بهامش دفع حراري كافٍ عبر المبادل)</td>
+            <td><span class="ev-badge ev-peer-reviewed">📄 Peer Reviewed</span> بيانات هندسية منشورة عن تقنية MSF عمومًا</td>
+          </tr>
+          <tr>
+            <th>عرض SMART100 — درجة حرارة بخار الاستخلاص عند نقطة التوربين</th>
+            <td><strong>≤130°C تقديريًا</strong> (غير منشور لـSMART100 تحديدًا)</td>
+            <td><span class="ev-badge ev-estimated">≈ Estimated</span> مبني على دراسة منشورة لمفاعل SMART — نفس عائلة SMART100 وقدرته الحرارية (330 MWth)، غير هذا المفاعل بالذات</td>
+          </tr>
+          <tr>
+            <th>الهامش الحراري الناتج (تقديري)</th>
+            <td><strong>≈10–30°C</strong> بين عرض SMART100 التقديري ومتطلب مسخّن المحلول</td>
+            <td><span class="ev-badge ev-estimated">≈ Estimated</span> هامش موجب لكن ضيّق نسبيًا — ليس اتساعًا مريحًا</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <p style="margin-top:16px; font-size:0.85rem; color:var(--ink-secondary); line-height:1.9;">
+      <strong style="color:var(--ink);">لماذا هذا هامش وليس تأكيدًا نهائيًا:</strong> مواصفات SMART100 الحرارية التفصيلية
+      عند نقطة استخلاص البخار (الحرارة والضغط الدقيقان) غير منشورة علنًا من KAERI حتى تاريخ إعداد هذا الموقع.
+      القيمة أعلاه (≤130°C) مأخوذة من دراسة أكاديمية محكَّمة تناولت مفاعل <strong>SMART</strong> — سلف SMART100 المباشر
+      ونفس القدرة الحرارية (330 MWth) بنفس التصميم المتكامل (Integral PWR) — وليس SMART100 ذاته، وهي مصمَّمة أصلًا
+      لتبقى دون سقف التكلّس البالغ ≈140°C للتحلية الحرارية. الهامش الظاهر أعلاه (10–30°C) موجب ومعقول هندسيًا، لكنه
+      <strong>تقدير غير مؤكَّد نهائيًا</strong> — التأكيد النهائي يتطلب بيانات مورّد رسمية من KAERI لنقطة استخلاص
+      SMART100 الفعلية (الضغط والحرارة عند كل نقطة تحكّم بالتوربين)، وهي بيانات لا تملكها هذه الدراسة حاليًا.
+    </p>
+    <p style="margin-top:10px; font-size:0.8rem; color:var(--ink-muted);">
+      ملاحظة داعمة: الدراسة نفسها الخاصة بمفاعل SMART أشارت إلى معامل أداء حراري (GOR) مثالي يصل حتى 15 لاقتران
+      MSF/MED بهذا المفاعل — بينما هذا النموذج يفترض GOR = 10 (راجع <a href="msf.html" style="color:var(--nuclear-glow);">صفحة MSF</a>)،
+      وهو افتراض متحفّظ نسبيًا لا متفائل، بما يدعم اتساق الفرضيات الحرارية بالنموذج ولا يناقضها.
+    </p>
   </div>
 </section>
 
