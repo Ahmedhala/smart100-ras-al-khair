@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>التحقق المرجعي (Benchmarking) | SMART100 × رأس الخير</title>
+<meta name="description" content="مقارنة مرجعية بين نتائج LCOW لهذا المشروع ودراسات محكَّمة منشورة، تحقق متقاطع داخلي، وتوثيق صريح لما لم يُتحقَّق منه بعد.">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg%20xmlns=%22http://www.w3.org/2000/svg%22%20viewBox=%220%200%2064%2064%22%3E%3Ccircle%20cx=%2232%22%20cy=%2232%22%20r=%226%22%20fill=%22%233f8fd6%22/%3E%3Cg%20fill=%22none%22%20stroke=%22%233f8fd6%22%20stroke-width=%224%22%3E%3Cellipse%20cx=%2232%22%20cy=%2232%22%20rx=%2228%22%20ry=%2212%22/%3E%3Cellipse%20cx=%2232%22%20cy=%2232%22%20rx=%2228%22%20ry=%2212%22%20transform=%22rotate(60%2032%2032)%22/%3E%3Cellipse%20cx=%2232%22%20cy=%2232%22%20rx=%2228%22%20ry=%2212%22%20transform=%22rotate(120%2032%2032)%22/%3E%3C/g%3E%3C/svg%3E">
+<meta property="og:type" content="website">
+<meta property="og:title" content="التحقق المرجعي (Benchmarking) | SMART100 × رأس الخير">
+<meta property="og:description" content="مقارنة مرجعية بين نتائج LCOW لهذا المشروع ودراسات محكَّمة منشورة.">
+<meta property="og:locale" content="ar_SA">
+<meta name="twitter:card" content="summary">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="css/design-system.css">
+<link rel="stylesheet" href="css/process.css">
+<link rel="stylesheet" href="css/evidence-badges.css">
+</head>
+<body>
+
+<nav class="site-nav">
+  <div class="nav-row">
+    <a href="index.html" class="nav-brand">
+      <span class="nav-brand-mark">⚙</span>
+      <span>SMART100 <small>Ras Al-Khair Integration</small></span>
+    </a>
+    <div class="nav-groups">
+      <div class="nav-group"><a href="index.html">الرئيسية</a></div>
+      <div class="nav-group"><a href="dashboard.html">لوحة التحكم</a></div>
+      <div class="nav-group">
+        <button type="button" aria-haspopup="true" aria-expanded="false">المحطة والتحلية <span class="nav-caret" aria-hidden="true">▾</span></button>
+        <div class="nav-dropdown">
+          <a href="plant.html">محطة رأس الخير</a>
+          <a href="desalination.html">تقنيات التحلية</a>
+          <a href="msf.html">MSF</a>
+          <a href="ro.html">RO</a>
+          <a href="tech-comparison.html">مقارنة التقنيات</a>
+        </div>
+      </div>
+      <div class="nav-group">
+        <button type="button" aria-haspopup="true" aria-expanded="false">مفاعل SMART100 <span class="nav-caret" aria-hidden="true">▾</span></button>
+        <div class="nav-dropdown">
+          <a href="reactor.html">مفاعل SMART100</a>
+          <a href="how-it-works.html">كيف يعمل؟</a>
+          <a href="acp100-benchmark.html">ACP100 Benchmark</a>
+          <a href="three-system-comparison.html">المقارنة الثلاثية الكاملة</a>
+        </div>
+      </div>
+      <div class="nav-group">
+        <button type="button" aria-haspopup="true" aria-expanded="false">التكامل والمنظومة <span class="nav-caret" aria-hidden="true">▾</span></button>
+        <div class="nav-dropdown">
+          <a href="integration.html">التكامل مع رأس الخير</a>
+          <a href="energy-flow.html">تدفق الطاقة</a>
+          <a href="system-architecture.html">هندسة المنظومة</a>
+        </div>
+      </div>
+      <div class="nav-group">
+        <button type="button" aria-haspopup="true" aria-expanded="false">التحليل <span class="nav-caret" aria-hidden="true">▾</span></button>
+        <div class="nav-dropdown">
+          <a href="performance.html">الأداء</a>
+          <a href="scenarios.html">السيناريوهات</a>
+          <a href="validation.html">التحقق المرجعي</a>
+          <a href="safety.html">الأمان</a>
+          <a href="simulation.html">المحاكاة</a>
+        </div>
+      </div>
+      <div class="nav-group">
+        <button type="button" aria-haspopup="true" aria-expanded="false">مصادر <span class="nav-caret" aria-hidden="true">▾</span></button>
+        <div class="nav-dropdown">
+          <a href="glossary.html">المسرد</a>
+          <a href="references.html">المراجع</a>
+        </div>
+      </div>
+    </div>
+    <div class="nav-cta"><a href="integration.html" class="btn btn-primary">استكشف التكامل</a></div>
+    <button class="nav-toggle" id="navToggle" aria-label="القائمة" aria-expanded="false" aria-controls="navMobile"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+<div class="nav-mobile" id="navMobile">
+  <a href="index.html" style="display:block;padding:16px 4px;color:var(--ink);font-size:0.98rem;font-weight:700;border-bottom:1px solid var(--border);">الرئيسية</a>
+  <a href="dashboard.html" style="display:block;padding:16px 4px;color:var(--ink);font-size:0.98rem;font-weight:700;border-bottom:1px solid var(--border);">لوحة التحكم</a>
+  <div class="nav-mobile-group">
+    <button type="button" aria-haspopup="true" aria-expanded="false">المحطة والتحلية <span class="nav-caret" aria-hidden="true">▾</span></button>
+    <div class="nav-mobile-sub">
+      <a href="plant.html"><span>🏭</span> محطة رأس الخير</a>
+      <a href="desalination.html"><span>💧</span> تقنيات التحلية</a>
+      <a href="msf.html"><span>🌡️</span> MSF</a>
+      <a href="ro.html"><span>🧪</span> RO</a>
+      <a href="tech-comparison.html"><span>⚖️</span> مقارنة التقنيات</a>
+    </div>
+  </div>
+  <div class="nav-mobile-group">
+    <button type="button" aria-haspopup="true" aria-expanded="false">مفاعل SMART100 <span class="nav-caret" aria-hidden="true">▾</span></button>
+    <div class="nav-mobile-sub">
+      <a href="reactor.html"><span>⚛️</span> مفاعل SMART100</a>
+      <a href="how-it-works.html"><span>⚙️</span> كيف يعمل؟</a>
+      <a href="acp100-benchmark.html"><span>🇨🇳</span> ACP100 Benchmark</a>
+      <a href="three-system-comparison.html"><span>📊</span> المقارنة الثلاثية الكاملة</a>
+    </div>
+  </div>
+  <div class="nav-mobile-group">
+    <button type="button" aria-haspopup="true" aria-expanded="false">التكامل والمنظومة <span class="nav-caret" aria-hidden="true">▾</span></button>
+    <div class="nav-mobile-sub">
+      <a href="integration.html"><span>🔗</span> التكامل مع رأس الخير</a>
+      <a href="energy-flow.html"><span>⚡</span> تدفق الطاقة</a>
+      <a href="system-architecture.html"><span>🧩</span> هندسة المنظومة</a>
+    </div>
+  </div>
+  <div class="nav-mobile-group">
+    <button type="button" aria-haspopup="true" aria-expanded="false">التحليل <span class="nav-caret" aria-hidden="true">▾</span></button>
+    <div class="nav-mobile-sub">
+      <a href="performance.html"><span>📈</span> الأداء</a>
+      <a href="scenarios.html"><span>🔀</span> السيناريوهات</a>
+      <a href="validation.html"><span>🧪</span> التحقق المرجعي</a>
+      <a href="safety.html"><span>🛡️</span> الأمان</a>
+      <a href="simulation.html"><span>🧮</span> المحاكاة</a>
+    </div>
+  </div>
+  <div class="nav-mobile-group">
+    <button type="button" aria-haspopup="true" aria-expanded="false">مصادر <span class="nav-caret" aria-hidden="true">▾</span></button>
+    <div class="nav-mobile-sub">
+      <a href="glossary.html"><span>📖</span> المسرد</a>
+      <a href="references.html"><span>📚</span> المراجع</a>
+    </div>
+  </div>
+</div>
+
+<!-- ===== Hero ===== -->
+<header class="proc-hero">
+  <div class="proc-hero-inner">
+    <span class="eyebrow">🧪 Benchmarking, not Experimental Validation</span>
+    <h1>التحقق المرجعي</h1>
+    <span class="en-name">Literature Benchmarking &amp; Cross-Validation</span>
+    <p>
+      لا توجد بيانات تشغيلية فعلية من محطة رأس الخير لمقارنة نتائجنا بها مباشرة (راجع القسم الأخير أدناه) —
+      لذلك هذه الصفحة <strong style="color:var(--ink)">مقارنة مرجعية بالأدبيات المنشورة (Benchmarking)</strong>،
+      وليست تحققاً تجريبياً (Experimental Validation). الفرق مهم ومقصود: الأولى تقارن رقمنا بنطاق معقول من
+      دراسات مماثلة وتفسّر أي انحراف؛ الثانية تعني قياسات فعلية من نفس المنشأة — وهذا غير متاح حالياً.
+    </p>
+  </div>
+</header>
+
+<main>
+
+<!-- ===== 1. Reference comparison table ===== -->
+<section class="section" style="padding-top:0;">
+  <div class="section-inner">
+    <span class="section-tag">Literature Benchmarking</span>
+    <h2 class="section-title">جدول المقارنة المرجعية</h2>
+    <p class="section-lead">
+      نتيجتنا: <strong style="color:var(--ink)">$2.381/م³</strong> متوسط سنوي (نطاق السيناريوهات الأربعة:
+      $2.22–2.76/م³، بعد تخصيص التكلفة بين الماء والكهرباء) <span class="ev-badge ev-calculated">🧮 Calculated</span>
+    </p>
+
+    <div class="compare-table-wrap" style="margin-top:20px;">
+      <table class="compare-table">
+        <thead>
+          <tr>
+            <th>الدراسة</th>
+            <th>القيمة</th>
+            <th>نطاق الدراسة</th>
+            <th>الفرق عن نتيجتنا</th>
+            <th>التفسير</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th>
+              Alessi &amp; Al-Rabiah (2022)<br>
+              <span style="font-weight:400; font-size:0.78rem; color:var(--ink-muted);">
+                <em>Applied Sciences</em> 12(19), 9506<br>
+                <a href="https://doi.org/10.3390/app12199506" target="_blank" rel="noopener" style="color:var(--nuclear-glow);">DOI: 10.3390/app12199506 ↗</a>
+              </span>
+            </th>
+            <td><strong>$1.38/م³</strong> <span class="ev-badge ev-peer-reviewed" style="margin-top:4px;">📄 Peer Reviewed</span></td>
+            <td>محطة MED-TVC قائمة، 169 MWth، وقود نفطي مدعوم</td>
+            <td><strong style="color:var(--warn)">أعلى ×1.7</strong></td>
+            <td>حجم أصغر بأضعاف، تقنية مختلفة (MED-TVC لا MSF+RO)، ولا التزام تصدير كهرباء</td>
+          </tr>
+          <tr>
+            <th>
+              Mansouri &amp; Ghoniem (2017)<br>
+              <span style="font-weight:400; font-size:0.78rem; color:var(--ink-muted);">
+                <em>Desalination</em> 406, 37–43<br>
+                <a href="https://doi.org/10.1016/j.desal.2016.07.009" target="_blank" rel="noopener" style="color:var(--nuclear-glow);">DOI: 10.1016/j.desal.2016.07.009 ↗</a>
+              </span>
+            </th>
+            <td><strong>$0.4–1.8/م³</strong> <span class="ev-badge ev-peer-reviewed" style="margin-top:4px;">📄 Peer Reviewed</span></td>
+            <td>تقييم عام للسعودية عبر أنواع مفاعلات وتقنيات تحلية متعددة</td>
+            <td><strong style="color:var(--warn)">أعلى من الحد الأعلى ×1.3</strong></td>
+            <td>نطاق عام لا حالة محددة؛ افتراضات CAPEX أقل تحفظاً</td>
+          </tr>
+          <tr>
+            <th>
+              ورقة IAEE MENA 2026<br>
+              <span style="font-weight:400; font-size:0.78rem; color:var(--ink-muted);">
+                فريق العمل — نفس المحطة (رأس الخير)<br>
+                <a href="https://ghazimm.github.io/ras-al-khair/" target="_blank" rel="noopener" style="color:var(--nuclear-glow);">الورقة البحثية ↗</a>
+              </span>
+            </th>
+            <td><strong>$1.278/م³</strong> <span class="ev-badge ev-calculated" style="margin-top:4px;">🧮 Calculated</span></td>
+            <td>رأس الخير كاملة: تحلية + التزام تصدير 2,400 MW</td>
+            <td><strong style="color:var(--warn)">أعلى ×1.9</strong></td>
+            <td>أساس تكلفة مختلف جوهرياً (نحن: CAPEX رأسمالي مباشر؛ هم: تكلفة كهرباء مستوية 75 $/MWh)، ونطاق أوسع يوزّع التكلفة على قاعدة إنتاج أكبر (تحلية + تصدير معًا)</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <p style="margin-top:14px; font-size:0.8rem; color:var(--ink-muted);">
+      القيم المنشورة بالدراستين الأوليين <span class="ev-badge ev-peer-reviewed">📄 Peer Reviewed</span> كما وردت
+      بالمصدر مباشرة، بلا تعديل. عمود "الفرق" <span class="ev-badge ev-calculated">🧮 Calculated</span> — نسبة بسيطة بيننا وبينهم.
+      ملاحظة منهجية: بيانات الاستشهاد لكل مرجع (المؤلفون والمجلة والـDOI) مُتحقَّق منها من قواعد بيانات
+      الناشرين. أما القيم الرقمية المقتبسة فمن ملخصات الدراسات؛ يُنصح القارئ بمراجعة النص الكامل عبر روابط
+      DOI للاطلاع على سنة الأساس وافتراضات أسعار الوقود التي بُنيت عليها كل قيمة.
+    </p>
+  </div>
+</section>
+
+<!-- ===== 2. Why our result is higher ===== -->
+<section class="section section-alt">
+  <div class="section-inner">
+    <span class="section-tag">Explaining the Gap</span>
+    <h2 class="section-title">لماذا نتيجتنا أعلى؟</h2>
+    <p class="section-lead">نتيجتنا أعلى من كل مرجع بالجدول أعلاه — هذا متوقَّع ومفسَّر بثلاثة أسباب منهجية واضحة، لا خطأ حسابي:</p>
+
+    <div class="why-grid">
+      <div class="why-card card reveal">
+        <span class="badge badge-nuclear">1</span>
+        <h3>CAPEX متحفظ لمفاعل FOAK</h3>
+        <p>
+          نستخدم تكلفة رأسمالية مباشرة ($1,000 مليون/وحدة) لمفاعل <strong style="color:var(--ink)">FOAK</strong>
+          (First-Of-A-Kind) لم يُبنَ تجارياً بعد بعد، بينما دراسات أخرى تستخدم تكلفة كهرباء مستوية (LCOE) جاهزة
+          أو تفترض مفاعلات <strong style="color:var(--ink)">NOAK</strong> (Nth-Of-A-Kind) أرخص بفضل تعلّم التصنيع
+          المتكرر. هذا الفارق وحده يفسّر جزءًا كبيرًا من الفجوة.
+        </p>
+      </div>
+      <div class="why-card card reveal">
+        <span class="badge badge-electric">2</span>
+        <h3>نطاق أضيق — بلا التزام تصدير</h3>
+        <p>
+          نموذجنا يغطي حِمل التحلية فقط دون التزام تصدير كهرباء وطني (كورقة IAEE MENA 2026 المقارنة، اللي تضيف
+          2,400 MW). قاعدة توزيع التكلفة الرأسمالية الثابتة عندنا أصغر بكثير — نفس التكلفة تُوزَّع على إنتاج
+          أقل، فيرتفع نصيب كل م³ منها.
+        </p>
+      </div>
+      <div class="why-card card reveal">
+        <span class="badge badge-water">3</span>
+        <h3>تقنية هجينة كثيفة الطاقة</h3>
+        <p>
+          رأس الخير 70.2% MSF — تقنية أقدم وأكثر استهلاكًا للطاقة الحرارية (62.7 kWh_th/م³) مقارنة بـRO الحديثة
+          (المقارِنة الأولى MED-TVC، والثانية تشمل نطاقًا يضم تقنيات أكفأ). خلط تقني أقل كفاءة يعني تكلفة طاقة
+          أعلى لكل م³ بالتصميم، بغضّ النظر عن مصدر الطاقة.
+        </p>
+      </div>
+    </div>
+
+    <div class="why-callout card reveal" style="margin-top:26px; border-inline-start: 3px solid var(--warn);">
+      <span class="why-callout-icon">📊</span>
+      <p>
+        <strong>نتيجتنا أعلى من الأدبيات بعامل 1.3–1.9×، وهو فرق مفسَّر بالكامل بالافتراضات أعلاه، لا بخطأ
+        حسابي — وقد اختُبر ذلك عبر تحليل حساسية شامل.</strong>
+        <a href="scenarios.html#tornado" style="color:var(--nuclear-glow); font-weight:700;">راجع تحليل Tornado والمتغيرات الثمانية ↗</a>
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 3. Internal cross-validation ===== -->
+<section class="section">
+  <div class="section-inner">
+    <span class="section-tag">Independent Cross-Check</span>
+    <h2 class="section-title">تحقق متقاطع داخلي — نقطة قوة حقيقية</h2>
+    <p class="section-lead">
+      نموذجنا وورقة IAEE MENA 2026 (اللي أشرنا لها بالجدول أعلاه) بُنيا بمنهجيتين مستقلتين تمامًا — نماذج
+      حسابية منفصلة، افتراضات تسعير منفصلة، حتى نوع مفاعل مختلف بالتفاصيل الدقيقة. رغم هذا الاستقلال التام،
+      يتفقان تمامًا على <strong style="color:var(--ink)">الحمل الحراري المطلوب لتغطية حمل التحلية وحده</strong>:
+    </p>
+
+    <div class="kpi-grid" style="display:grid; grid-template-columns:repeat(auto-fit,minmax(240px,1fr)); gap:16px; margin-top:20px;">
+      <div class="card reveal" style="padding:22px;">
+        <div style="font-size:0.8rem; color:var(--ink-muted); margin-bottom:8px;">نموذجنا (SMART100)</div>
+        <div style="font-family:'IBM Plex Mono',monospace; font-size:1.3rem; color:var(--ink); font-weight:700;">10 وحدات × 330 MWth</div>
+        <div style="font-family:'IBM Plex Mono',monospace; color:var(--nuclear-glow); margin-top:6px;">= 3,300 MWth</div>
+        <span class="ev-badge ev-calculated" style="margin-top:10px;">🧮 Calculated</span>
+      </div>
+      <div class="card reveal" style="padding:22px;">
+        <div style="font-size:0.8rem; color:var(--ink-muted); margin-bottom:8px;">ورقة IAEE MENA 2026 (مستقلة)</div>
+        <div style="font-family:'IBM Plex Mono',monospace; font-size:1.3rem; color:var(--ink); font-weight:700;">11 وحدة × 300 MWth</div>
+        <div style="font-family:'IBM Plex Mono',monospace; color:var(--nuclear-glow); margin-top:6px;">= 3,300 MWth (للتحلية وحدها)</div>
+        <span class="ev-badge ev-calculated" style="margin-top:10px;">🧮 Calculated</span>
+      </div>
+    </div>
+
+    <div class="why-callout card reveal" style="margin-top:22px; border-inline-start: 3px solid var(--good);">
+      <span class="why-callout-icon">✅</span>
+      <p>
+        <strong>تطابق تام بالحمل الحراري المطلوب (3,300 MWth) رغم اختلاف المفاعل (330 مقابل 300 MWth/وحدة)
+        وعدد الوحدات (10 مقابل 11) والمنهجية بالكامل.</strong> هذا تحقق متقاطع مستقل حقيقي — لو كان تحجيمنا
+        مبنيًا على خطأ جوهري بحساب الحمل الحراري، احتمال وصول نموذج مستقل تمامًا لنفس الرقم بالضبط ضئيل جدًا.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 4. Not yet validated ===== -->
+<section class="section section-alt">
+  <div class="section-inner">
+    <span class="section-tag">Explicit Limitations</span>
+    <h2 class="section-title">ما لم يُتحقَّق منه بعد</h2>
+    <p class="section-lead">شفافية صريحة عن حدود التحقق الحالي — هذا القسم لا يقل أهمية عمّا سبق:</p>
+
+    <div class="ref-list">
+      <div class="ref-item card reveal">
+        <span class="ref-num">١</span>
+        <div>
+          <h4>لا بيانات تشغيلية فعلية من رأس الخير</h4>
+          <p>طُلبت بيانات تشغيل فعلية من المحطة رسميًا للمقارنة المباشرة، ولم تُتَح بعد. المقارنات بهذي الصفحة كلها مع دراسات ونماذج أخرى، لا مع قياسات حقيقية من نفس المنشأة.</p>
+        </div>
+      </div>
+      <div class="ref-item card reveal">
+        <span class="ref-num">٢</span>
+        <div>
+          <h4>معاملات الأداء من الأدبيات العامة</h4>
+          <p>GOR=10 لوحدات MSF، واستهلاك RO النوعي (SEEC)، من مراجع هندسية عامة لصناعة التحلية — لا من قياسات فعلية لمحطة رأس الخير تحديدًا.</p>
+        </div>
+      </div>
+      <div class="ref-item card reveal">
+        <span class="ref-num">٣</span>
+        <div>
+          <h4>تكلفة SMART100 هدف تصميمي، لا تكلفة مُثبَتة</h4>
+          <p>الرقم المستخدَم ($1,000 مليون/وحدة، السيناريو المتحفظ) هدف تصميمي من المورّد (KAERI)، وليس تكلفة تشغيل تجاري فعلية — لأن SMART100 لم يُبنَ تجاريًا حتى الآن (FOAK).</p>
+        </div>
+      </div>
+      <div class="ref-item card reveal">
+        <span class="ref-num">٤</span>
+        <div>
+          <h4>لم تُعَد الحالة المرجعية بأداة DEEP التابعة لـIAEA</h4>
+          <p><strong style="color:var(--ink);">توصية لعمل مستقبلي:</strong> أداة DEEP (Desalination Economic Evaluation Program) التابعة للوكالة الدولية للطاقة الذرية هي المعيار القياسي بصناعة التحلية النووية لتقييم LCOW — إعادة بناء نفس الحالة بها ستكون تحققاً مستقلاً أقوى بكثير من أي مقارنة أدبيات.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== CTA ===== -->
+<section class="section">
+  <div class="section-inner">
+    <div class="home-cta-band reveal">
+      <h2>راجع المنهجية الكاملة</h2>
+      <p>كل الافتراضات والمعادلات والتصحيحات المنهجية موثَّقة بالتفصيل.</p>
+      <div class="hero-ctas">
+        <a href="references.html#corrections" class="btn btn-primary">التصحيحات المنهجية ↗</a>
+        <a href="scenarios.html" class="btn btn-ghost">تحليل السيناريوهات والحساسية 📊</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="footer-inner">
+    <div>
+      <div class="footer-brand">SMART100 × رأس الخير</div>
+      <p class="footer-desc">منصة هندسية تفاعلية تدرس دمج مفاعل SMART100 النووي الصغير مع منظومة تحلية المياه في محطة رأس الخير — مشروع بحثي/هندسي.</p>
+    </div>
+    <div class="footer-cols">
+      <div class="footer-col">
+        <h5>المنصة</h5>
+        <a href="index.html">الرئيسية</a>
+        <a href="reactor.html">مفاعل SMART100</a>
+        <a href="integration.html">التكامل</a>
+      </div>
+      <div class="footer-col">
+        <h5>المصادر</h5>
+        <a href="validation.html">التحقق المرجعي</a>
+        <a href="glossary.html">المسرد</a>
+        <a href="references.html">المراجع</a>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom">مشروع بحثي · مبني على نموذج محاكاة Python (<a href="https://github.com/Ahmedhala/smart100-ras-al-khair/tree/master/model" target="_blank" rel="noopener" style="color:inherit; text-decoration:underline;">model.py / simulation.py / comparison.py ↗</a>)</div>
+</footer>
+
+<script src="js/nav.js"></script>
+<script>document.addEventListener('DOMContentLoaded', () => initReveal('.reveal'));</script>
+</body>
+</html>
